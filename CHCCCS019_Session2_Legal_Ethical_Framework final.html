@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHCCCS019 — Session 2: Legal &amp; Ethical Framework</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#fdf9f4;--card:#fff;--text:#2d3142;--muted:#6b7280;--border:#e8e0d5;--sand:#f5ede0;--slate:#1e2d3d;--teal:#0f9d8a;--teal-l:#e6f7f5;--teal-d:#0a7a6a;--peach:#f97316;--peach-l:#fff4ee;--rose:#e84393;--rose-l:#fde8f4;--violet:#7c3aed;--violet-l:#f0ebff;--amber:#f59e0b;--amber-l:#fffbe8;--amber-d:#92610a;--green:#16a34a;--green-l:#edfff3;--sky:#0ea5e9;--sky-l:#e8f7ff;--navy:#1a2f6e;--navy-l:#eaedfa;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:"Nunito",sans-serif;font-size:16px;line-height:1.7}
+    .wb{position:sticky;top:0;z-index:600;background:#1a1a2e;color:#fff;padding:8px 20px;display:flex;align-items:center;gap:12px;font-size:13px;font-weight:700;flex-wrap:wrap}
+    .wb a{color:#f59e0b;text-decoration:none}
+    .wb-pill{background:#f59e0b;color:#000;border-radius:99px;padding:2px 10px;font-size:11px;font-weight:800;margin-left:auto;white-space:nowrap}
+    .prog-wrap{position:sticky;top:38px;z-index:500;background:var(--card);border-bottom:1px solid var(--border);padding:6px 16px;display:flex;align-items:center;gap:10px}
+    .prog-bar{flex:1;height:8px;background:#e8e0d5;border-radius:99px;overflow:hidden}
+    .prog-fill{height:100%;background:linear-gradient(90deg,var(--navy),#7c3aed);border-radius:99px;width:0;transition:width .4s}
+    .prog-emoji{font-size:18px;min-width:24px;text-align:center}
+    .hero{background:linear-gradient(135deg,var(--navy) 0%,#2d1b69 100%);color:#fff;padding:52px 24px 44px;text-align:center}
+    .hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:99px;padding:4px 16px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+    .hero h1{font-family:"Playfair Display",serif;font-size:clamp(26px,5vw,46px);line-height:1.15;margin-bottom:10px}
+    .hero-sub{font-size:15px;opacity:.85;margin-bottom:24px}
+    .recap-box{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:18px 22px;max-width:640px;margin:0 auto 22px;text-align:left}
+    .recap-box h4{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;opacity:.7;margin-bottom:8px}
+    .recap-box p{font-size:14px;opacity:.9}
+    .hero-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+    .pill{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);border-radius:99px;padding:5px 14px;font-size:12px;font-weight:700}
+    .main{max-width:900px;margin:0 auto;padding:34px 18px 80px}
+    .sec{background:var(--card);border:2px solid var(--border);border-radius:20px;padding:28px;margin-bottom:28px}
+    .sec-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:20px}
+    .sec-num{min-width:42px;height:42px;border-radius:14px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+    .n-teal{background:var(--teal)}.n-navy{background:var(--navy)}.n-violet{background:var(--violet)}.n-peach{background:var(--peach)}.n-amber{background:var(--amber)}.n-sky{background:var(--sky)}.n-muted{background:#9ca3af}
+    .sec-head h2{font-family:"Playfair Display",serif;font-size:18px;line-height:1.3;margin-bottom:4px}
+    .sec-head p{font-size:13px;color:var(--muted)}
+    .si{border-radius:14px;padding:18px 20px;margin-bottom:20px}
+    .si-navy{background:var(--navy-l);border:2px solid #c5cef5}.si-teal{background:var(--teal-l);border:2px solid #b2e8e3}
+    .si-amber{background:var(--amber-l);border:2px solid #f5dba0}.si-violet{background:var(--violet-l);border:2px solid #d4c3ff}
+    .si-sky{background:var(--sky-l);border:2px solid #9dd8f5}
+    .si-label{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;display:block}
+    .si h2{font-family:"Playfair Display",serif;font-size:19px;margin-bottom:6px}
+    .si p{font-size:14px;color:var(--muted)}
+    .tl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:10px;margin-top:16px}
+    .tl-item{border-radius:12px;padding:10px 14px;border:2px solid transparent;text-decoration:none;color:inherit;display:block;transition:transform .2s}
+    .tl-item:hover{transform:translateY(-2px)}
+    .tl-teach{background:var(--teal-l);border-color:#b2e8e3}.tl-break{background:var(--amber-l);border-color:#f5dba0}
+    .tl-activity{background:var(--violet-l);border-color:#d4c3ff}.tl-scenario{background:var(--peach-l);border-color:#fcd0b3}
+    .tl-review{background:var(--sky-l);border-color:#9dd8f5}.tl-tutorial{background:var(--rose-l);border-color:#f5b8dd}
+    .tl-time{font-size:11px;font-weight:800;color:var(--muted);letter-spacing:1px}.tl-lbl{font-size:13px;font-weight:700;margin-top:2px}
+    p{margin-bottom:14px}p:last-child{margin-bottom:0}
+    h3{font-family:"Playfair Display",serif;font-size:17px;margin:20px 0 10px}
+    .flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin:16px 0}
+    .flip-card{height:130px;perspective:800px;cursor:pointer}
+    .flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .45s}
+    .flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+    .flip-front,.flip-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:14px;padding:14px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+    .flip-front{background:var(--navy);color:#fff}.flip-back{background:var(--teal-l);border:2px solid #b2e8e3;transform:rotateY(180deg)}
+    .flip-front .term{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1px}
+    .flip-front .hint{font-size:11px;opacity:.7;margin-top:6px}
+    .flip-back .def{font-size:13px;font-weight:600;color:var(--text);line-height:1.5}
+    .stage-flow{margin:16px 0}
+    .stage-item{border:2px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:8px;cursor:pointer}
+    .stage-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--card);transition:background .2s}
+    .stage-item.sact .stage-head{background:var(--navy-l)}
+    .stage-dot{width:36px;height:36px;border-radius:10px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+    .stage-lbl{font-weight:700;font-size:14px}
+    .stage-body{display:none;padding:14px 16px;background:var(--navy-l);font-size:14px;border-top:1px solid #c5cef5}
+    .stage-item.sact .stage-body{display:block}
+    .acc-item{border:2px solid var(--border);border-radius:12px;margin-bottom:8px;overflow:hidden}
+    .acc-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;font-weight:700;font-size:14px;background:var(--card);color:var(--text)}
+    .acc-head.open{background:var(--navy-l);color:var(--navy)}
+    .acc-arrow{transition:transform .3s;font-size:16px}
+    .acc-head.open .acc-arrow{transform:rotate(180deg)}
+    .acc-body{display:none;padding:14px 16px;font-size:14px;background:var(--sand);border-top:1px solid var(--border)}
+    .acc-head.open + .acc-body{display:block}
+    .cs{background:var(--slate);color:#fff;border-radius:16px;padding:22px;margin:20px 0}
+    .cs-label{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#9dd8f5;margin-bottom:10px;display:block}
+    .cs h3{font-family:"Playfair Display",serif;font-size:17px;margin-bottom:10px;color:#fff;margin-top:0}
+    .cs p{font-size:14px;opacity:.9;margin-bottom:10px;line-height:1.65}
+    .cc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin:16px 0}
+    .cc{background:var(--sand);border-radius:14px;padding:18px;border:2px solid var(--border)}
+    .cc-icon{font-size:24px;margin-bottom:8px}.cc h4{font-weight:800;font-size:14px;margin-bottom:6px}.cc p{font-size:13px;color:var(--muted);margin:0}
+    .kp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:16px 0}
+    .kp{display:flex;align-items:flex-start;gap:10px;background:var(--sand);border-radius:12px;padding:12px 14px;border:2px solid var(--border)}
+    .kp-dot{min-width:24px;height:24px;border-radius:99px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;margin-top:2px}
+    .kp p{font-size:13px;font-weight:700;margin:0}
+    .tip{border-radius:14px;padding:16px 18px;margin:16px 0}
+    .tip-violet{background:var(--violet-l);border:2px solid #d4c3ff}.tip-violet h4{color:var(--violet)}
+    .tip-amber{background:var(--amber-l);border:2px solid #f5dba0}.tip-amber h4{color:var(--amber-d)}
+    .tip-teal{background:var(--teal-l);border:2px solid #b2e8e3}.tip-teal h4{color:var(--teal-d)}
+    .tip-navy{background:var(--navy-l);border:2px solid #c5cef5}.tip-navy h4{color:var(--navy)}
+    .tip h4{font-size:13.5px;font-weight:800;margin-bottom:6px}.tip p{font-size:14px;margin:0}
+    .disc{border-radius:14px;padding:16px 20px;margin:16px 0}
+    .d-amber{background:var(--amber-l);border:2px solid #f5dba0}.d-teal{background:var(--teal-l);border:2px solid #b2e8e3}
+    .d-violet{background:var(--violet-l);border:2px solid #d4c3ff}.d-navy{background:var(--navy-l);border:2px solid #c5cef5}
+    .disc h4{font-size:14px;font-weight:800;margin-bottom:8px}
+    .disc ul{padding-left:18px;font-size:14px}.disc ul li{margin-bottom:4px}
+    .act-badge{background:var(--violet-l);border:2px solid #d4c3ff;border-radius:12px;padding:14px 18px;margin:16px 0}
+    .act-badge-label{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--violet);margin-bottom:6px;display:block}
+    .act-badge h4{font-size:15px;font-weight:800;margin-bottom:8px}.act-badge p,.act-badge li{font-size:14px}.act-badge ul{padding-left:18px}
+    .act-wrap{background:linear-gradient(135deg,#f0ebff,#e8f7ff);border:2px solid #d4c3ff;border-radius:18px;padding:22px;margin:20px 0}
+    .act-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+    .act-type-badge{background:var(--violet);color:#fff;border-radius:99px;padding:4px 12px;font-size:11px;font-weight:800;letter-spacing:1px;white-space:nowrap}
+    .act-header h3{font-family:"Playfair Display",serif;font-size:17px;flex:1;min-width:200px;margin-top:0}
+    .act-instruction{font-size:14px;color:var(--muted);margin-bottom:16px}
+    .act-result{border-radius:10px;padding:10px 14px;margin-top:12px;font-size:14px;font-weight:700;display:none}
+    .act-result.ok{background:var(--green-l);border:2px solid #a7e8be;color:var(--green);display:block}
+    .act-result.partial{background:var(--amber-l);border:2px solid #f5dba0;color:var(--amber-d);display:block}
+    .act-result.retry{background:var(--peach-l);border:2px solid #fcd0b3;color:#c2410c;display:block}
+    .tf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+    .tf-item{background:var(--card);border:2px solid var(--border);border-radius:12px;padding:14px}
+    .tf-stmt{font-size:14px;font-weight:600;margin-bottom:10px}
+    .tf-btns{display:flex;gap:8px}
+    .tf-btn{flex:1;padding:7px;border-radius:8px;border:2px solid var(--border);background:transparent;font-weight:800;font-size:13px;cursor:pointer;transition:all .2s;font-family:"Nunito",sans-serif;color:var(--text)}
+    .tf-btn:hover{opacity:.8}
+    .tf-btn.correct-tf{background:var(--teal);color:#fff;border-color:var(--teal)}
+    .tf-btn.wrong-tf{background:var(--peach);color:#fff;border-color:var(--peach)}
+    .tf-explain{font-size:12px;margin-top:8px;padding:8px;border-radius:8px;display:none;background:var(--sand);color:var(--text)}
+    .cloze-sent{font-size:15px;line-height:2.6;margin-bottom:12px}
+    .blank{display:inline-block;min-width:100px;border-bottom:2.5px solid var(--navy);padding:2px 8px;cursor:pointer;border-radius:4px;background:var(--navy-l);color:var(--navy);font-weight:700;font-size:14px;text-align:center;transition:all .2s;vertical-align:middle}
+    .blank.correct-ans{background:var(--teal-l);border-color:var(--teal);color:var(--teal-d)}
+    .blank.wrong-ans{background:var(--peach-l);border-color:var(--peach);color:#c2410c}
+    .word-bank{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;padding:12px;background:var(--card);border-radius:10px;border:2px solid var(--border)}
+    .wchip{background:var(--navy);color:#fff;border-radius:99px;padding:5px 14px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;user-select:none}
+    .wchip.selected{background:var(--violet);outline:3px solid #d4c3ff}
+    .wchip.used{opacity:.3;pointer-events:none}
+    .smcq-q{margin-bottom:18px}
+    .smcq-q-lbl{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+    .smcq-q-text{font-size:14px;font-weight:600;margin-bottom:10px;background:var(--sand);padding:12px;border-radius:10px}
+    .smcq-opts{display:flex;flex-direction:column;gap:8px}
+    .smcq-btn{border:2px solid var(--border);background:var(--card);border-radius:10px;padding:10px 14px;text-align:left;cursor:pointer;font-size:14px;font-weight:600;transition:all .2s;font-family:"Nunito",sans-serif;color:var(--text)}
+    .smcq-btn:hover{border-color:var(--navy);background:var(--navy-l)}
+    .smcq-btn.sc-right{background:var(--teal-l);border-color:var(--teal);color:var(--teal-d)}
+    .smcq-btn.sc-wrong{background:var(--peach-l);border-color:var(--peach);color:#c2410c}
+    .smcq-fb{display:none;border-radius:10px;padding:10px 14px;margin-top:8px;font-size:13px;font-weight:700}
+    .smcq-fb.ok{background:var(--green-l);border:2px solid #a7e8be;color:var(--green);display:block}
+    .smcq-fb.no{background:var(--peach-l);border:2px solid #fcd0b3;color:#c2410c;display:block}
+    .match-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px}
+    .match-term,.match-def{padding:10px 14px;border-radius:10px;border:2px solid var(--border);cursor:pointer;font-size:13px;font-weight:600;background:var(--card);transition:all .2s;text-align:center;margin-bottom:8px;color:var(--text)}
+    .match-term:hover,.match-def:hover{border-color:var(--navy)}
+    .match-term.sel,.match-def.sel{border-color:var(--violet);background:var(--violet-l)}
+    .match-term.matched,.match-def.matched{border-color:var(--teal);background:var(--teal-l);pointer-events:none;color:var(--teal-d)}
+    .match-term.wrong-flash,.match-def.wrong-flash{border-color:var(--peach);background:var(--peach-l);color:#c2410c}
+    .q-block{margin-bottom:20px}
+    .q-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:var(--navy);color:#fff;font-weight:800;font-size:13px;margin-bottom:8px}
+    .q-text{font-size:15px;font-weight:700;margin-bottom:10px}
+    .q-opts{display:flex;flex-direction:column;gap:8px}
+    .q-opt{border:2px solid var(--border);background:var(--card);border-radius:10px;padding:11px 14px;text-align:left;cursor:pointer;font-size:14px;font-weight:600;transition:all .2s;font-family:"Nunito",sans-serif;color:var(--text)}
+    .q-opt:hover{border-color:var(--navy);background:var(--navy-l)}
+    .q-opt.qright{background:var(--teal-l);border-color:var(--teal);color:var(--teal-d)}
+    .q-opt.qwrong{background:var(--peach-l);border-color:var(--peach);color:#c2410c}
+    .q-fb{font-size:13px;margin-top:8px;padding:8px 12px;border-radius:8px;display:none}
+    .q-fb.show{display:block}.q-fb.ok{background:var(--green-l);border:2px solid #a7e8be;color:var(--green)}
+    .q-fb.no{background:var(--peach-l);border:2px solid #fcd0b3;color:#c2410c}
+    .score-box{background:var(--navy-l);border:2px solid #c5cef5;border-radius:14px;padding:18px;text-align:center;margin-top:16px;display:none}
+    .score-num{font-size:30px;font-weight:800;color:var(--navy)}.score-msg{font-size:14px;color:var(--muted);margin-top:4px}
+    .review-score{background:var(--sky-l);border:2px solid #9dd8f5;border-radius:16px;padding:24px;text-align:center;margin-top:20px;display:none}
+    .review-score-num{font-size:48px;font-weight:800;color:var(--sky)}
+    .scene{display:none}.scene.active{display:block}
+    .sc-header{background:linear-gradient(135deg,var(--peach),#ea580c);color:#fff;border-radius:16px 16px 0 0;padding:20px 22px}
+    .sc-badge{display:inline-block;background:rgba(255,255,255,.2);border-radius:99px;padding:3px 12px;font-size:11px;font-weight:800;letter-spacing:2px;margin-bottom:8px}
+    .sc-header h3{font-family:"Playfair Display",serif;font-size:19px}
+    .sc-body{border:2px solid #fcd0b3;border-top:0;border-radius:0 0 16px 16px;padding:22px}
+    .sc-situation{background:var(--sand);border-radius:12px;padding:16px;margin-bottom:16px;font-size:14px}
+    .sc-opts{display:flex;flex-direction:column;gap:10px}
+    .sc-opt{border:2px solid var(--border);background:var(--card);border-radius:12px;padding:12px 16px;text-align:left;cursor:pointer;font-size:14px;font-weight:600;transition:all .2s;font-family:"Nunito",sans-serif;color:var(--text)}
+    .sc-opt:hover{border-color:var(--navy)}
+    .sc-opt.sc-correct{background:var(--teal-l);border-color:var(--teal)}
+    .sc-opt.sc-wrong-ans{background:var(--peach-l);border-color:var(--peach)}
+    .sc-opt.sc-partial{background:var(--amber-l);border-color:var(--amber)}
+    .sc-fb{border-radius:10px;padding:12px 16px;margin-top:12px;font-size:14px;display:none}
+    .sc-fb.show{display:block}
+    .sc-fb.fb-ok{background:var(--green-l);border:2px solid #a7e8be;color:var(--green)}
+    .sc-fb.fb-no{background:var(--peach-l);border:2px solid #fcd0b3;color:#c2410c}
+    .sc-fb.fb-partial{background:var(--amber-l);border:2px solid #f5dba0;color:var(--amber-d)}
+    .sc-complete{background:linear-gradient(135deg,var(--green-l),var(--teal-l));border:2px solid #a7e8be;border-radius:16px;padding:28px;text-align:center;display:none;margin-top:16px}
+    .sc-complete h3{font-family:"Playfair Display",serif;font-size:22px;color:var(--teal-d);margin-bottom:10px;margin-top:0}
+    .break-card{border-radius:16px;padding:22px 26px;color:#fff;margin:24px 0;display:flex;align-items:center;gap:18px}
+    .break-icon{font-size:36px}
+    .break-card h3{font-size:17px;font-weight:800;margin-bottom:4px;font-family:"Nunito",sans-serif}
+    .break-card p{font-size:13px;opacity:.85;margin:0}
+    .break-morning{background:linear-gradient(135deg,#065f46,#0f766e)}
+    .break-lunch{background:linear-gradient(135deg,#1e3a5f,#1e4d6b)}
+    .break-afternoon{background:linear-gradient(135deg,#4a1942,#7e1d6e)}
+    .tutorial-card{background:linear-gradient(135deg,#7c2d12,#c2410c);border-radius:16px;padding:22px 26px;color:#fff;margin:24px 0}
+    .tutorial-card h3{font-family:"Playfair Display",serif;font-size:19px;margin-bottom:4px;color:#fff;margin-top:0}
+    .coming-up{background:var(--slate);color:#fff;border-radius:16px;padding:24px;margin-top:28px}
+    .coming-up h3{font-family:"Playfair Display",serif;font-size:19px;margin-bottom:12px;color:#fff;margin-top:0}
+    .coming-up ul{padding-left:18px;font-size:14px;opacity:.9}.coming-up ul li{margin-bottom:6px}
+    button{display:inline-block;padding:9px 20px;border-radius:10px;font-family:"Nunito",sans-serif;font-weight:800;font-size:14px;cursor:pointer;border:none;transition:all .2s;background:var(--teal);color:#fff}
+    .sc-fb button,.q-fb button{color:var(--text);background:var(--card);border:2px solid var(--border);}
+    .sc-fb .reset-btn{background:transparent!important;border:2px solid var(--border)!important;color:var(--muted)!important}
+    button:hover{opacity:.9}
+    .btn-navy{background:var(--navy)!important;color:#fff!important}
+    .reset-btn{background:transparent!important;border:2px solid var(--border)!important;color:var(--muted)!important}
+    .checklist-item{display:flex;align-items:flex-start;gap:10px;padding:10px;border-radius:10px;margin-bottom:8px;background:var(--sand);border:2px solid var(--border);cursor:pointer;transition:all .2s}
+    .checklist-item.ticked{background:var(--teal-l);border-color:var(--teal)}
+    .chk-box{width:22px;height:22px;border-radius:6px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;background:var(--card);transition:all .2s}
+    .checklist-item.ticked .chk-box{background:var(--teal);border-color:var(--teal);color:#fff}
+    .chk-lbl{font-size:14px;font-weight:600}
+    .vs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:12px;margin:14px 0}
+    .vs-card{border-radius:12px;padding:14px;border:2px solid var(--border);cursor:pointer;transition:all .2s;background:var(--card)}
+    .vs-stmt{font-size:13px;font-weight:600;margin-bottom:10px}
+    .vs-tag{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:99px;background:var(--sand);color:var(--muted);display:inline-block}
+    .vs-card[data-v="helpful"]{background:var(--green-l);border-color:#a7e8be}
+    .vs-card[data-v="helpful"] .vs-tag{background:var(--green);color:#fff}
+    .vs-card[data-v="harmful"]{background:var(--peach-l);border-color:#fcd0b3}
+    .vs-card[data-v="harmful"] .vs-tag{background:var(--peach);color:#fff}
+    .vs-card[data-v="complicated"]{background:var(--amber-l);border-color:#f5dba0}
+    .vs-card[data-v="complicated"] .vs-tag{background:var(--amber);color:#000}
+    .sn{background:#fde8f4;border:2px solid #f5b8dd;border-radius:14px;padding:16px 18px;margin-bottom:20px}
+    .sn h4{color:var(--rose);font-size:13px;font-weight:800;margin-bottom:6px}.sn p{font-size:14px}
+    .reflection-area{width:100%;border:2px solid var(--border);border-radius:12px;padding:14px;font-family:"Nunito",sans-serif;font-size:14px;min-height:120px;resize:vertical;margin-top:10px}
+    hr.divider{border:none;border-top:2px solid var(--border);margin:20px 0}
+    .cp{position:fixed;z-index:9999;animation:cfall 2s ease-out forwards;pointer-events:none}
+    @keyframes cfall{0%{transform:translateY(-10px) rotate(0deg);opacity:1}100%{transform:translateY(700px) rotate(720deg);opacity:0}}
+    @media(max-width:600px){.tl-grid{grid-template-columns:1fr 1fr}.flip-grid{grid-template-columns:1fr 1fr}.match-cols{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div class="wb">
+  <span>💛</span>
+  <span>Today covers duty of care, mandatory reporting, and abuse — some material may be activating.</span>
+  <a href="tel:131114" class="wb-pill">Lifeline 13 11 14</a>
+</div>
+<div class="prog-wrap">
+  <div class="prog-emoji" id="progEmoji">🌱</div>
+  <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+  <span style="font-size:12px;font-weight:700;color:var(--muted)">Session 2 · CHCCCS019</span>
+</div>
+<div class="hero">
+  <div class="hero-badge">CHCCCS019 · Session 2</div>
+  <h1>Legal &amp; Ethical Framework</h1>
+  <p class="hero-sub">How you act in a crisis matters just as much as what you do.</p>
+  <div class="recap-box">
+    <h4>🔁 Last Session Recap</h4>
+    <p>In Session 1 we defined crisis using Caplan's model, identified direct and indirect indicators, and explored six crisis types: suicide, self-harm, threats, abuse, and domestic and family violence. We practised the 7-step safety response process and SMART safety planning.</p>
+  </div>
+  <div class="hero-pills">
+    <span class="pill">⚖️ Duty of Care</span>
+    <span class="pill">🔒 Privacy &amp; Confidentiality</span>
+    <span class="pill">🏛️ Mandatory Reporting</span>
+    <span class="pill">💬 Personal Values</span>
+    <span class="pill">📜 Codes of Practice</span>
+  </div>
+</div>
+<div class="main">
+
+<div class="sec" id="timeline">
+  <div class="sec-head"><div class="sec-num n-navy">📅</div><div><h2>Today at a Glance</h2><p>Click any block to jump there</p></div></div>
+  <div class="tl-grid">
+    <a href="#welcome" class="tl-item tl-teach"><div class="tl-time">9:30–9:45</div><div class="tl-lbl">🌅 Welcome</div></a>
+    <a href="#icebreaker" class="tl-item tl-activity"><div class="tl-time">9:45–10:15</div><div class="tl-lbl">🧠 Myth Busters Quiz</div></a>
+    <a href="#s3" class="tl-item tl-teach"><div class="tl-time">10:15–10:30</div><div class="tl-lbl">⚖️ Duty of Care</div></a>
+    <a href="#morning-break" class="tl-item tl-break"><div class="tl-time">10:30–10:45</div><div class="tl-lbl">☕ Morning Break</div></a>
+    <a href="#s4" class="tl-item tl-teach"><div class="tl-time">10:45–11:30</div><div class="tl-lbl">🔒 Privacy &amp; Reporting</div></a>
+    <a href="#s5" class="tl-item tl-teach"><div class="tl-time">11:30–12:00</div><div class="tl-lbl">📋 Work Role Boundaries</div></a>
+    <a href="#lunch-break" class="tl-item tl-break"><div class="tl-time">12:00–12:45</div><div class="tl-lbl">🥪 Lunch</div></a>
+    <a href="#s6" class="tl-item tl-teach"><div class="tl-time">12:45–1:30</div><div class="tl-lbl">💬 Values &amp; Assumptions</div></a>
+    <a href="#s7" class="tl-item tl-teach"><div class="tl-time">1:30–1:45</div><div class="tl-lbl">📜 Codes of Practice</div></a>
+    <a href="#afternoon-break" class="tl-item tl-break"><div class="tl-time">1:45–2:00</div><div class="tl-lbl">🍫 Afternoon Break</div></a>
+    <a href="#activity-block" class="tl-item tl-activity"><div class="tl-time">2:00–2:30</div><div class="tl-lbl">🧩 Activity Block</div></a>
+    <a href="#scenario" class="tl-item tl-scenario"><div class="tl-time">2:30–3:00</div><div class="tl-lbl">🎭 Scenario</div></a>
+    <a href="#review" class="tl-item tl-review"><div class="tl-time">3:00+</div><div class="tl-lbl">📝 Review Quiz</div></a>
+    <a href="#tutorial" class="tl-item tl-tutorial"><div class="tl-time">3:00+</div><div class="tl-lbl">💬 Tutorial</div></a>
+  </div>
+</div>
+
+<div class="sec" id="welcome">
+  <div class="sec-head"><div class="sec-num n-teal">1</div><div><h2>Welcome &amp; Wellbeing Check-In</h2><p>9:30–9:45 · 15 min</p></div></div>
+  <div class="sn">
+    <h4>💛 Heads Up — Sensitive Content Today</h4>
+    <p>Today we cover duty of care, mandatory reporting, and personal values in crisis work. Some material may bring up strong feelings. You're welcome to step out at any time. Lifeline is available 24/7 on <strong>13 11 14</strong>.</p>
+  </div>
+  <div class="disc d-teal">
+    <h4>🌅 Check-In Round</h4>
+    <ul>
+      <li>On a scale of 1–10, how present are you feeling today?</li>
+      <li>One word: how are you arriving to this session?</li>
+      <li>Is there anything you need from the group to feel safe to learn?</li>
+    </ul>
+  </div>
+  <div class="tip tip-navy">
+    <h4>💬 As a Practitioner</h4>
+    <p>Today's legal and ethical content is the backbone of safe community services practice. It can feel like a lot of rules — but these frameworks protect both the people you support and yourself. Knowing them well is what separates a good worker from a great one.</p>
+  </div>
+</div>
+
+<div class="sec" id="icebreaker">
+  <div class="sec-head"><div class="sec-num n-violet">2</div><div><h2>Myth Busters — Legal &amp; Ethical Edition</h2><p>9:45–10:15 · 30 min</p></div></div>
+  <div class="si si-violet">
+    <span class="si-label">🧠 Warm-Up · Learner Guide Ch. 2</span>
+    <h2>What do you actually know about legal obligations in community services?</h2>
+    <p>Five questions. No judgment. The most interesting answers are the ones that surprise us.</p>
+  </div>
+  <div class="q-block">
+    <div class="q-num">1</div>
+    <div class="q-text">Duty of care means you must do everything in your power to prevent any harm to a client.</div>
+    <div class="q-opts" id="qq1">
+      <button class="q-opt" onclick="ansQ(this,'qq1',false,'qf1')">True — you must prevent all possible harms</button>
+      <button class="q-opt" data-correct="true" onclick="ansQ(this,'qq1',true,'qf1')">False — duty of care is about <em>reasonably foreseeable</em> harm and <em>reasonable</em> care</button>
+      <button class="q-opt" onclick="ansQ(this,'qq1',false,'qf1')">True — but only for physical harms</button>
+    </div>
+    <div class="q-fb" id="qf1"></div>
+  </div>
+  <div class="q-block">
+    <div class="q-num">2</div>
+    <div class="q-text">You can share a client's confidential information any time another professional asks — they're a professional, so it's fine.</div>
+    <div class="q-opts" id="qq2">
+      <button class="q-opt" onclick="ansQ(this,'qq2',false,'qf2')">True — professionals can share freely with each other</button>
+      <button class="q-opt" data-correct="true" onclick="ansQ(this,'qq2',true,'qf2')">False — consent is required except to prevent serious harm or by court order</button>
+      <button class="q-opt" onclick="ansQ(this,'qq2',false,'qf2')">Only if they sign a confidentiality agreement first</button>
+    </div>
+    <div class="q-fb" id="qf2"></div>
+  </div>
+  <div class="q-block">
+    <div class="q-num">3</div>
+    <div class="q-text">Mandatory reporting obligations are the same for all community services workers across Australia.</div>
+    <div class="q-opts" id="qq3">
+      <button class="q-opt" onclick="ansQ(this,'qq3',false,'qf3')">True — it's a national standard</button>
+      <button class="q-opt" data-correct="true" onclick="ansQ(this,'qq3',true,'qf3')">False — obligations vary by state/territory and by occupation</button>
+      <button class="q-opt" onclick="ansQ(this,'qq3',false,'qf3')">True — but only for child protection situations</button>
+    </div>
+    <div class="q-fb" id="qf3"></div>
+  </div>
+  <div class="q-block">
+    <div class="q-num">4</div>
+    <div class="q-text">Personal values and beliefs have no real impact on professional practice — you can keep them completely separate.</div>
+    <div class="q-opts" id="qq4">
+      <button class="q-opt" onclick="ansQ(this,'qq4',false,'qf4')">True — professionals are objective by training</button>
+      <button class="q-opt" data-correct="true" onclick="ansQ(this,'qq4',true,'qf4')">False — values shape perceptions, communication and judgements unconsciously</button>
+      <button class="q-opt" onclick="ansQ(this,'qq4',false,'qf4')">Only personal beliefs — cultural values don't apply</button>
+    </div>
+    <div class="q-fb" id="qf4"></div>
+  </div>
+  <div class="q-block">
+    <div class="q-num">5</div>
+    <div class="q-text">Working outside your role boundaries is acceptable when you genuinely care about a client and want to help.</div>
+    <div class="q-opts" id="qq5">
+      <button class="q-opt" onclick="ansQ(this,'qq5',false,'qf5')">True — compassion overrides procedural rules</button>
+      <button class="q-opt" onclick="ansQ(this,'qq5',false,'qf5')">Sometimes — it depends on the situation</button>
+      <button class="q-opt" data-correct="true" onclick="ansQ(this,'qq5',true,'qf5')">False — stepping outside your role can harm clients and expose you to legal risk</button>
+    </div>
+    <div class="q-fb" id="qf5"></div>
+  </div>
+  <div class="score-box" id="quizScore"></div>
+  <div class="tip tip-violet" style="margin-top:16px">
+    <h4>💡 Why These Questions?</h4>
+    <p>Each myth maps directly to a section in today's session. If any answer surprised you, that's exactly where today's learning is most valuable.</p>
+  </div>
+  <div class="disc d-amber">
+    <h4>💬 Class Debrief</h4>
+    <ul>
+      <li>Which answer surprised you most? Why?</li>
+      <li>Have you seen any of these myths play out in a real workplace?</li>
+      <li>Why do you think these misconceptions are so common in community services?</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sec" id="s3">
+  <div class="sec-head"><div class="sec-num n-navy">3</div><div><h2>Duty of Care — What You're Actually Obligated to Do</h2><p>10:15–10:30 · Learner Guide pp. 22–28</p></div></div>
+  <div class="si si-navy">
+    <span class="si-label">⚖️ Chapter 2 · Section 2.1</span>
+    <h2>What does "reasonable" actually mean — and how does it protect you?</h2>
+    <p>Duty of care is a concept many people think they understand until a real situation tests it.</p>
+  </div>
+  <p>People in crisis are especially vulnerable. Duty of care is a legal principle based on common law requiring everyone to avoid causing <strong>reasonably foreseeable harm</strong> to others through careless behaviour. You're not expected to predict rare events, but you are expected to use common sense.</p>
+  <div class="flip-grid">
+    <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><span class="term">Duty of Care</span><span class="hint">Tap to reveal</span></div><div class="flip-back"><span class="def">A legal obligation to avoid causing reasonably foreseeable harm through careless action or inaction</span></div></div></div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><span class="term">Negligence</span><span class="hint">Tap to reveal</span></div><div class="flip-back"><span class="def">Carelessness that causes harm — the basis for civil legal action when duty of care is breached</span></div></div></div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><span class="term">Reasonably Foreseeable</span><span class="hint">Tap to reveal</span></div><div class="flip-back"><span class="def">What a reasonable person could predict might happen — not rare or extreme events you couldn't have anticipated</span></div></div></div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><span class="term">Standard of Care</span><span class="hint">Tap to reveal</span></div><div class="flip-back"><span class="def">The level of care expected in a role — higher for professionals because more skill and knowledge is assumed</span></div></div></div>
+  </div>
+  <h3>Four Elements for Legal Negligence Action</h3>
+  <p>All four must be present for a legal claim to succeed:</p>
+  <div class="stage-flow">
+    <div class="stage-item" onclick="toggleS(this)"><div class="stage-head"><div class="stage-dot">1</div><span class="stage-lbl">A duty of care relationship exists</span></div><div class="stage-body">One person's actions could foreseeably affect another's safety or wellbeing. In community services, this relationship always exists between you and your clients.</div></div>
+    <div class="stage-item" onclick="toggleS(this)"><div class="stage-head"><div class="stage-dot">2</div><span class="stage-lbl">A standard of care applies to the situation</span></div><div class="stage-body">There is a recognised standard for reasonable behaviour. Professional roles have a higher standard — you're expected to have specialist knowledge and skill.</div></div>
+    <div class="stage-item" onclick="toggleS(this)"><div class="stage-head"><div class="stage-dot">3</div><span class="stage-lbl">The duty of care is breached</span></div><div class="stage-body">The standard of care was not met. If you follow your organisation's policies, work within your role, and apply common sense, you are very unlikely to breach your duty of care.</div></div>
+    <div class="stage-item" onclick="toggleS(this)"><div class="stage-head"><div class="stage-dot">4</div><span class="stage-lbl">Harm results from the breach</span></div><div class="stage-body">Harm may be physical, psychological, economic, or reputational. If no harm results, there are no grounds for legal action — though disciplinary proceedings are still possible.</div></div>
+  </div>
+  <div class="cs">
+    <span class="cs-label">📖 Case Study — Learner Guide p. 23</span>
+    <h3>Martin and the Armed Robbery</h3>
+    <p>Martin is a support worker at the bank with his client, Maria. An armed robber bursts in, orders everyone to the floor, and threatens them with a gun. Martin tells Maria to comply and lies next to her, talking quietly to keep her calm.</p>
+    <p><strong>Martin is not expected to tackle the robber.</strong> His duty of care doesn't require him to predict or prevent this extreme, unusual event. He responds as any reasonable person would — protecting Maria within the reality of the situation.</p>
+  </div>
+  <div class="disc d-navy">
+    <h4>💬 Activity 2A — Learner Guide p. 24 · Identify Duty of Care Responsibilities</h4>
+    <ul>
+      <li>Joe has bipolar disorder and is being encouraged to stop his medication by a religious group. What are the <em>reasonably foreseeable</em> risks?</li>
+      <li>What are Joe's rights here — and how do they interact with Mary's duty of care?</li>
+      <li>Suggest at least two things Mary could do to keep Joe safe while respecting his autonomy.</li>
+    </ul>
+    <p style="font-size:13px;margin-top:8px;color:var(--amber-d)">You don't need to share personal stories — professional examples and your own reasoning work perfectly.</p>
+  </div>
+  <div class="act-wrap">
+    <div class="act-header">
+      <span class="act-type-badge">⚡ Activity 1 · True or False — Duty of Care Fundamentals</span>
+      <h3>What do you know about duty of care?</h3>
+    </div>
+    <p class="act-instruction">Click True or False for each statement. You'll get instant feedback and an explanation.</p>
+    <div class="tf-grid" id="tf1">
+      <div class="tf-item">
+        <div class="tf-stmt">As a community services worker, your standard of care is higher than that of an ordinary member of the public.</div>
+        <div class="tf-btns"><button class="tf-btn t-btn" onclick="answerTF(0,'tf1',true,this)">TRUE</button><button class="tf-btn f-btn" onclick="answerTF(0,'tf1',true,this)">FALSE</button></div>
+        <div class="tf-explain" id="tf1_e0">✅ TRUE — Professionals are expected to have specialised knowledge and skills, so the law holds them to a higher standard than the general public.</div>
+      </div>
+      <div class="tf-item">
+        <div class="tf-stmt">You can be sued for negligence even if no actual harm results from your careless action.</div>
+        <div class="tf-btns"><button class="tf-btn t-btn" onclick="answerTF(1,'tf1',false,this)">TRUE</button><button class="tf-btn f-btn" onclick="answerTF(1,'tf1',false,this)">FALSE</button></div>
+        <div class="tf-explain" id="tf1_e1">❌ FALSE — Legal negligence action requires harm to have actually resulted. However, you could still face employer disciplinary action even without harm occurring.</div>
+      </div>
+      <div class="tf-item">
+        <div class="tf-stmt">Following your organisation's policies and procedures helps protect you from a duty of care breach.</div>
+        <div class="tf-btns"><button class="tf-btn t-btn" onclick="answerTF(2,'tf1',true,this)">TRUE</button><button class="tf-btn f-btn" onclick="answerTF(2,'tf1',true,this)">FALSE</button></div>
+        <div class="tf-explain" id="tf1_e2">✅ TRUE — Working within your role, following policies, and using common sense are your primary protections against a duty of care breach.</div>
+      </div>
+      <div class="tf-item">
+        <div class="tf-stmt">Duty of care requires you to predict and prevent every possible harm, no matter how unlikely.</div>
+        <div class="tf-btns"><button class="tf-btn t-btn" onclick="answerTF(3,'tf1',false,this)">TRUE</button><button class="tf-btn f-btn" onclick="answerTF(3,'tf1',false,this)">FALSE</button></div>
+        <div class="tf-explain" id="tf1_e3">❌ FALSE — Only <em>reasonably foreseeable</em> harm is covered. You are not expected to predict rare or extreme events like natural disasters or random criminal acts.</div>
+      </div>
+    </div>
+    <div id="tf1_score" style="display:none;margin-top:10px;font-weight:700;color:var(--navy)"></div>
+    <div class="act-result" id="tf1result"></div>
+    <button class="reset-btn" onclick="resetTF('tf1')" style="margin-top:8px">↺ Reset</button>
+  </div>
+</div>
+
+<div class="break-card break-morning" id="morning-break">
+  <div class="break-icon">☕</div>
+  <div><h3>Morning Break</h3><p>10:30–10:45 · 15 minutes · Back at 10:45</p></div>
+</div>
+
+<div class="sec" id="s4">
+  <div class="sec-head"><div class="sec-num n-navy">4</div><div><h2>Privacy, Confidentiality &amp; Mandatory Reporting</h2><p>10:45–11:30 · Learner Guide pp. 25–30</p></div></div>
+  <div class="si si-navy">
+    <span class="si-label">🔒 Section 2.1 · Privacy &amp; Reporting</span>
+    <h2>When do you share information — and when does keeping silent become dangerous?</h2>
+    <p>Confidentiality protects people. So does disclosure, in the right circumstances. Knowing when is the skill.</p>
+  </div>
+  <p>In crisis work, maintaining privacy is especially important — disclosing personal information can add to trauma and even put clients at greater risk. Imagine sharing a client's address when they're hiding from a violent partner.</p>
+  <div class="cc-grid">
+    <div class="cc"><div class="cc-icon">🔒</div><h4>Default Rule</h4><p>Do not disclose confidential information without your client's consent.</p></div>
+    <div class="cc"><div class="cc-icon">🚨</div><h4>Exception 1 — Harm</h4><p>You may disclose if necessary to protect someone from serious harm.</p></div>
+    <div class="cc"><div class="cc-icon">⚖️</div><h4>Exception 2 — Court</h4><p>Disclose when formally required by a court of law.</p></div>
+    <div class="cc"><div class="cc-icon">📋</div><h4>Check Policies</h4><p>Always check your organisation's confidentiality procedures when safety is at stake.</p></div>
+  </div>
+  <h3>Mandatory Reporting</h3>
+  <p>In some situations — particularly where a child's safety is at risk — you may be legally required to report regardless of confidentiality. The rules vary by state, territory, and occupation.</p>
+  <div class="acc-item"><div class="acc-head" onclick="toggleAcc(this)">📌 When does mandatory reporting apply? <span class="acc-arrow">▼</span></div><div class="acc-body">In Victoria, the Children, Youth and Families Act 2005 sets out who is a mandated reporter and what must be reported. Your organisation's policies will specify their requirements. When in doubt — consult your supervisor.</div></div>
+  <div class="acc-item"><div class="acc-head" onclick="toggleAcc(this)">🏛️ Key responsibilities for mandated reporters <span class="acc-arrow">▼</span></div><div class="acc-body">Follow legislative procedures for your state/territory. Report concerns to the relevant child protection authority. Document your concerns accurately and objectively. Consult your supervisor if you're unsure whether the threshold is met.</div></div>
+  <div class="acc-item"><div class="acc-head" onclick="toggleAcc(this)">💬 What if the client asks me not to report? <span class="acc-arrow">▼</span></div><div class="acc-body">Mandatory reporting obligations exist regardless of client consent. Be transparent with the client about what you're required to do and why — while still fulfilling your legal duty. This is why early conversations about reporting obligations are good practice.</div></div>
+  <div class="cs">
+    <span class="cs-label">📖 Case Study — Learner Guide p. 30</span>
+    <h3>Elinor and Susie</h3>
+    <p>Elinor is a support worker in an after-school program. Susie, aged seven, frequently arrives in soiled clothing, without shoes, always hungry, appearing underweight and anxious.</p>
+    <p>One day Susie arrives with a large purple bruise on her face and is limping. When asked what happened, she says: "daddy was very angry with me last night."</p>
+    <p><strong>Elinor is a mandated reporter.</strong> She is bound by legislation to report her concerns about Susie's welfare to the state child protection authority — regardless of what the family might want.</p>
+  </div>
+  <div class="act-badge">
+    <span class="act-badge-label">🔍 Activity 1C — Learner Guide p. 16</span>
+    <h4>Researching Legislation Relevant to Abuse</h4>
+    <ul>
+      <li>Choose one area: child abuse, elder abuse, or abuse of people with disabilities.</li>
+      <li>Identify the relevant Victorian legislation and its key intentions.</li>
+      <li>Which body handles reporting? What local services support affected people?</li>
+    </ul>
+  </div>
+  <div class="act-wrap">
+    <div class="act-header">
+      <span class="act-type-badge">✏️ Activity 2 · Fill in the Blanks — Privacy &amp; Confidentiality</span>
+      <h3>Complete the key principles</h3>
+    </div>
+    <p class="act-instruction">Select a word from the bank below, then click a blank to place it. Check your answers when done.</p>
+    <div class="word-bank" id="bank2">
+      <span class="wchip" onclick="selectChip(this,'bank2')">consent</span>
+      <span class="wchip" onclick="selectChip(this,'bank2')">harm</span>
+      <span class="wchip" onclick="selectChip(this,'bank2')">court</span>
+      <span class="wchip" onclick="selectChip(this,'bank2')">trauma</span>
+      <span class="wchip" onclick="selectChip(this,'bank2')">mandatory</span>
+      <span class="wchip" onclick="selectChip(this,'bank2')">policies</span>
+    </div>
+    <div id="cloze2">
+      <div class="cloze-sent">You must not disclose confidential information without your client's <span class="blank" data-answer="consent" onclick="placeChip(this,'bank2')">_____</span>, except to prevent serious <span class="blank" data-answer="harm" onclick="placeChip(this,'bank2')">_____</span> or by order of a <span class="blank" data-answer="court" onclick="placeChip(this,'bank2')">_____</span>.</div>
+      <div class="cloze-sent">Disclosing private information can add to a person's <span class="blank" data-answer="trauma" onclick="placeChip(this,'bank2')">_____</span>.</div>
+      <div class="cloze-sent">In child protection situations, <span class="blank" data-answer="mandatory" onclick="placeChip(this,'bank2')">_____</span> reporting obligations override confidentiality. Always check your organisation's <span class="blank" data-answer="policies" onclick="placeChip(this,'bank2')">_____</span> when safety is at stake.</div>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn-navy" onclick="checkCloze('cloze2','act2result')">✓ Check Answers</button>
+      <button class="reset-btn" onclick="resetCloze('cloze2','bank2','act2result')">↺ Reset</button>
+    </div>
+    <div class="act-result" id="act2result"></div>
+  </div>
+</div>
+<div class="sec" id="s5">
+  <div class="sec-head"><div class="sec-num n-navy">5</div><div><h2>Work Role Boundaries &amp; Organisational Policies</h2><p>11:30–12:00 · Learner Guide pp. 29–31</p></div></div>
+  <div class="si si-navy">
+    <span class="si-label">📋 Section 2.1 · Work Role Boundaries</span>
+    <h2>Good intentions can still cause harm — why do boundaries exist even when you care deeply?</h2>
+    <p>Working outside your role doesn't just risk breaking rules — it can genuinely hurt the people you're trying to help.</p>
+  </div>
+  <p>Working outside the boundaries of your job role puts both you and your client at risk. You may cause harm by undertaking tasks you're not qualified for — and expose yourself to a duty of care breach.</p>
+  <div class="kp-grid">
+    <div class="kp"><div class="kp-dot">1</div><p>Always work within your job role description and duty statement</p></div>
+    <div class="kp"><div class="kp-dot">2</div><p>Seek advice and supervision when you're unsure of your boundaries</p></div>
+    <div class="kp"><div class="kp-dot">3</div><p>Never undertake tasks you're not qualified or competent to perform</p></div>
+    <div class="kp"><div class="kp-dot">4</div><p>Refer to your organisation's policies as your first point of reference</p></div>
+    <div class="kp"><div class="kp-dot">5</div><p>Document situations where boundary decisions feel difficult</p></div>
+  </div>
+  <div class="cc-grid" style="margin-top:16px">
+    <div class="cc"><div class="cc-icon">📝</div><h4>Policy</h4><p>A statement of intent — what the organisation will do and why. Sets values and direction.</p></div>
+    <div class="cc"><div class="cc-icon">🔢</div><h4>Procedure</h4><p>Step-by-step instructions for implementing a policy. The specific actions you take.</p></div>
+  </div>
+  <div class="cs">
+    <span class="cs-label">📖 Case Study — Learner Guide p. 29</span>
+    <h3>Simon and Martha</h3>
+    <p>Simon is a support worker in a recreational disability program. He's close with many families — including Martha's, a 10-year-old with a learning disability. When Martha's mother needs urgent surgery, Simon offers to have Martha stay at his own home and buys her new clothes from his own pocket.</p>
+    <p>Simon genuinely cares. But he has stepped well outside his role — creating professional boundary, safeguarding, and liability issues. Even good intentions can lead to serious harm.</p>
+  </div>
+  <div class="disc d-amber">
+    <h4>💬 Activity 2B — Work Role Boundaries (Learner Guide p. 29)</h4>
+    <ul>
+      <li>How specifically has Simon crossed his role boundaries?</li>
+      <li>Why do you think he made those choices? What needs was he trying to meet?</li>
+      <li>What could the consequences be — for Simon, Martha, and her family?</li>
+      <li>What would you have done differently in Simon's position?</li>
+    </ul>
+  </div>
+  <div class="tip tip-teal">
+    <h4>🎯 What This Builds in You</h4>
+    <p>Holding role boundaries while communicating genuine warmth is one of the most sophisticated professional skills in community services. It's not about being cold — it's about being sustainably helpful. Clear boundaries are what make long-term trust possible.</p>
+  </div>
+  <div class="act-wrap">
+    <div class="act-header">
+      <span class="act-type-badge">🎯 Activity 3 · Scenario MCQ — Role Boundaries in Practice</span>
+      <h3>What's the right professional call?</h3>
+    </div>
+    <p class="act-instruction">Read each scenario and choose the best response. Immediate feedback follows your choice.</p>
+    <div class="smcq-q">
+      <div class="smcq-q-lbl">Scenario A</div>
+      <div class="smcq-q-text">A client's adult son calls and asks you to share his father's bank details so he can pay his bills. You're a disability support worker. What do you do?</div>
+      <div class="smcq-opts" id="smcq3a">
+        <button class="smcq-btn" onclick="ansSmcq(this,'smcq3a',false,'sfb3a')">Give him the details — he seems genuine and wants to help his father</button>
+        <button class="smcq-btn" data-correct="true" onclick="ansSmcq(this,'smcq3a',true,'sfb3a')">Decline politely, explain you can't share that information, and refer him to his father or appropriate financial services</button>
+        <button class="smcq-btn" onclick="ansSmcq(this,'smcq3a',false,'sfb3a')">Ask a colleague what they'd do, then decide</button>
+      </div>
+      <div class="smcq-fb" id="sfb3a"></div>
+    </div>
+    <div class="smcq-q">
+      <div class="smcq-q-lbl">Scenario B</div>
+      <div class="smcq-q-text">During a home visit, your client discloses thoughts of self-harm. You're a support worker, not a counsellor. What's your first step?</div>
+      <div class="smcq-opts" id="smcq3b">
+        <button class="smcq-btn" onclick="ansSmcq(this,'smcq3b',false,'sfb3b')">Start providing counselling — you know her best and want to help</button>
+        <button class="smcq-btn" data-correct="true" onclick="ansSmcq(this,'smcq3b',true,'sfb3b')">Stay with her, listen empathetically, and contact your supervisor immediately to arrange appropriate crisis support</button>
+        <button class="smcq-btn" onclick="ansSmcq(this,'smcq3b',false,'sfb3b')">Leave immediately to give her space, then call your supervisor from outside</button>
+      </div>
+      <div class="smcq-fb" id="sfb3b"></div>
+    </div>
+    <div class="act-result" id="act3result"></div>
+  </div>
+</div>
+
+<div class="break-card break-lunch" id="lunch-break">
+  <div class="break-icon">🥪</div>
+  <div><h3>Lunch Break</h3><p>12:00–12:45 · 45 minutes · Back at 12:45</p></div>
+</div>
+
+<div class="sec" id="s6">
+  <div class="sec-head"><div class="sec-num n-amber">6</div><div><h2>Personal Values, Beliefs &amp; Assumptions</h2><p>12:45–1:30 · Learner Guide pp. 32–34</p></div></div>
+  <div class="si si-amber">
+    <span class="si-label">💬 Section 2.2 · Values &amp; Beliefs</span>
+    <h2>You can't leave yourself at the door — so what do you bring in?</h2>
+    <p>Self-awareness isn't a nice-to-have in community services. It's essential professional infrastructure.</p>
+  </div>
+  <p>Our personal values and beliefs shape how we see the world — including how we see and respond to clients in crisis. Most of this happens unconsciously, learned through <strong>socialisation</strong>: absorbing the norms, beliefs, and expectations of our families, communities, and cultures as we grow up.</p>
+  <div class="stage-flow">
+    <div class="stage-item" onclick="toggleS(this)"><div class="stage-head"><div class="stage-dot" style="background:var(--amber)">→</div><span class="stage-lbl">Values: beliefs we hold about what's right and good</span></div><div class="stage-body">E.g. "People should take responsibility for their own problems." A value itself isn't right or wrong — but it shapes the assumptions that follow from it.</div></div>
+    <div class="stage-item" onclick="toggleS(this)"><div class="stage-head"><div class="stage-dot" style="background:var(--amber)">→</div><span class="stage-lbl">Assumptions: beliefs we apply to people without evidence</span></div><div class="stage-body">E.g. "People who can't cope in a crisis must be weak." Assumptions take a value and project it onto others — often without us realising we're doing it.</div></div>
+    <div class="stage-item" onclick="toggleS(this)"><div class="stage-head"><div class="stage-dot" style="background:var(--amber)">→</div><span class="stage-lbl">Stereotypes: fixed ideas about entire groups of people</span></div><div class="stage-body">E.g. "People with mental illness are dangerous." Stereotypes treat everyone in a group as identical — nearly always negative, and leading to unfair treatment.</div></div>
+  </div>
+  <div class="tip tip-amber">
+    <h4>🔗 A Common Myth Worth Busting</h4>
+    <p>You might assume only "weak" people experience crisis, or that resilient people just push through. The evidence doesn't support this. <strong>Anyone can be overwhelmed.</strong> Crisis is a response to a situation exceeding current resources — not a measure of character. Wealth, status, and strength offer no immunity.</p>
+  </div>
+  <div class="act-wrap">
+    <div class="act-header">
+      <span class="act-type-badge">🗂️ Activity 4 · Values Sort — Helpful, Harmful, or Complicated?</span>
+      <h3>Sorting beliefs and attitudes about crisis care</h3>
+    </div>
+    <p class="act-instruction">Click each card to cycle through: <strong>Helpful</strong>, <strong>Harmful</strong>, or <strong>Complicated</strong>. No single right answer — this is about honest reflection. Discuss with the group.</p>
+    <div class="vs-grid">
+      <div class="vs-card" data-v="unrated" onclick="cycleValue(this)"><div class="vs-stmt">"Most people are doing the best they can in a difficult situation."</div><span class="vs-tag">Unrated — click to sort</span></div>
+      <div class="vs-card" data-v="unrated" onclick="cycleValue(this)"><div class="vs-stmt">"If someone is resilient enough, they should be able to handle a crisis without help."</div><span class="vs-tag">Unrated — click to sort</span></div>
+      <div class="vs-card" data-v="unrated" onclick="cycleValue(this)"><div class="vs-stmt">"People experiencing domestic violence should just leave."</div><span class="vs-tag">Unrated — click to sort</span></div>
+      <div class="vs-card" data-v="unrated" onclick="cycleValue(this)"><div class="vs-stmt">"All people deserve to be treated with dignity and respect, regardless of what they've done."</div><span class="vs-tag">Unrated — click to sort</span></div>
+      <div class="vs-card" data-v="unrated" onclick="cycleValue(this)"><div class="vs-stmt">"People with mental illness are a danger to others."</div><span class="vs-tag">Unrated — click to sort</span></div>
+      <div class="vs-card" data-v="unrated" onclick="cycleValue(this)"><div class="vs-stmt">"Working to empower clients builds their long-term strength and resilience."</div><span class="vs-tag">Unrated — click to sort</span></div>
+    </div>
+    <div class="disc d-violet" style="margin-top:16px">
+      <h4>💬 Debrief Questions</h4>
+      <ul>
+        <li>Were any cards genuinely difficult to sort? What made them complicated?</li>
+        <li>Where might any of these beliefs have come from in the first place?</li>
+        <li>How could a harmful belief show up in a worker's behaviour — even without them realising?</li>
+      </ul>
+    </div>
+  </div>
+  <div class="act-badge">
+    <span class="act-badge-label">📖 Activity 2D — Learner Guide p. 32</span>
+    <h4>Reflecting on Your Personal Values</h4>
+    <ul>
+      <li>Access the ACWA Code of Ethics and Practice Guidelines (link on p. 32 of your Learner Guide).</li>
+      <li>Highlight the key points — what stands out?</li>
+      <li>Where do your own values align with this code? Where is there tension?</li>
+      <li>Is there anything in the code you'd find genuinely difficult to follow in practice? Why?</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sec" id="s7">
+  <div class="sec-head"><div class="sec-num n-navy">7</div><div><h2>Codes of Practice &amp; Confirming Your Actions Are Legal</h2><p>1:30–1:45 · Learner Guide pp. 34–36</p></div></div>
+  <div class="si si-navy">
+    <span class="si-label">📜 Sections 2.3–2.4</span>
+    <h2>When in doubt — how do you check that what you're doing is actually legal?</h2>
+    <p>A practical checklist is one of the most valuable tools in crisis response.</p>
+  </div>
+  <div class="cc-grid">
+    <div class="cc"><div class="cc-icon">📘</div><h4>ACWA Code of Ethics</h4><p>The most relevant general code for community services workers across Australia.</p></div>
+    <div class="cc"><div class="cc-icon">♿</div><h4>NDIS Code of Conduct</h4><p>Applies to all NDIS providers — sets standards for respectful, safe, quality support.</p></div>
+    <div class="cc"><div class="cc-icon">🧠</div><h4>Mental Health Practice Standards</h4><p>Victorian Government standards for workers in mental health settings.</p></div>
+    <div class="cc"><div class="cc-icon">🏢</div><h4>Organisational Codes</h4><p>Your employer's own code of conduct — binding, and usually your first reference.</p></div>
+  </div>
+  <h3>The Duty of Care Checklist (Section 2.4 — p. 35)</h3>
+  <p>Work through this checklist whenever you face a difficult crisis decision. Tick each item as you go.</p>
+  <div>
+    <div class="checklist-item" onclick="toggleCheck('ck1')"><div class="chk-box" id="ck1">☐</div><div class="chk-lbl">What legislation is relevant? How does it apply to my actions?</div></div>
+    <div class="checklist-item" onclick="toggleCheck('ck2')"><div class="chk-box" id="ck2">☐</div><div class="chk-lbl">Does my organisation have policies or procedures for this situation?</div></div>
+    <div class="checklist-item" onclick="toggleCheck('ck3')"><div class="chk-box" id="ck3">☐</div><div class="chk-lbl">Is there a code of ethics or code of practice I can refer to?</div></div>
+    <div class="checklist-item" onclick="toggleCheck('ck4')"><div class="chk-box" id="ck4">☐</div><div class="chk-lbl">Which ethical principles are most relevant here?</div></div>
+    <div class="checklist-item" onclick="toggleCheck('ck5')"><div class="chk-box" id="ck5">☐</div><div class="chk-lbl">What are the boundaries and limitations of my work role?</div></div>
+    <div class="checklist-item" onclick="toggleCheck('ck6')"><div class="chk-box" id="ck6">☐</div><div class="chk-lbl">What are the specific risks? Who is at risk? How serious?</div></div>
+    <div class="checklist-item" onclick="toggleCheck('ck7')"><div class="chk-box" id="ck7">☐</div><div class="chk-lbl">What can I do to minimise or control those risks?</div></div>
+    <div class="checklist-item" onclick="toggleCheck('ck8')"><div class="chk-box" id="ck8">☐</div><div class="chk-lbl">Who should I inform? Who should I seek advice from?</div></div>
+  </div>
+  <div class="disc d-navy" style="margin-top:16px">
+    <h4>💬 Activity 2C — Ethical Dilemma (Learner Guide p. 31)</h4>
+    <ul>
+      <li>Safi suspects her colleague Martin is bullying Lucy (a resident with dementia), but has no direct evidence. Where could Safi find guidance?</li>
+      <li>Who is at risk, and how are they at risk?</li>
+      <li>What do you think Safi should do — and why?</li>
+    </ul>
+  </div>
+</div>
+
+<div class="break-card break-afternoon" id="afternoon-break">
+  <div class="break-icon">🍫</div>
+  <div><h3>Afternoon Break</h3><p>1:45–2:00 · 15 minutes · Back at 2:00 for Activity Block</p></div>
+</div>
+<div class="sec" id="activity-block">
+  <div class="sec-head"><div class="sec-num n-violet">🧩</div><div><h2>Activity Block — Session Consolidation</h2><p>2:00–2:30 · Pulling the whole session together</p></div></div>
+  <p>Two activities to consolidate everything from today — duty of care through to codes of practice and personal values.</p>
+  <div class="act-wrap">
+    <div class="act-header">
+      <span class="act-type-badge">🔗 Activity 5 · Match the Terms — Legal &amp; Ethical Key Concepts</span>
+      <h3>Connect each term to its correct definition</h3>
+    </div>
+    <p class="act-instruction">Click a term on the left, then click its matching definition on the right. Matched pairs turn teal — wrong pairs flash red and reset for you to try again.</p>
+    <div class="match-cols" id="match5">
+      <div>
+        <div class="match-term" data-id="a" onclick="selectTerm(this,'match5')">Duty of Care</div>
+        <div class="match-term" data-id="b" onclick="selectTerm(this,'match5')">Negligence</div>
+        <div class="match-term" data-id="c" onclick="selectTerm(this,'match5')">Mandatory Reporting</div>
+        <div class="match-term" data-id="d" onclick="selectTerm(this,'match5')">Confidentiality</div>
+        <div class="match-term" data-id="e" onclick="selectTerm(this,'match5')">Code of Practice</div>
+        <div class="match-term" data-id="f" onclick="selectTerm(this,'match5')">Socialisation</div>
+      </div>
+      <div>
+        <div class="match-def" data-id="c" onclick="selectDef(this,'match5')">A legal requirement to report child protection concerns regardless of client consent</div>
+        <div class="match-def" data-id="f" onclick="selectDef(this,'match5')">The process through which we absorb values, norms and beliefs from our culture as we grow up</div>
+        <div class="match-def" data-id="a" onclick="selectDef(this,'match5')">A legal obligation to avoid causing reasonably foreseeable harm through careless behaviour</div>
+        <div class="match-def" data-id="e" onclick="selectDef(this,'match5')">Guidelines setting out how to work ethically and within legal requirements in a specific sector</div>
+        <div class="match-def" data-id="b" onclick="selectDef(this,'match5')">Carelessness that causes harm — the basis for civil legal action</div>
+        <div class="match-def" data-id="d" onclick="selectDef(this,'match5')">The obligation to protect private client information from unauthorised disclosure</div>
+      </div>
+    </div>
+    <button class="reset-btn" onclick="resetMatch('match5')" style="margin-top:8px">↺ Reset</button>
+    <div class="act-result" id="act5result"></div>
+  </div>
+  <div class="act-wrap">
+    <div class="act-header">
+      <span class="act-type-badge">⚡ Activity 6 · True or False — Ethical Practice Across the Session</span>
+      <h3>Final check on today's key principles</h3>
+    </div>
+    <p class="act-instruction">Click True or False for each statement. Perfect score triggers confetti!</p>
+    <div class="tf-grid" id="tf6">
+      <div class="tf-item">
+        <div class="tf-stmt">Codes of practice provide legally binding rules — breaking them always results in criminal charges.</div>
+        <div class="tf-btns"><button class="tf-btn t-btn" onclick="answerTF(0,'tf6',false,this)">TRUE</button><button class="tf-btn f-btn" onclick="answerTF(0,'tf6',false,this)">FALSE</button></div>
+        <div class="tf-explain" id="tf6_e0">❌ FALSE — Codes of practice are professional guidelines, not all legally binding in criminal law. They inform professional standards and can be relevant in disciplinary proceedings.</div>
+      </div>
+      <div class="tf-item">
+        <div class="tf-stmt">Personal values can influence professional practice even when a worker is not consciously aware of them.</div>
+        <div class="tf-btns"><button class="tf-btn t-btn" onclick="answerTF(1,'tf6',true,this)">TRUE</button><button class="tf-btn f-btn" onclick="answerTF(1,'tf6',true,this)">FALSE</button></div>
+        <div class="tf-explain" id="tf6_e1">✅ TRUE — Much of our socialisation operates below conscious awareness. Values shape body language, tone, attention, and judgements — even when we believe we're being objective.</div>
+      </div>
+      <div class="tf-item">
+        <div class="tf-stmt">If a client's safety is at serious risk, you may need to disclose confidential information without their consent.</div>
+        <div class="tf-btns"><button class="tf-btn t-btn" onclick="answerTF(2,'tf6',true,this)">TRUE</button><button class="tf-btn f-btn" onclick="answerTF(2,'tf6',true,this)">FALSE</button></div>
+        <div class="tf-explain" id="tf6_e2">✅ TRUE — Preventing serious harm is one of the two exceptions to confidentiality (the other being a court order). Always check your organisation's policies before making this call.</div>
+      </div>
+      <div class="tf-item">
+        <div class="tf-stmt">Stereotypes only affect how we think about people — they don't change how we treat them in practice.</div>
+        <div class="tf-btns"><button class="tf-btn t-btn" onclick="answerTF(3,'tf6',false,this)">TRUE</button><button class="tf-btn f-btn" onclick="answerTF(3,'tf6',false,this)">FALSE</button></div>
+        <div class="tf-explain" id="tf6_e3">❌ FALSE — Stereotypes directly affect behaviour. They lead workers to make assumptions, reduce empathy, and can result in discriminatory or inadequate service provision.</div>
+      </div>
+    </div>
+    <div id="tf6_score" style="display:none;margin-top:10px;font-weight:700;color:var(--navy)"></div>
+    <div class="act-result" id="tf6result"></div>
+    <button class="reset-btn" onclick="resetTF('tf6')" style="margin-top:8px">↺ Reset</button>
+  </div>
+</div>
+
+<div class="sec" id="scenario">
+  <div class="sec-head"><div class="sec-num n-peach">🎭</div><div><h2>Branching Scenario — Priya's Day</h2><p>2:30–3:00 · Applying today's legal &amp; ethical content</p></div></div>
+  <div class="sc-header">
+    <span class="sc-badge">✨ NEW CHARACTER</span>
+    <h3>Meet Priya — Support Worker, Community Mental Health Drop-In</h3>
+  </div>
+  <div class="sc-body">
+    <p style="font-size:14px;color:var(--muted);margin-bottom:16px">Priya is enthusiastic and genuinely cares about the people she works with. Today she faces real challenges that test her understanding of legal and ethical practice. Help her make the right calls.</p>
+    <div class="scene active" id="scene1">
+      <div class="sc-situation"><strong>Scene 1:</strong> Marcus, the adult son of client Wendy (who accesses the service for depression), arrives at the front desk. He asks: "Can you tell me what mum's been talking about in her sessions? I just want to help." Wendy has not authorised anyone to receive information about her care.</div>
+      <p style="font-size:14px;font-weight:700;margin-bottom:10px">What should Priya do?</p>
+      <div class="sc-opts">
+        <button class="sc-opt" onclick="pick1(this,'correct')">Explain she can't share client information without Wendy's consent, express empathy for his concern, and offer to let Wendy know he came in.</button>
+        <button class="sc-opt" onclick="pick1(this,'wrong')">Share a brief summary — he seems genuine and Wendy would probably want him to know.</button>
+        <button class="sc-opt" onclick="pick1(this,'partial')">Tell him she can't help, and leave it at that — no further explanation.</button>
+      </div>
+      <div class="sc-fb" id="s1-correct">✅ <strong>Exactly right.</strong> Priya protects Wendy's confidentiality while showing care for Marcus. She explains the reason and keeps the door open. Empathetic, ethical, and legally sound. <button onclick="goScene(2)" style="margin-top:10px;display:block">Scene 2 →</button></div>
+      <div class="sc-fb" id="s1-wrong">❌ <strong>Not quite.</strong> Even with good intentions, sharing Wendy's information without consent is a confidentiality breach — and potentially illegal. Family concern doesn't override client rights. <button class="reset-btn" onclick="resetS1()" style="margin-top:8px">Try again</button></div>
+      <div class="sc-fb" id="s1-partial">🟡 <strong>Partially right.</strong> Not sharing is correct — but dismissing Marcus without explanation is cold and unhelpful. A brief, empathetic response that honours both client rights and his concern is the better approach. <button class="reset-btn" onclick="resetS1()" style="margin-top:8px">Try again</button></div>
+    </div>
+    <div class="scene" id="scene2">
+      <div class="sc-situation"><strong>Scene 2:</strong> Later, Priya visits Daniel, a client with schizophrenia who receives regular home support. He comments: "I've been thinking it would be better if I wasn't here anymore." He quickly changes the subject. Priya is a support worker — not a clinician.</div>
+      <p style="font-size:14px;font-weight:700;margin-bottom:10px">What does Priya do first?</p>
+      <div class="sc-opts">
+        <button class="sc-opt" onclick="pickO(this,'correct','','s2-correct','s2-wrong')">Gently but directly ask: "It sounds like you might be having some thoughts about not wanting to be here. Is that right?" Then listen.</button>
+        <button class="sc-opt" onclick="pickO(this,'wrong','','s2-correct','s2-wrong')">Don't raise it — he moved on quickly and she doesn't want to upset him.</button>
+        <button class="sc-opt" onclick="pickO(this,'partial','','s2-correct','s2-wrong')">Call her supervisor immediately before saying anything else to Daniel.</button>
+      </div>
+      <div class="sc-fb" id="s2-correct">✅ <strong>Correct.</strong> Asking directly about suicidality reduces risk — it shows you care and opens the door for Daniel to share. Listen, stay calm, then contact your supervisor for guidance. <button onclick="goScene(3)" style="margin-top:10px;display:block">Scene 3 →</button></div>
+      <div class="sc-fb" id="s2-wrong">❌ <strong>This risks missing a crisis.</strong> Indirect statements about not wanting to be here are warning signs that warrant a direct, compassionate follow-up. Ignoring them to "avoid upsetting" a client can leave someone in danger. <button class="reset-btn" onclick="resetSc('scene2',['s2-correct','s2-wrong'])" style="margin-top:8px">Try again</button></div>
+      <div class="sc-fb" id="s2-partial">🟡 <strong>Good instinct, wrong order.</strong> Stay with Daniel and ask directly first — then call your supervisor. Don't leave him alone with that comment hanging. <button class="reset-btn" onclick="resetSc('scene2',['s2-correct','s2-wrong'])" style="margin-top:8px">Try again</button></div>
+    </div>
+    <div class="scene" id="scene3">
+      <div class="sc-situation"><strong>Scene 3:</strong> Daniel confirms he's been having regular thoughts of suicide and hasn't taken his medication for two weeks. A CATT referral is being arranged. Priya stays with Daniel. He asks: "You won't tell anyone else about this, will you? I don't want to end up in hospital."</div>
+      <p style="font-size:14px;font-weight:700;margin-bottom:10px">What does Priya say?</p>
+      <div class="sc-opts">
+        <button class="sc-opt" onclick="pickO(this,'correct','','s3-correct','s3-wrong')">Be honest: "Daniel, I care about you and I have to be honest — because I'm worried about your safety, I need to involve our team to make sure you're okay. I'll stay with you through this."</button>
+        <button class="sc-opt" onclick="pickO(this,'wrong','','s3-correct','s3-wrong')">Promise him she won't tell anyone else — she doesn't want to lose his trust.</button>
+        <button class="sc-opt" onclick="pickO(this,'partial','','s3-correct','s3-wrong')">Say "Don't worry about that now" and change the subject to keep him calm.</button>
+      </div>
+      <div class="sc-fb" id="s3-correct">✅ <strong>Honest, warm, and ethical.</strong> Priya acknowledges Daniel's fear, is transparent about what's happening, and reassures him she's staying. Promising false confidentiality would harm trust and breach duty of care. <button onclick="goScene(4)" style="margin-top:10px;display:block">Scene 4 →</button></div>
+      <div class="sc-fb" id="s3-wrong">❌ <strong>Promising false confidentiality is a serious problem.</strong> When Daniel finds out, trust is permanently destroyed. In a safety situation, transparency delivered with kindness is always the right call. <button class="reset-btn" onclick="resetSc('scene3',['s3-correct','s3-wrong'])" style="margin-top:8px">Try again</button></div>
+      <div class="sc-fb" id="s3-partial">🟡 <strong>Avoidance isn't the answer.</strong> Daniel has asked a direct question. Deflecting leaves him anxious and uncertain. A kind, honest answer — even a difficult one — respects his dignity. <button class="reset-btn" onclick="resetSc('scene3',['s3-correct','s3-wrong'])" style="margin-top:8px">Try again</button></div>
+    </div>
+    <div class="scene" id="scene4">
+      <div class="sc-situation"><strong>Scene 4:</strong> The CATT team has arrived and Daniel is safely transferred. After they leave, Priya's supervisor offers a debrief: "How are you going?" Priya feels shaken but her instinct is to say she's fine and get back to work quickly.</div>
+      <p style="font-size:14px;font-weight:700;margin-bottom:10px">What's the most professionally sound response?</p>
+      <div class="sc-opts">
+        <button class="sc-opt" onclick="pickO(this,'correct','','s4-correct','s4-wrong')">Be honest about how she's feeling, accept the debrief support being offered, and ask about next steps for follow-up with Daniel.</button>
+        <button class="sc-opt" onclick="pickO(this,'wrong','','s4-correct','s4-wrong')">Say she's fine and get back to work — showing vulnerability feels unprofessional.</button>
+        <button class="sc-opt" onclick="pickO(this,'partial','','s4-correct','s4-wrong')">Take the rest of the day off immediately without talking further to her supervisor.</button>
+      </div>
+      <div class="sc-fb" id="s4-correct">✅ <strong>This is what good self-care looks like in practice.</strong> Accepting the debrief, being honest about emotional impact, and staying connected to the professional process are all part of ethical practice. Self-care isn't just rest — it's using your organisation's support structures. <button onclick="completeScenario()" style="margin-top:10px;display:block">🎉 Complete Scenario</button></div>
+      <div class="sc-fb" id="s4-wrong">❌ <strong>Suppressing your emotional response to critical incidents</strong> leads to vicarious trauma and burnout. Your organisation's debrief process exists precisely for moments like this. Seeking support is a professional obligation, not a weakness. <button class="reset-btn" onclick="resetSc('scene4',['s4-correct','s4-wrong'])" style="margin-top:8px">Try again</button></div>
+      <div class="sc-fb" id="s4-partial">🟡 <strong>Rest is important</strong> — but disappearing without the debrief leaves key steps undone. Debrief with your supervisor first, then rest if needed. <button class="reset-btn" onclick="resetSc('scene4',['s4-correct','s4-wrong'])" style="margin-top:8px">Try again</button></div>
+    </div>
+    <div class="sc-complete" id="sc-done">
+      <div style="font-size:40px;margin-bottom:12px">🏆</div>
+      <h3>Scenario Complete — Priya navigated it beautifully.</h3>
+      <p style="font-size:15px;color:var(--teal-d);margin-bottom:16px">She protected confidentiality, responded to suicidality safely, was honest under pressure, and accepted debriefing support. That's ethical practice in action.</p>
+      <div class="disc d-teal" style="text-align:left">
+        <h4>💬 Class Debrief</h4>
+        <ul>
+          <li>Which scene did your group find hardest? What made it difficult?</li>
+          <li>Have you seen situations like any of these in a real workplace?</li>
+          <li>What would help a worker like Priya feel more confident in these moments?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" id="review">
+  <div class="sec-head"><div class="sec-num n-sky">📝</div><div><h2>Chapter 2 Review Quiz</h2><p>From 3:00 · Based on Learner Guide p. 37 Review Questions</p></div></div>
+  <div class="si si-sky">
+    <span class="si-label">📝 Knowledge Check</span>
+    <h2>Five questions — let's see what landed today.</h2>
+    <p>Mapped directly to the Chapter 2 Review Questions. 5/5 triggers confetti.</p>
+  </div>
+  <div class="q-block">
+    <div class="q-num" style="background:var(--sky)">1</div>
+    <div class="q-text">Which statement best describes duty of care in community services?</div>
+    <div class="q-opts" id="rq1">
+      <button class="q-opt" onclick="ansRQ(this,'rq1',false,'rfb1')">A. The obligation to do everything possible to prevent any harm to clients, however unlikely</button>
+      <button class="q-opt" data-correct="true" onclick="ansRQ(this,'rq1',true,'rfb1')">B. A legal principle requiring you to avoid causing reasonably foreseeable harm through careless action or inaction</button>
+      <button class="q-opt" onclick="ansRQ(this,'rq1',false,'rfb1')">C. An employer policy that varies between organisations and can be updated at any time</button>
+      <button class="q-opt" onclick="ansRQ(this,'rq1',false,'rfb1')">D. The responsibility to refer all difficult decisions to a supervisor without acting independently</button>
+    </div>
+    <div class="q-fb" id="rfb1"></div>
+  </div>
+  <div class="q-block">
+    <div class="q-num" style="background:var(--sky)">2</div>
+    <div class="q-text">Why is it important to maintain clear, professional work role boundaries in community services?</div>
+    <div class="q-opts" id="rq2">
+      <button class="q-opt" onclick="ansRQ(this,'rq2',false,'rfb2')">A. Boundaries stop workers from developing genuine connections with clients</button>
+      <button class="q-opt" onclick="ansRQ(this,'rq2',false,'rfb2')">B. Boundaries are set only by legislation and cannot be questioned by workers</button>
+      <button class="q-opt" data-correct="true" onclick="ansRQ(this,'rq2',true,'rfb2')">C. Working outside your role can harm clients through incompetence and expose you to legal liability</button>
+      <button class="q-opt" onclick="ansRQ(this,'rq2',false,'rfb2')">D. Role boundaries only apply to registered health professionals, not support workers</button>
+    </div>
+    <div class="q-fb" id="rfb2"></div>
+  </div>
+  <div class="q-block">
+    <div class="q-num" style="background:var(--sky)">3</div>
+    <div class="q-text">What do codes of ethics and codes of practice provide to workers in community services?</div>
+    <div class="q-opts" id="rq3">
+      <button class="q-opt" onclick="ansRQ(this,'rq3',false,'rfb3')">A. A legal guarantee of immunity from any disciplinary action</button>
+      <button class="q-opt" data-correct="true" onclick="ansRQ(this,'rq3',true,'rfb3')">B. Standards and guidelines for ethical and legally sound professional practice in their sector</button>
+      <button class="q-opt" onclick="ansRQ(this,'rq3',false,'rfb3')">C. Specific step-by-step instructions that replace the need for supervisor consultation</button>
+      <button class="q-opt" onclick="ansRQ(this,'rq3',false,'rfb3')">D. A set of rules that override organisational policy in all circumstances</button>
+    </div>
+    <div class="q-fb" id="rfb3"></div>
+  </div>
+  <div class="q-block">
+    <div class="q-num" style="background:var(--sky)">4</div>
+    <div class="q-text">Which belief best facilitates effective crisis care?</div>
+    <div class="q-opts" id="rq4">
+      <button class="q-opt" onclick="ansRQ(this,'rq4',false,'rfb4')">A. Only people with existing mental health conditions are vulnerable to crisis situations</button>
+      <button class="q-opt" onclick="ansRQ(this,'rq4',false,'rfb4')">B. Resilient people should be able to manage most crisis situations without professional help</button>
+      <button class="q-opt" data-correct="true" onclick="ansRQ(this,'rq4',true,'rfb4')">C. Most people are doing the best they can, have strengths and capacities, and deserve to be treated with respect</button>
+      <button class="q-opt" onclick="ansRQ(this,'rq4',false,'rfb4')">D. Workers should maintain strict emotional distance to avoid being affected by client experiences</button>
+    </div>
+    <div class="q-fb" id="rfb4"></div>
+  </div>
+  <div class="q-block">
+    <div class="q-num" style="background:var(--sky)">5</div>
+    <div class="q-text">Where should a community services worker look first to check that their actions are legal, ethical, and consistent with their obligations?</div>
+    <div class="q-opts" id="rq5">
+      <button class="q-opt" onclick="ansRQ(this,'rq5',false,'rfb5')">A. The internet — a quick search is usually sufficient for straightforward situations</button>
+      <button class="q-opt" onclick="ansRQ(this,'rq5',false,'rfb5')">B. Their own professional judgement based on experience alone</button>
+      <button class="q-opt" onclick="ansRQ(this,'rq5',false,'rfb5')">C. The client themselves — they usually know their rights best</button>
+      <button class="q-opt" data-correct="true" onclick="ansRQ(this,'rq5',true,'rfb5')">D. Their organisation's policies and procedures, relevant legislation, codes of ethics, and their job role description</button>
+    </div>
+    <div class="q-fb" id="rfb5"></div>
+  </div>
+  <div class="review-score" id="reviewScore">
+    <div class="review-score-num" id="reviewScoreNum"></div>
+    <div id="reviewScoreMsg" style="font-size:15px;color:var(--muted);margin-top:8px"></div>
+  </div>
+  <hr class="divider">
+  <h3>📝 Session Reflection</h3>
+  <p style="font-size:14px;color:var(--muted)">Private — for your eyes only. Take a moment to write what resonated, what challenged you, and what you want to remember from today.</p>
+  <textarea class="reflection-area" placeholder="What's the most important thing you're taking away from today? What concept felt hardest — and why? Is there anything from today's content you want to explore further before next session?"></textarea>
+</div>
+
+<div class="tutorial-card" id="tutorial">
+  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+    <div style="font-size:36px">💬</div>
+    <div>
+      <h3>1:1 Tutorial Time</h3>
+      <p style="color:rgba(255,255,255,.85);font-size:14px;margin-top:4px">From 3:00 · Bring your Learner Guide activities, reflection notes, or any questions from today.</p>
+      <p style="color:rgba(255,255,255,.7);font-size:13px;margin-top:6px">Today's tutorial topics: Duty of care scenarios (Activity 2A) · Mandatory reporting in Victoria · Values reflection (Activity 2D) · Ethical dilemma (Activity 2C)</p>
+    </div>
+  </div>
+</div>
+
+<div class="coming-up">
+  <h3>🔮 Coming Up — Session 3: Principles &amp; Practices</h3>
+  <p style="opacity:.85;font-size:14px;margin-bottom:14px">Next session we move from the ethical framework into the practice itself — how crisis intervention actually works, step by step.</p>
+  <ul>
+    <li>The stages of crisis — and why your response changes at each stage</li>
+    <li>Crisis intervention principles: keep it simple, be practical, respond quickly</li>
+    <li>Psychological First Aid (PFA) — what it is and how it differs from counselling</li>
+    <li>Roberts' Seven Stage Crisis Intervention Model</li>
+    <li>Critical incident procedures and what they include</li>
+    <li>Emergency interventions and the role of CATT teams</li>
+    <li>Direct and indirect signs and indicators of safety issues</li>
+  </ul>
+  <p style="font-size:13px;opacity:.7;margin-top:12px">📖 Pre-reading: Learner Guide Chapter 3, pp. 38–51</p>
+</div>
+
+</div>
+<script>
+function updateProg(){const s=window.scrollY,d=document.documentElement.scrollHeight-window.innerHeight,p=d>0?Math.min(100,(s/d)*100):0;document.getElementById('progFill').style.width=p+'%';const e=['🌱','🌿','🌳','⭐','🌟','🏆'];document.getElementById('progEmoji').textContent=e[Math.min(e.length-1,Math.floor(p/(100/e.length)))];}
+window.addEventListener('scroll',updateProg,{passive:true});updateProg();
+document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});});
+function toggleS(item){const w=item.classList.contains('sact');item.closest('.stage-flow').querySelectorAll('.stage-item').forEach(i=>i.classList.remove('sact'));if(!w)item.classList.add('sact');}
+function toggleAcc(h){const o=h.classList.contains('open');h.closest('.sec').querySelectorAll('.acc-head').forEach(a=>a.classList.remove('open'));if(!o)h.classList.add('open');}
+let quizAnswered=0;
+const QFB={qq1:{t:'Duty of care only covers <em>reasonably foreseeable</em> harm — you cannot be expected to prevent every possible harm.',f:'The word "reasonably" is doing a lot of work here. Duty of care only covers foreseeable harms.'},qq2:{t:'Client consent is required for disclosure — with only two exceptions: preventing serious harm, and court orders.',f:'Professional status does not override a client\'s right to confidentiality.'},qq3:{t:'Mandatory reporting obligations are set by state and territory legislation and vary by occupation.',f:'Each state and territory has its own child protection laws — not every worker is a mandated reporter.'},qq4:{t:'Values and beliefs are absorbed unconsciously through socialisation — they show up in body language, tone, and judgements without us realising.',f:'We cannot switch off our values — but we can learn to notice and manage them.'},qq5:{t:'Role boundaries exist to protect clients from harm caused by incompetent or inappropriate care.',f:'Good intentions do not protect clients from the consequences of actions outside your competence.'}};
+function ansQ(btn,qId,correct,fbId){const opts=document.getElementById(qId);if(opts.dataset.done)return;opts.dataset.done='1';opts.querySelectorAll('.q-opt').forEach(b=>{b.disabled=true;b.style.cursor='default';});const fb=document.getElementById(fbId);fb.classList.add('show');const m=correct?QFB[qId].t:QFB[qId].f;if(correct){btn.classList.add('qright');fb.classList.add('ok');fb.innerHTML='✅ Correct! '+m;}else{btn.classList.add('qwrong');fb.classList.add('no');fb.innerHTML='❌ Not quite. '+m;opts.querySelectorAll('.q-opt').forEach(b=>{if(b.dataset.correct === 'true')b.classList.add('qright');});}quizAnswered++;if(quizAnswered===5){const sb=document.getElementById('quizScore');sb.style.display='block';sb.innerHTML=`<div class="score-num">Quiz Done! 🎉</div><div class="score-msg">The most interesting answers are always the ones that surprised you — that's where today's learning lives.</div>`;}}
+const tfState={};
+function answerTF(idx,groupId,answerIsTrue,btn){if(!tfState[groupId])tfState[groupId]={answered:0,correct:0};const state=tfState[groupId];const item=btn.closest('.tf-item');if(item.dataset.done)return;item.dataset.done='1';const isTrue=btn.classList.contains('t-btn');const isCorrect=(isTrue===answerIsTrue);item.querySelectorAll('.tf-btn').forEach(b=>b.disabled=true);const exp=document.getElementById(groupId+'_e'+idx);if(isCorrect){btn.classList.add('correct-tf');state.correct++;}else{btn.classList.add('wrong-tf');item.querySelectorAll('.tf-btn').forEach(b=>{if(b.classList.contains('t-btn')===answerIsTrue)b.classList.add('correct-tf');});}if(exp)exp.style.display='block';state.answered++;const total=document.getElementById(groupId).querySelectorAll('.tf-item').length;if(state.answered===total){const se=document.getElementById(groupId+'_score'),re=document.getElementById(groupId+'result');if(se){se.style.display='block';se.textContent=state.correct+'/'+total+' correct';}if(re){if(state.correct===total){re.className='act-result ok';re.textContent='✅ Perfect! '+state.correct+'/'+total+' — you have got these concepts locked in.';if(groupId==='tf6')launchConfetti();}else if(state.correct>=total/2){re.className='act-result partial';re.textContent='\uD83D\uDFE1 '+state.correct+'/'+total+' — good effort! Review the explanations above.';}else{re.className='act-result retry';re.textContent='\u21BA '+state.correct+'/'+total+' — have another look at the session content and try again.';}}}}
+function resetTF(groupId){tfState[groupId]={answered:0,correct:0};const grid=document.getElementById(groupId);grid.querySelectorAll('.tf-item').forEach((item,idx)=>{delete item.dataset.done;item.querySelectorAll('.tf-btn').forEach(b=>{b.disabled=false;b.classList.remove('correct-tf','wrong-tf');});const exp=document.getElementById(groupId+'_e'+idx);if(exp)exp.style.display='none';});const se=document.getElementById(groupId+'_score');if(se)se.style.display='none';const re=document.getElementById(groupId+'result');if(re){re.className='act-result';re.textContent='';}}
+let selectedChip=null;
+function selectChip(el,bankId){if(el.classList.contains('used'))return;if(selectedChip)selectedChip.classList.remove('selected');if(selectedChip===el){selectedChip=null;return;}selectedChip=el;el.classList.add('selected');}
+function placeChip(blankEl,bankId){if(!selectedChip)return;const prev=blankEl.dataset.placed;if(prev){document.querySelectorAll('#'+bankId+' .wchip').forEach(c=>{if(c.textContent===prev){c.classList.remove('used','selected');}});}blankEl.textContent=selectedChip.textContent;blankEl.dataset.placed=selectedChip.textContent;selectedChip.classList.add('used');selectedChip.classList.remove('selected');selectedChip=null;}
+function checkCloze(clozeId,resultId){const blanks=document.querySelectorAll('#'+clozeId+' .blank');let correct=0;blanks.forEach(b=>{const p=(b.dataset.placed||'').toLowerCase().trim(),a=(b.dataset.answer||'').toLowerCase().trim();if(p===a){b.classList.add('correct-ans');b.classList.remove('wrong-ans');correct++;}else{b.classList.add('wrong-ans');b.classList.remove('correct-ans');}});const res=document.getElementById(resultId),total=blanks.length;if(correct===total){res.className='act-result ok';res.textContent='\u2705 Perfect! All '+total+' blanks correct.';}else if(correct>=total/2){res.className='act-result partial';res.textContent='🟡 '+correct+'/'+total+' correct — check the highlighted blanks.';}else{res.className='act-result retry';res.textContent='↺ '+correct+'/'+total+' correct — have another look and try again.';}}
+function resetCloze(clozeId,bankId,resultId){selectedChip=null;document.querySelectorAll('#'+clozeId+' .blank').forEach(b=>{b.textContent='_____';delete b.dataset.placed;b.classList.remove('correct-ans','wrong-ans');});document.querySelectorAll('#'+bankId+' .wchip').forEach(c=>c.classList.remove('used','selected'));const res=document.getElementById(resultId);if(res){res.className='act-result';res.textContent='';}}
+function ansSmcq(btn,groupId,correct,fbId){const opts=document.getElementById(groupId);if(opts.dataset.done)return;opts.dataset.done='1';opts.querySelectorAll('.smcq-btn').forEach(b=>b.disabled=true);const fb=document.getElementById(fbId);if(correct){btn.classList.add('sc-right');fb.className='smcq-fb ok';fb.textContent='\u2705 Correct — that is the right professional call.';}else{btn.classList.add('sc-wrong');fb.className='smcq-fb no';fb.textContent='❌ Not quite — think about what your legal and ethical obligations require here.';opts.querySelectorAll('.smcq-btn').forEach(b=>{if(b.dataset.correct === 'true')b.classList.add('sc-right');});}}
+const matchState={};
+function selectTerm(el,groupId){if(el.classList.contains('matched'))return;if(!matchState[groupId])matchState[groupId]={term:null,def:null,matched:0};const s=matchState[groupId];document.querySelectorAll('#'+groupId+' .match-term').forEach(t=>t.classList.remove('sel'));s.term=el;el.classList.add('sel');if(s.def)checkMatchPair(groupId);}
+function selectDef(el,groupId){if(el.classList.contains('matched'))return;if(!matchState[groupId])matchState[groupId]={term:null,def:null,matched:0};const s=matchState[groupId];document.querySelectorAll('#'+groupId+' .match-def').forEach(d=>d.classList.remove('sel'));s.def=el;el.classList.add('sel');if(s.term)checkMatchPair(groupId);}
+function checkMatchPair(groupId){const s=matchState[groupId],{term,def}=s;if(!term||!def)return;if(term.dataset.id===def.dataset.id){term.classList.add('matched');term.classList.remove('sel');def.classList.add('matched');def.classList.remove('sel');s.matched++;s.term=null;s.def=null;const total=document.querySelectorAll('#'+groupId+' .match-term').length;if(s.matched===total){const res=document.getElementById('act5result');if(res){res.className='act-result ok';res.textContent='\u2705 All matched! These are the foundations of ethical practice — well done.';launchConfetti();}}}else{term.classList.add('wrong-flash');def.classList.add('wrong-flash');setTimeout(()=>{term.classList.remove('wrong-flash','sel');def.classList.remove('wrong-flash','sel');s.term=null;s.def=null;},700);}}
+function resetMatch(groupId){matchState[groupId]={term:null,def:null,matched:0};document.querySelectorAll('#'+groupId+' .match-term,#'+groupId+' .match-def').forEach(el=>el.classList.remove('matched','sel','wrong-flash'));const res=document.getElementById('act5result');if(res){res.className='act-result';res.textContent='';}}
+const VC=['helpful','harmful','complicated','unrated'],VL={helpful:'✅ Helpful in crisis work',harmful:'❌ Harmful in crisis work',complicated:'🟡 Complicated — needs discussion',unrated:'Unrated — click to sort'};
+function cycleValue(card){const cur=card.dataset.v||'unrated',next=VC[(VC.indexOf(cur)+1)%VC.length];card.dataset.v=next;card.querySelector('.vs-tag').textContent=VL[next];}
+function toggleCheck(id){const box=document.getElementById(id),item=box.closest('.checklist-item');item.classList.toggle('ticked');box.textContent=item.classList.contains('ticked')?'✓':'☐';}
+function pick1(btn,type){const opts=btn.closest('.sc-opts');if(opts.dataset.done)return;opts.dataset.done='1';opts.querySelectorAll('.sc-opt').forEach(b=>b.disabled=true);['s1-correct','s1-wrong','s1-partial'].forEach(id=>{const fb=document.getElementById(id);if(fb)fb.className='sc-fb';});if(type==='correct'){btn.classList.add('sc-correct');document.getElementById('s1-correct').classList.add('show','fb-ok');}else if(type==='wrong'){btn.classList.add('sc-wrong-ans');document.getElementById('s1-wrong').classList.add('show','fb-no');}else{btn.classList.add('sc-partial');document.getElementById('s1-partial').classList.add('show','fb-partial');}}
+function pickO(btn,type,_,cId,wId){const opts=btn.closest('.sc-opts');if(opts.dataset.done)return;opts.dataset.done='1';opts.querySelectorAll('.sc-opt').forEach(b=>b.disabled=true);[cId,wId].forEach(id=>{const fb=document.getElementById(id);if(fb)fb.className='sc-fb';});const fbId=type==='correct'?cId:wId;const fb=document.getElementById(fbId);if(!fb)return;if(type==='correct'){btn.classList.add('sc-correct');fb.classList.add('show','fb-ok');}else if(type==='wrong'){btn.classList.add('sc-wrong-ans');fb.classList.add('show','fb-no');}else{btn.classList.add('sc-partial');fb.classList.add('show','fb-partial');}}
+function goScene(n){document.querySelectorAll('.scene').forEach(s=>s.classList.remove('active'));const sc=document.getElementById('scene'+n);sc.classList.add('active');sc.scrollIntoView({behavior:'smooth',block:'start'});}
+function resetS1(){const scene=document.getElementById('scene1'),opts=scene.querySelector('.sc-opts');delete opts.dataset.done;opts.querySelectorAll('.sc-opt').forEach(b=>{b.disabled=false;b.className='sc-opt';});['s1-correct','s1-wrong','s1-partial'].forEach(id=>{const fb=document.getElementById(id);if(fb)fb.className='sc-fb';});}
+function resetSc(sceneId,outIds){const scene=document.getElementById(sceneId),opts=scene.querySelector('.sc-opts');delete opts.dataset.done;opts.querySelectorAll('.sc-opt').forEach(b=>{b.disabled=false;b.className='sc-opt';});outIds.forEach(id=>{const fb=document.getElementById(id);if(fb)fb.className='sc-fb';});}
+function completeScenario(){document.getElementById('sc-done').style.display='block';document.getElementById('scene4').querySelector('.sc-opts').style.display='none';launchConfetti();}
+let reviewAnswered=0,reviewCorrect=0;
+function ansRQ(btn,qId,correct,fbId){const opts=document.getElementById(qId);if(opts.dataset.done)return;opts.dataset.done='1';opts.querySelectorAll('.q-opt').forEach(b=>{b.disabled=true;b.style.cursor='default';});const fb=document.getElementById(fbId);fb.classList.add('show');if(correct){btn.classList.add('qright');fb.classList.add('ok');fb.textContent='✅ Correct!';reviewCorrect++;}else{btn.classList.add('qwrong');fb.classList.add('no');fb.textContent='❌ Not quite — the correct answer has been highlighted.';opts.querySelectorAll('.q-opt').forEach(b=>{if(b.dataset.correct === 'true')b.classList.add('qright');});}reviewAnswered++;if(reviewAnswered===5){const box=document.getElementById('reviewScore');box.style.display='block';document.getElementById('reviewScoreNum').textContent=reviewCorrect+'/5';const msgs=['Keep reviewing — the content will click with another pass.','Solid start! A few to revisit before next session.','Good work — getting there.','Great result — almost there!','\uD83C\uDFC6 Perfect score! You nailed Chapter 2.'];document.getElementById('reviewScoreMsg').textContent=msgs[reviewCorrect];if(reviewCorrect===5)launchConfetti();}}
+function launchConfetti(){const cols=['#0f9d8a','#f97316','#7c3aed','#f59e0b','#e84393','#16a34a','#0ea5e9'];for(let i=0;i<60;i++){const c=document.createElement('div');c.className='cp';c.style.cssText='left:'+Math.random()*100+'vw;top:-10px;background:'+cols[Math.floor(Math.random()*cols.length)]+';width:'+(6+Math.random()*8)+'px;height:'+(6+Math.random()*8)+'px;border-radius:'+(Math.random()>.5?'50%':'3px')+';animation-delay:'+Math.random()*1.2+'s;animation-duration:'+(1.5+Math.random())+'s';document.body.appendChild(c);setTimeout(()=>c.remove(),3200);}}
+</script>
+</body>
+</html>

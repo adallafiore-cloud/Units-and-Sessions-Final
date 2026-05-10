@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHCCCS019 — Session 3: Principles and Practices</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#fdf9f4;--card:#ffffff;--text:#2d3142;--muted:#6b7280;--border:#e8e0d5;--sand:#f5ede0;--slate:#1e2d3d;
+      --teal:#0f9d8a;--teal-l:#e6f7f5;--teal-d:#0a7a6a;
+      --peach:#f97316;--peach-l:#fff4ee;
+      --rose:#e84393;--rose-l:#fde8f4;
+      --violet:#7c3aed;--violet-l:#f0ebff;
+      --amber:#f59e0b;--amber-l:#fffbe8;--amber-d:#92610a;
+      --green:#16a34a;--green-l:#edfff3;
+      --sky:#0ea5e9;--sky-l:#e8f7ff;
+      --navy:#1a2f6e;--navy-l:#eaedfa;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;font-size:16px;line-height:1.7;}
+
+    /* WELLBEING BANNER */
+    .wb-banner{position:sticky;top:0;z-index:600;background:linear-gradient(135deg,#4a1942,#7e1d6e);color:#fff;padding:9px 20px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+    .wb-banner span{opacity:.85;}
+    .wb-banner a{color:#ffd6f0;font-weight:800;text-decoration:none;}
+    .wb-badge{background:rgba(255,255,255,.18);border-radius:99px;padding:2px 10px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;}
+
+    /* PROGRESS BAR */
+    .prog-wrap{position:sticky;top:40px;z-index:500;height:5px;background:var(--border);}
+    .prog-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--teal),#2dd4bf);transition:width .3s;}
+    .prog-emoji{position:absolute;right:8px;top:-14px;font-size:18px;transition:all .3s;}
+
+    /* HERO */
+    .hero{background:linear-gradient(135deg,var(--teal-d) 0%,var(--teal) 100%);color:#fff;padding:52px 24px 44px;text-align:center;}
+    .hero-eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;opacity:.75;margin-bottom:10px;}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,50px);font-weight:700;line-height:1.15;margin-bottom:14px;}
+    .hero-sub{font-size:17px;opacity:.85;margin-bottom:22px;}
+    .hero-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:22px;}
+    .pill{background:rgba(255,255,255,.18);border-radius:99px;padding:5px 15px;font-size:12px;font-weight:800;letter-spacing:.5px;}
+    .recap-box{background:rgba(255,255,255,.13);border:1.5px solid rgba(255,255,255,.25);border-radius:14px;padding:16px 20px;max-width:640px;margin:0 auto;text-align:left;font-size:14px;}
+    .recap-box strong{font-weight:800;opacity:.9;display:block;margin-bottom:6px;font-size:12px;letter-spacing:1px;text-transform:uppercase;}
+
+    /* MAIN */
+    .main{max-width:900px;margin:0 auto;padding:34px 18px 80px;}
+
+    /* SECTION CARD */
+    .sec{background:var(--card);border:2px solid var(--border);border-radius:20px;padding:30px;margin-bottom:28px;}
+    .sec-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:20px;}
+    .sec-num{width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:#fff;flex-shrink:0;}
+    .n-teal{background:var(--teal);}.n-navy{background:var(--navy);}.n-violet{background:var(--violet);}
+    .n-peach{background:var(--peach);}.n-amber{background:var(--amber);}.n-rose{background:var(--rose);}
+    .n-green{background:var(--green);}.n-sky{background:var(--sky);}.n-muted{background:#9ca3af;}
+    .sec-title-wrap h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;line-height:1.2;}
+    .sec-title-wrap p{font-size:13.5px;color:var(--muted);margin-top:3px;}
+
+    /* SEC-INTRO */
+    .si{border-radius:12px;padding:14px 18px;margin-bottom:20px;}
+    .si-teal{background:var(--teal-l);border:2px solid #b2e8e3;}
+    .si-navy{background:var(--navy-l);border:2px solid #c5cef5;}
+    .si-peach{background:var(--peach-l);border:2px solid #fcd0b3;}
+    .si-violet{background:var(--violet-l);border:2px solid #d4c3ff;}
+    .si-amber{background:var(--amber-l);border:2px solid #f5dba0;}
+    .si-rose{background:var(--rose-l);border:2px solid #f5b8dd;}
+    .si-green{background:var(--green-l);border:2px solid #a7e8be;}
+    .si-sky{background:var(--sky-l);border:2px solid #9dd8f5;}
+    .si-label{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;}
+    .si h2{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;margin-bottom:5px;}
+    .si p{font-size:14px;color:var(--muted);}
+
+    /* TIMELINE */
+    .tl-card{background:var(--card);border:2px solid var(--border);border-radius:20px;padding:26px 26px 20px;margin-bottom:28px;}
+    .tl-card h3{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-bottom:16px;}
+    .tl-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+    @media(max-width:580px){.tl-grid{grid-template-columns:1fr;}}
+    .tl-item{border-radius:10px;padding:9px 14px;font-size:13px;font-weight:700;text-decoration:none;color:var(--text);display:flex;align-items:center;gap:8px;transition:opacity .2s;}
+    .tl-item:hover{opacity:.8;}
+    .tl-teach{background:var(--teal-l);border:1.5px solid #b2e8e3;}
+    .tl-break{background:var(--amber-l);border:1.5px solid #f5dba0;}
+    .tl-activity{background:var(--violet-l);border:1.5px solid #d4c3ff;}
+    .tl-scenario{background:var(--peach-l);border:1.5px solid #fcd0b3;}
+    .tl-review{background:var(--sky-l);border:1.5px solid #9dd8f5;}
+    .tl-tutorial{background:var(--rose-l);border:1.5px solid #f5b8dd;}
+    .tl-time{font-size:11px;font-weight:600;color:var(--muted);margin-left:auto;white-space:nowrap;}
+
+    /* BREAK */
+    .break-card{border-radius:16px;padding:22px 26px;color:#fff;margin-bottom:28px;}
+    .break-morning{background:linear-gradient(135deg,#065f46,#0f766e);}
+    .break-lunch{background:linear-gradient(135deg,#1e3a5f,#1e4d6b);}
+    .break-afternoon{background:linear-gradient(135deg,#4a1942,#7e1d6e);}
+    .break-card h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:5px;}
+    .break-card p{font-size:14px;opacity:.85;}
+
+    /* FLIP CARDS */
+    .flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin:16px 0;}
+    .flip-card{height:140px;perspective:800px;cursor:pointer;}
+    .flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s;}
+    .flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+    .flip-front,.flip-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;text-align:center;}
+    .flip-front{background:var(--slate);color:#fff;}
+    .flip-back{background:var(--teal-l);border:2px solid #b2e8e3;transform:rotateY(180deg);}
+    .flip-front .term{font-size:13px;font-weight:800;letter-spacing:.5px;margin-top:8px;}
+    .flip-front .icon{font-size:26px;}
+    .flip-back .def{font-size:12.5px;color:var(--teal-d);font-weight:600;line-height:1.5;}
+    .flip-hint{font-size:11px;color:var(--muted);text-align:center;margin-bottom:10px;}
+
+    /* STAGE FLOW */
+    .stage-flow{display:flex;flex-direction:column;gap:8px;margin:16px 0;}
+    .stage-item{border:2px solid var(--border);border-radius:12px;overflow:hidden;}
+    .stage-head{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;transition:background .2s;}
+    .stage-head:hover{background:var(--sand);}
+    .stage-dot{width:36px;height:36px;border-radius:10px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0;}
+    .stage-item.sact .stage-dot{background:var(--navy);}
+    .stage-lbl{font-weight:700;font-size:15px;}
+    .stage-body{display:none;padding:0 16px 16px 64px;font-size:14.5px;color:var(--muted);line-height:1.7;}
+    .stage-item.sact .stage-body{display:block;}
+
+    /* ACCORDION */
+    .acc-item{border:2px solid var(--border);border-radius:12px;margin-bottom:8px;overflow:hidden;}
+    .acc-head{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;cursor:pointer;font-weight:700;font-size:15px;transition:background .2s;}
+    .acc-head:hover{background:var(--sand);}
+    .acc-head .arr{transition:transform .3s;font-size:18px;color:var(--muted);}
+    .acc-item.open .acc-head .arr{transform:rotate(180deg);}
+    .acc-body{display:none;padding:0 18px 16px;font-size:14.5px;color:var(--muted);line-height:1.7;}
+    .acc-item.open .acc-body{display:block;}
+
+    /* KEY POINTS */
+    .kp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:14px 0;}
+    .kp{background:var(--sand);border-radius:12px;padding:13px 15px;display:flex;gap:10px;align-items:flex-start;}
+    .kp-icon{font-size:20px;flex-shrink:0;margin-top:1px;}
+    .kp-text{font-size:13px;font-weight:700;line-height:1.5;}
+
+    /* CONCEPT CARDS */
+    .cc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:14px 0;}
+    .cc{border-radius:14px;padding:18px;border:2px solid var(--border);}
+    .cc-icon{font-size:28px;margin-bottom:8px;}
+    .cc h4{font-weight:800;font-size:14px;margin-bottom:5px;}
+    .cc p{font-size:13px;color:var(--muted);line-height:1.6;}
+
+    /* CASE STUDY */
+    .cs{background:var(--slate);color:#fff;border-radius:16px;padding:22px 24px;margin:16px 0;}
+    .cs-label{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+    .cs h3{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-bottom:10px;}
+    .cs p{font-size:14px;opacity:.88;line-height:1.75;margin-bottom:8px;}
+
+    /* DISCUSSION BOX */
+    .disc{border-radius:12px;padding:16px 20px;margin:14px 0;}
+    .d-amber{background:var(--amber-l);border:2px solid #f5dba0;}
+    .d-teal{background:var(--teal-l);border:2px solid #b2e8e3;}
+    .d-violet{background:var(--violet-l);border:2px solid #d4c3ff;}
+    .d-rose{background:var(--rose-l);border:2px solid #f5b8dd;}
+    .d-navy{background:var(--navy-l);border:2px solid #c5cef5;}
+    .d-peach{background:var(--peach-l);border:2px solid #fcd0b3;}
+    .disc h4{font-size:14px;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+    .disc ul{padding-left:18px;font-size:14px;}
+    .disc li{margin-bottom:5px;}
+    .disc p{font-size:14px;margin-bottom:5px;}
+
+    /* TIP CALLOUTS */
+    .tip{border-radius:12px;padding:14px 18px;margin:14px 0;}
+    .tip-violet{background:var(--violet-l);border:2px solid #d4c3ff;}
+    .tip-violet h4{color:var(--violet);}
+    .tip-amber{background:var(--amber-l);border:2px solid #f5dba0;}
+    .tip-amber h4{color:var(--amber-d);}
+    .tip-teal{background:var(--teal-l);border:2px solid #b2e8e3;}
+    .tip-teal h4{color:var(--teal-d);}
+    .tip-navy{background:var(--navy-l);border:2px solid #c5cef5;}
+    .tip-navy h4{color:var(--navy);}
+    .tip h4{font-size:13.5px;font-weight:800;margin-bottom:6px;}
+    .tip p{font-size:13.5px;line-height:1.65;}
+
+    /* ACT BADGE */
+    .act-badge{display:inline-flex;align-items:center;gap:7px;background:var(--violet);color:#fff;border-radius:99px;padding:5px 14px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
+
+    /* SENSITIVITY */
+    .sens-note{background:var(--rose-l);border:2px solid #f5b8dd;border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:13.5px;color:#8b1850;font-weight:600;}
+
+    /* ===========================
+       INTERACTIVE ACTIVITY STYLES
+       =========================== */
+
+    /* Activity wrapper */
+    .act-wrap{background:linear-gradient(135deg,var(--violet-l),#f8f4ff);border:2px solid #d4c3ff;border-radius:18px;padding:22px 24px;margin:20px 0;}
+    .act-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+    .act-type-badge{background:var(--violet);color:#fff;border-radius:99px;padding:4px 13px;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;}
+    .act-header h3{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;}
+    .act-instruction{font-size:13.5px;color:var(--muted);margin-bottom:14px;font-style:italic;}
+    .act-result{display:none;padding:10px 14px;border-radius:10px;font-size:14px;font-weight:700;margin-top:12px;text-align:center;}
+    .act-result.show{display:block;}
+    .act-result.ok{background:var(--teal-l);border:2px solid #b2e8e3;color:var(--teal-d);}
+    .act-result.partial{background:var(--amber-l);border:2px solid #f5dba0;color:var(--amber-d);}
+    .act-result.retry{background:var(--peach-l);border:2px solid #fcd0b3;color:#7a2e0e;}
+
+    /* ---- TRUE/FALSE RAPID FIRE ---- */
+    .tf-grid{display:flex;flex-direction:column;gap:10px;}
+    .tf-item{background:var(--card);border:2px solid var(--border);border-radius:12px;padding:14px 16px;}
+    .tf-item.answered{pointer-events:none;}
+    .tf-stmt{font-size:14.5px;font-weight:600;margin-bottom:10px;line-height:1.5;}
+    .tf-btns{display:flex;gap:8px;}
+    .tf-btn{flex:1;padding:9px;border-radius:9px;border:2px solid var(--border);background:var(--card);font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:all .2s;}
+    .tf-btn.true-btn:hover{background:#edfff3;border-color:var(--green);}
+    .tf-btn.false-btn:hover{background:var(--peach-l);border-color:var(--peach);}
+    .tf-btn.correct{background:var(--teal-l);border-color:var(--teal);color:var(--teal-d);}
+    .tf-btn.wrong{background:var(--peach-l);border-color:var(--peach);color:#7a2e0e;}
+    .tf-btn.reveal-correct{background:var(--teal-l);border-color:var(--teal);color:var(--teal-d);}
+    .tf-explain{display:none;margin-top:8px;font-size:13px;color:var(--muted);line-height:1.55;padding:8px 10px;background:rgba(255,255,255,.7);border-radius:8px;}
+    .tf-explain.show{display:block;}
+    .tf-score{text-align:center;margin-top:14px;font-weight:800;font-size:15px;display:none;}
+    .tf-score.show{display:block;}
+
+    /* ---- MATCH THE TERMS ---- */
+    .match-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:10px 0;}
+    @media(max-width:560px){.match-wrap{grid-template-columns:1fr;}}
+    .match-col-lbl{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+    .match-terms,.match-defs{display:flex;flex-direction:column;gap:7px;}
+    .match-term{background:var(--card);border:2px solid var(--navy);border-radius:10px;padding:10px 14px;font-size:13.5px;font-weight:700;cursor:pointer;transition:all .2s;color:var(--navy);}
+    .match-term.selected{background:var(--navy);color:#fff;transform:scale(1.02);}
+    .match-term.matched{background:var(--teal-l);border-color:var(--teal);color:var(--teal-d);cursor:default;pointer-events:none;}
+    .match-term.wrong-flash{background:var(--peach-l);border-color:var(--peach);}
+    .match-def{background:var(--card);border:2px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;cursor:pointer;transition:all .2s;line-height:1.5;}
+    .match-def:hover{border-color:var(--teal);background:var(--teal-l);}
+    .match-def.matched{background:var(--teal-l);border-color:var(--teal);cursor:default;pointer-events:none;}
+    .match-def.wrong-flash{background:var(--peach-l);border-color:var(--peach);}
+    .match-score{font-size:13px;font-weight:700;color:var(--muted);margin-top:10px;text-align:right;}
+    .match-reset{margin-top:10px;}
+
+    /* ---- FILL IN THE BLANKS (CLOZE) ---- */
+    .cloze-wrap{font-size:15px;line-height:2.2;margin:12px 0;}
+    .cloze-wrap p{margin-bottom:12px;}
+    .blank{display:inline-block;min-width:120px;border-bottom:2.5px solid var(--navy);padding:2px 6px;margin:0 4px;font-weight:700;color:var(--navy);background:transparent;font-family:'Nunito',sans-serif;font-size:15px;text-align:center;cursor:text;}
+    .blank:focus{outline:none;border-bottom-color:var(--teal);}
+    .blank.correct-ans{border-color:var(--teal);color:var(--teal-d);background:var(--teal-l);border-radius:6px 6px 0 0;}
+    .blank.wrong-ans{border-color:var(--peach);color:#7a2e0e;background:var(--peach-l);border-radius:6px 6px 0 0;}
+    .blank.revealed{border-color:var(--amber);color:var(--amber-d);background:var(--amber-l);border-radius:6px 6px 0 0;}
+    .cloze-btns{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+    .btn-check{background:var(--teal);color:#fff;border:none;border-radius:10px;padding:10px 20px;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;cursor:pointer;}
+    .btn-reveal{background:transparent;border:2px solid var(--amber);color:var(--amber-d);border-radius:10px;padding:9px 18px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;cursor:pointer;}
+    .btn-reset-cloze{background:transparent;border:2px solid var(--border);border-radius:10px;padding:9px 16px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;cursor:pointer;color:var(--muted);}
+    .word-bank{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;padding:12px 14px;background:rgba(255,255,255,.6);border-radius:10px;border:1.5px solid #d4c3ff;}
+    .word-chip{background:var(--violet-l);border:1.5px solid #d4c3ff;color:var(--violet);border-radius:99px;padding:4px 12px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;}
+    .word-chip:hover{background:var(--violet);color:#fff;}
+    .word-chip.used{opacity:.35;pointer-events:none;text-decoration:line-through;}
+
+    /* ---- MIX & MATCH SORTING ---- */
+    .sort-wrap{margin:12px 0;}
+    .sort-items{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;padding:12px;background:rgba(255,255,255,.6);border-radius:12px;border:1.5px dashed #d4c3ff;min-height:52px;}
+    .sort-chip{background:var(--card);border:2px solid var(--border);border-radius:99px;padding:7px 15px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;user-select:none;}
+    .sort-chip:hover{border-color:var(--navy);background:var(--navy-l);}
+    .sort-chip.selected-chip{background:var(--navy);color:#fff;border-color:var(--navy);}
+    .sort-chip.placed{opacity:.4;pointer-events:none;}
+    .sort-categories{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:10px;}
+    .sort-cat{border:2px dashed var(--border);border-radius:14px;padding:14px;min-height:100px;}
+    .sort-cat-lbl{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+    .sort-cat-items{display:flex;flex-wrap:wrap;gap:6px;min-height:36px;}
+    .sort-cat-chip{border-radius:99px;padding:5px 12px;font-size:12.5px;font-weight:700;cursor:pointer;transition:all .2s;}
+    .sort-cat-chip:hover{opacity:.75;}
+    .sort-check-btn{background:var(--teal);color:#fff;border:none;border-radius:10px;padding:10px 20px;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;cursor:pointer;margin-top:12px;}
+    .sort-reset-btn{background:transparent;border:2px solid var(--border);border-radius:10px;padding:9px 16px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;cursor:pointer;color:var(--muted);margin-top:12px;margin-left:8px;}
+    .cat-correct{border-color:var(--teal)!important;background:var(--teal-l);}
+    .cat-wrong{border-color:var(--peach)!important;background:var(--peach-l);}
+
+    /* ---- SCENARIO MCQ ---- */
+    .smcq-wrap{display:flex;flex-direction:column;gap:14px;}
+    .smcq-item{background:var(--card);border:2px solid var(--border);border-radius:14px;overflow:hidden;}
+    .smcq-scenario{background:var(--slate);color:#fff;padding:14px 18px;font-size:14px;line-height:1.7;}
+    .smcq-scenario strong{color:var(--teal);font-size:11px;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:4px;}
+    .smcq-q{padding:12px 18px;font-weight:700;font-size:14px;border-bottom:1.5px solid var(--border);}
+    .smcq-opts{padding:10px 18px 14px;display:flex;flex-direction:column;gap:7px;}
+    .smcq-btn{background:var(--card);border:2px solid var(--border);border-radius:9px;padding:10px 14px;text-align:left;font-family:'Nunito',sans-serif;font-size:13.5px;font-weight:600;cursor:pointer;transition:all .2s;}
+    .smcq-btn:hover{border-color:var(--teal);background:var(--teal-l);}
+    .smcq-btn.sc-correct{background:var(--teal-l);border-color:var(--teal);color:var(--teal-d);pointer-events:none;}
+    .smcq-btn.sc-wrong{background:var(--peach-l);border-color:var(--peach);color:#7a2e0e;pointer-events:none;}
+    .smcq-btn.sc-reveal{background:var(--teal-l);border-color:var(--teal);color:var(--teal-d);pointer-events:none;}
+    .smcq-btn.sc-disabled{pointer-events:none;opacity:.5;}
+    .smcq-fb{display:none;padding:8px 14px 12px;font-size:13px;color:var(--muted);line-height:1.55;}
+    .smcq-fb.show{display:block;}
+
+    /* ---- FLASHCARD SELF-QUIZ ---- */
+    .flash-wrap{position:relative;}
+    .flash-progress{display:flex;gap:5px;margin-bottom:14px;flex-wrap:wrap;}
+    .flash-pip{width:12px;height:12px;border-radius:50%;background:var(--border);}
+    .flash-pip.know{background:var(--green);}
+    .flash-pip.dontknow{background:var(--peach);}
+    .flash-pip.current{background:var(--violet);transform:scale(1.3);}
+    .flash-card-outer{perspective:900px;height:180px;margin-bottom:14px;}
+    .flash-card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .55s;cursor:pointer;}
+    .flash-card-outer.flipped .flash-card-inner{transform:rotateY(180deg);}
+    .flash-card-front,.flash-card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 24px;text-align:center;}
+    .flash-card-front{background:var(--slate);color:#fff;}
+    .flash-card-back{background:var(--teal-l);border:2px solid #b2e8e3;transform:rotateY(180deg);}
+    .flash-card-front .flash-q{font-size:16px;font-weight:700;line-height:1.5;}
+    .flash-card-back .flash-a{font-size:14.5px;color:var(--teal-d);font-weight:600;line-height:1.6;}
+    .flash-hint{font-size:11px;opacity:.6;margin-top:10px;}
+    .flash-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;}
+    .flash-counter{font-size:13px;font-weight:700;color:var(--muted);}
+    .flash-judge{display:none;flex-direction:column;gap:8px;margin-top:4px;}
+    .flash-judge.show{display:flex;}
+    .flash-judge p{font-size:13px;font-weight:700;text-align:center;color:var(--muted);}
+    .flash-judge-btns{display:flex;gap:8px;}
+    .flash-know-btn,.flash-dontknow-btn{flex:1;padding:10px;border-radius:10px;border:none;font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;cursor:pointer;transition:all .2s;}
+    .flash-know-btn{background:var(--green-l);border:2px solid #a7e8be;color:var(--green);}
+    .flash-know-btn:hover{background:var(--green);color:#fff;}
+    .flash-dontknow-btn{background:var(--peach-l);border:2px solid #fcd0b3;color:#7a2e0e;}
+    .flash-dontknow-btn:hover{background:var(--peach);color:#fff;}
+    .flash-btn{background:var(--card);border:2px solid var(--border);border-radius:10px;padding:9px 16px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;cursor:pointer;color:var(--text);transition:all .2s;}
+    .flash-btn:hover{border-color:var(--navy);background:var(--navy-l);}
+    .flash-summary{display:none;text-align:center;padding:16px;background:rgba(255,255,255,.6);border-radius:12px;}
+    .flash-summary.show{display:block;}
+    .flash-summary .f-score{font-size:36px;font-weight:800;color:var(--teal);}
+
+    /* QUIZ STYLES (icebreaker + review) */
+    .quiz-q{margin-bottom:22px;}
+    .quiz-q p{font-weight:700;font-size:15px;margin-bottom:10px;}
+    .quiz-q p span{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:8px;background:var(--violet);color:#fff;font-size:12px;font-weight:800;margin-right:6px;}
+    .opts{display:flex;flex-direction:column;gap:7px;}
+    .opt-btn{background:var(--card);border:2px solid var(--border);border-radius:10px;padding:11px 16px;text-align:left;font-family:'Nunito',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;}
+    .opt-btn:hover{border-color:var(--violet);background:var(--violet-l);}
+    .opt-btn.correct{background:var(--teal-l);border-color:var(--teal);color:var(--teal-d);pointer-events:none;}
+    .opt-btn.wrong{background:var(--peach-l);border-color:var(--peach);color:#7a2e0e;pointer-events:none;}
+    .opt-btn.reveal{background:var(--teal-l);border-color:var(--teal);color:var(--teal-d);pointer-events:none;}
+    .opt-btn.disabled{pointer-events:none;opacity:.55;}
+    .qfb{display:none;margin-top:10px;padding:10px 14px;border-radius:10px;font-size:13.5px;font-weight:600;}
+    .qfb.show{display:block;}
+    .qfb.ok{background:var(--teal-l);border:1.5px solid #b2e8e3;color:var(--teal-d);}
+    .qfb.no{background:var(--peach-l);border:1.5px solid #fcd0b3;color:#7a2e0e;}
+    .quiz-score{display:none;margin-top:20px;background:var(--slate);color:#fff;border-radius:14px;padding:18px 22px;text-align:center;}
+    .quiz-score.show{display:block;}
+    .quiz-score .score-num{font-size:40px;font-weight:800;color:var(--teal);}
+    .quiz-score p{font-size:15px;opacity:.85;margin-top:6px;}
+    .debrief{background:var(--amber-l);border:2px solid #f5dba0;border-radius:12px;padding:14px 18px;margin-top:16px;font-size:14px;}
+    .debrief h4{font-weight:800;color:var(--amber-d);margin-bottom:6px;font-size:13.5px;}
+
+    /* SCENARIO (branching) */
+    .scenario-wrap{margin:16px 0;}
+    .scenario-badge{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border-radius:99px;padding:6px 16px;font-size:12px;font-weight:800;letter-spacing:.5px;margin-bottom:16px;}
+    .scene{display:none;border:2px solid var(--border);border-radius:16px;overflow:hidden;}
+    .scene.active{display:block;}
+    .scene-header{background:var(--slate);color:#fff;padding:16px 22px;}
+    .scene-header .scene-num{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;opacity:.7;margin-bottom:5px;}
+    .scene-header h4{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;}
+    .scene-body{padding:20px 22px;}
+    .scene-body p{font-size:15px;line-height:1.75;margin-bottom:16px;}
+    .scene-choices{display:flex;flex-direction:column;gap:9px;}
+    .sc-btn{padding:12px 18px;border-radius:10px;border:2px solid var(--border);background:var(--card);text-align:left;font-family:'Nunito',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;}
+    .sc-btn:hover{border-color:var(--navy);background:var(--navy-l);}
+    .sc-out{display:none;padding:14px 16px;border-radius:10px;margin-top:12px;font-size:14px;font-weight:600;line-height:1.6;}
+    .out-ok{background:var(--teal-l);border:2px solid #b2e8e3;color:var(--teal-d);}
+    .out-no{background:var(--peach-l);border:2px solid #fcd0b3;color:#7a2e0e;}
+    .out-part{background:var(--amber-l);border:2px solid #f5dba0;color:var(--amber-d);}
+    .sc-next{margin-top:12px;background:var(--teal);color:#fff;border:none;border-radius:10px;padding:11px 22px;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;cursor:pointer;display:none;}
+    .sc-retry{margin-top:10px;background:transparent;border:2px solid var(--border);border-radius:10px;padding:9px 18px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;cursor:pointer;color:var(--muted);display:none;}
+    .sc-complete{display:none;text-align:center;padding:28px;border-top:2px solid var(--border);}
+    .sc-complete .stamp{font-size:52px;margin-bottom:10px;}
+    .sc-complete h4{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:8px;}
+    .sc-complete p{font-size:14px;color:var(--muted);}
+
+    /* REVIEW QUIZ */
+    .rq-q{margin-bottom:24px;}
+    .rq-q p{font-weight:700;font-size:15px;margin-bottom:10px;}
+    .rq-badge{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:var(--sky);color:#fff;font-size:12px;font-weight:800;margin-right:6px;}
+    .rq-score{display:none;background:var(--slate);color:#fff;border-radius:14px;padding:20px 24px;text-align:center;margin-top:20px;}
+    .rq-score.show{display:block;}
+    .rq-score .snum{font-size:44px;font-weight:800;color:#fde68a;}
+    .rq-score p{font-size:15px;opacity:.85;margin-top:6px;}
+
+    /* REFLECTION + TUTORIAL + COMING UP */
+    .reflect-area{width:100%;border:2px solid var(--border);border-radius:12px;padding:14px 16px;font-family:'Nunito',sans-serif;font-size:15px;min-height:110px;resize:vertical;background:var(--card);color:var(--text);margin-top:12px;}
+    .reflect-area:focus{outline:none;border-color:var(--teal);}
+    .tut-card{background:linear-gradient(135deg,#7c2d12,#c2410c);color:#fff;border-radius:16px;padding:24px 28px;margin-bottom:28px;}
+    .tut-card h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:8px;}
+    .tut-card p{font-size:14px;opacity:.85;line-height:1.65;}
+    .coming-card{background:var(--slate);color:#fff;border-radius:16px;padding:24px 28px;margin-bottom:28px;}
+    .coming-card h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:8px;}
+    .coming-card p{font-size:14px;opacity:.82;line-height:1.65;}
+    .coming-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+    .ctag{background:rgba(255,255,255,.14);border-radius:99px;padding:4px 12px;font-size:12px;font-weight:700;}
+
+    /* UTILS */
+    .mt{margin-top:14px;} .mb{margin-bottom:14px;}
+    .prose{font-size:15px;line-height:1.75;margin-bottom:12px;}
+    .lbl{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:block;}
+    hr{border:none;border-top:2px solid var(--border);margin:20px 0;}
+    .btn-reset{background:transparent;border:2px solid var(--border);border-radius:10px;padding:9px 16px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;cursor:pointer;color:var(--muted);}
+
+    /* CONFETTI */
+    @keyframes confettiFall{0%{transform:translateY(-10px) rotate(0deg);opacity:1}100%{transform:translateY(600px) rotate(720deg);opacity:0}}
+    .cp{position:fixed;z-index:9999;animation:confettiFall linear forwards;pointer-events:none;}
+  </style>
+</head>
+<body>
+
+<!-- WELLBEING BANNER -->
+<div class="wb-banner">
+  <span class="wb-badge">💜 Wellbeing</span>
+  <span>Today includes themes of abuse, crisis and trauma. Step out if you need to.</span>
+  <a href="tel:131114">Lifeline 13 11 14</a>
+</div>
+<div class="prog-wrap">
+  <div class="prog-bar" id="progBar"></div>
+  <span class="prog-emoji" id="progEmoji">🌱</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">CHCCCS019 · Box Hill TAFE · Certificate IV Community Services</div>
+  <h1>Principles &amp; Practices</h1>
+  <div class="hero-sub">Session 3 — Crisis Intervention in Action</div>
+  <div class="hero-pills">
+    <span class="pill">📖 Learner Guide Ch.3 pp.38–51</span>
+    <span class="pill">🗓️ 9:30am – 3:00pm+</span>
+    <span class="pill">🎯 Intervention models</span>
+    <span class="pill">⚠️ Critical incidents</span>
+    <span class="pill">🔗 Referrals</span>
+    <span class="pill">🧩 6 interactive activities</span>
+  </div>
+  <div class="recap-box">
+    <strong>🔁 Last Session Recap — Session 2: Legal &amp; Ethical Framework</strong>
+    We explored duty of care, privacy and confidentiality, mandatory reporting, work role boundaries, and codes of practice. Today we move from the framework into the practice — what do you actually <em>do</em> when someone is in crisis?
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- TIMELINE -->
+  <div class="tl-card" id="timeline">
+    <h3>📅 Today at a Glance</h3>
+    <div class="tl-grid">
+      <a href="#welcome" class="tl-item tl-teach">🌅 Welcome &amp; Check-in <span class="tl-time">9:30–9:45</span></a>
+      <a href="#icebreaker" class="tl-item tl-activity">🧠 Icebreaker Quiz <span class="tl-time">9:45–10:15</span></a>
+      <a href="#stages" class="tl-item tl-teach">🔢 Stages &amp; Principles <span class="tl-time">10:15–10:30</span></a>
+      <a href="#break1" class="tl-item tl-break">☕ Morning Break <span class="tl-time">10:30–10:45</span></a>
+      <a href="#pfa" class="tl-item tl-teach">🩹 PFA &amp; Roberts' Model <span class="tl-time">10:45–12:00</span></a>
+      <a href="#break2" class="tl-item tl-break">🥪 Lunch Break <span class="tl-time">12:00–12:45</span></a>
+      <a href="#critical" class="tl-item tl-teach">🚨 Critical Incidents <span class="tl-time">12:45–1:45</span></a>
+      <a href="#break3" class="tl-item tl-break">🍫 Afternoon Break <span class="tl-time">1:45–2:00</span></a>
+      <a href="#activities" class="tl-item tl-activity">🧩 Activity Block <span class="tl-time">2:00–2:30</span></a>
+      <a href="#scenario" class="tl-item tl-scenario">🎭 Branching Scenario <span class="tl-time">2:30–3:00</span></a>
+      <a href="#review" class="tl-item tl-review">📝 Review Quiz <span class="tl-time">3:00+</span></a>
+      <a href="#tutorial" class="tl-item tl-tutorial">💬 Tutorial Time <span class="tl-time">3:00+</span></a>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       S1: WELCOME
+       ============================================================ -->
+  <div class="sec" id="welcome">
+    <div class="sec-head">
+      <div class="sec-num n-teal">1</div>
+      <div class="sec-title-wrap"><h2>Welcome &amp; Wellbeing Check-in</h2><p>9:30am – 9:45am</p></div>
+    </div>
+    <div class="sens-note">⚠️ <strong>Content note:</strong> Today covers crisis intervention, critical incidents, and safety planning — including material related to abuse and self-harm. Engage in ways that feel manageable for you.</div>
+    <p class="prose">Good morning! Today we move from <em>understanding</em> crisis (what it is, its legal and ethical dimensions) to <em>doing</em> — the actual principles and practices of crisis intervention. It's a big day, and there are six interactive activities to work through at your own pace.</p>
+    <div class="disc d-amber">
+      <h4>🌅 Check-in Prompt</h4>
+      <p>On a scale of <strong>rainy Monday</strong> to <strong>sunny Friday</strong> — where are you at right now? Share one word.</p>
+    </div>
+    <div class="tip tip-teal">
+      <h4>🎯 What today builds in you</h4>
+      <p>By the end of today you'll have a clear mental map for <em>how to respond</em> when crisis happens. That moves you from awareness to competence. Crisis intervention is a practical skill — and like all skills, it needs rehearsal.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       S2: ICEBREAKER QUIZ
+       ============================================================ -->
+  <div class="sec" id="icebreaker">
+    <div class="sec-head">
+      <div class="sec-num n-violet">2</div>
+      <div class="sec-title-wrap"><h2>Icebreaker: Myth Busters</h2><p>9:45am – 10:15am · 5 questions, instant feedback</p></div>
+    </div>
+    <div class="si si-violet">
+      <div class="si-label" style="color:var(--violet)">🧠 Warm-Up</div>
+      <h2>What do you actually know about crisis intervention?</h2>
+      <p>Work through these individually. The "wrong" answers are often the most interesting ones to discuss.</p>
+    </div>
+    <div class="quiz-q">
+      <p><span>1</span>Crisis intervention is designed to resolve a person's underlying problems and provide long-term therapeutic support.</p>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansQ(this,'qq1',false,'qf1')">True — it's about solving root causes</button>
+        <button class="opt-btn" onclick="ansQ(this,'qq1',true,'qf1')">False — it focuses on short-term, immediate stabilisation</button>
+        <button class="opt-btn" onclick="ansQ(this,'qq1',false,'qf1')">It depends on the worker's role</button>
+      </div>
+      <div class="qfb" id="qf1"></div>
+    </div>
+    <div class="quiz-q">
+      <p><span>2</span>Psychological First Aid encourages workers to get people talking and expressing their feelings as quickly as possible.</p>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansQ(this,'qq2',false,'qf2')">True — the sooner people open up, the better</button>
+        <button class="opt-btn" onclick="ansQ(this,'qq2',true,'qf2')">False — PFA says listen but don't pressure people to talk</button>
+        <button class="opt-btn" onclick="ansQ(this,'qq2',false,'qf2')">Only for adults, not children</button>
+      </div>
+      <div class="qfb" id="qf2"></div>
+    </div>
+    <div class="quiz-q">
+      <p><span>3</span>A "critical incident" in community services only refers to physical violence or assault.</p>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansQ(this,'qq3',false,'qf3')">True — it must involve physical harm</button>
+        <button class="opt-btn" onclick="ansQ(this,'qq3',true,'qf3')">False — it includes self-harm, missing clients, medication errors, suicide and more</button>
+        <button class="opt-btn" onclick="ansQ(this,'qq3',false,'qf3')">True — anything else is just an "incident"</button>
+      </div>
+      <div class="qfb" id="qf3"></div>
+    </div>
+    <div class="quiz-q">
+      <p><span>4</span>When making a referral, the worker decides which service the client should go to on their behalf.</p>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansQ(this,'qq4',false,'qf4')">True — the worker knows what's best</button>
+        <button class="opt-btn" onclick="ansQ(this,'qq4',true,'qf4')">False — the client must consent and be involved in the decision</button>
+        <button class="opt-btn" onclick="ansQ(this,'qq4',false,'qf4')">True — clients in crisis can't make decisions</button>
+      </div>
+      <div class="qfb" id="qf4"></div>
+    </div>
+    <div class="quiz-q">
+      <p><span>5</span>Indirect indicators of safety issues can usually be ignored — only visible evidence matters professionally.</p>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansQ(this,'qq5',false,'qf5')">True — if you can't see it clearly, it's probably fine</button>
+        <button class="opt-btn" onclick="ansQ(this,'qq5',false,'qf5')">True — only visible evidence is admissible</button>
+        <button class="opt-btn" onclick="ansQ(this,'qq5',true,'qf5')">False — indirect signs are vital and often the first warning of risk</button>
+      </div>
+      <div class="qfb" id="qf5"></div>
+    </div>
+    <div class="quiz-score" id="quizScore">
+      <div class="score-num" id="quizScoreNum"></div>
+      <p id="quizScoreMsg"></p>
+    </div>
+    <div class="debrief"><h4>💬 Class Debrief</h4><p>Q1→ Intervention principles · Q2→ PFA · Q3→ Critical incidents · Q4→ Referrals · Q5→ Signs &amp; indicators. Which one surprised you most?</p></div>
+  </div>
+
+  <!-- ============================================================
+       S3: STAGES & PRINCIPLES
+       ============================================================ -->
+  <div class="sec" id="stages">
+    <div class="sec-head">
+      <div class="sec-num n-teal">3</div>
+      <div class="sec-title-wrap"><h2>Stages of Crisis &amp; Intervention Principles</h2><p>10:15am – 10:30am · Learner Guide p.39–41</p></div>
+    </div>
+    <div class="si si-teal">
+      <div class="si-label" style="color:var(--teal-d)">📖 Section 3.1 · p.39</div>
+      <h2>When crisis hits, what do you do — and in what order?</h2>
+      <p>Crisis intervention follows stages. Knowing the sequence helps you stay anchored when everything feels chaotic.</p>
+    </div>
+    <p class="prose">People experiencing crisis move through stages, which means your response needs to adapt. Click each stage to read more.</p>
+    <div class="stage-flow">
+      <div class="stage-item sact" onclick="toggleS(this)">
+        <div class="stage-head"><div class="stage-dot">1</div><div class="stage-lbl">Recognise there is a crisis</div></div>
+        <div class="stage-body">Before you can help, you need to name what's happening. Look for direct and indirect indicators — changes in behaviour, distorted perceptions, inability to function normally. Naming it helps the person feel seen.</div>
+      </div>
+      <div class="stage-item" onclick="toggleS(this)">
+        <div class="stage-head"><div class="stage-dot">2</div><div class="stage-lbl">Identify the significance of the triggering event</div></div>
+        <div class="stage-body">What happened? How significant is this event to <em>this</em> person? The same event affects people very differently. Understanding the trigger helps you calibrate your response.</div>
+      </div>
+      <div class="stage-item" onclick="toggleS(this)">
+        <div class="stage-head"><div class="stage-dot">3</div><div class="stage-lbl">Release tension — listen and provide emotional support</div></div>
+        <div class="stage-body">Before problem-solving, the person needs to feel heard. Use active listening — reflect feelings, paraphrase, validate. Don't rush to "fix" it. This stage creates safety that allows everything else to happen.</div>
+      </div>
+      <div class="stage-item" onclick="toggleS(this)">
+        <div class="stage-head"><div class="stage-dot">4</div><div class="stage-lbl">Encourage realistic thinking (cognitive restructuring)</div></div>
+        <div class="stage-body">In crisis, people often catastrophise. Gently challenge distortions by helping the person focus on realities. What's actually true right now? What's manageable today?</div>
+      </div>
+      <div class="stage-item" onclick="toggleS(this)">
+        <div class="stage-head"><div class="stage-dot">5</div><div class="stage-lbl">Make plans — prioritise needs, set achievable goals</div></div>
+        <div class="stage-body">Work <em>with</em> the person to identify what needs to happen first. What's the most urgent thing? Plans should be SMART — specific, measurable, achievable, relevant, timely.</div>
+      </div>
+      <div class="stage-item" onclick="toggleS(this)">
+        <div class="stage-head"><div class="stage-dot">6</div><div class="stage-lbl">Build on existing strengths — empower and offer alternatives</div></div>
+        <div class="stage-body">What has this person survived before? What resources do they already have? A strengths-based approach reminds the person that they have capacity, even when it doesn't feel that way.</div>
+      </div>
+    </div>
+
+    <!-- ACTIVITY 1: TRUE/FALSE RAPID FIRE -->
+    <div class="act-wrap">
+      <div class="act-header">
+        <span class="act-type-badge">⚡ Activity 1 · True or False</span>
+        <h3>Principles rapid fire</h3>
+      </div>
+      <p class="act-instruction">Work through each statement on your own. Instant feedback below each one.</p>
+      <div class="tf-grid" id="tf1">
+        <div class="tf-item" id="tfi0">
+          <div class="tf-stmt">Crisis intervention is like "first aid for mental health" — it stabilises, not resolves.</div>
+          <div class="tf-btns">
+            <button class="tf-btn true-btn" onclick="answerTF(0,'tf1',true,this)">✓ True</button>
+            <button class="tf-btn false-btn" onclick="answerTF(0,'tf1',false,this)">✗ False</button>
+          </div>
+          <div class="tf-explain" id="tfe0">✅ True. Crisis intervention = short-term, immediate stabilisation. It's first aid — not therapy. Referral handles what comes next.</div>
+        </div>
+        <div class="tf-item" id="tfi1">
+          <div class="tf-stmt">Workers should be mostly directive in crisis — the client can't be trusted to make decisions.</div>
+          <div class="tf-btns">
+            <button class="tf-btn true-btn" onclick="answerTF(1,'tf1',false,this)">✓ True</button>
+            <button class="tf-btn false-btn" onclick="answerTF(1,'tf1',true,this)">✗ False</button>
+          </div>
+          <div class="tf-explain" id="tfe1">❌ False. Empowerment is a core principle. You balance direction with collaboration — you lead when needed, but always work <em>with</em> the person wherever possible.</div>
+        </div>
+        <div class="tf-item" id="tfi2">
+          <div class="tf-stmt">"Cognitive restructuring" means helping someone replace catastrophic thinking with a more realistic view.</div>
+          <div class="tf-btns">
+            <button class="tf-btn true-btn" onclick="answerTF(2,'tf1',true,this)">✓ True</button>
+            <button class="tf-btn false-btn" onclick="answerTF(2,'tf1',false,this)">✗ False</button>
+          </div>
+          <div class="tf-explain" id="tfe2">✅ True. Stage 4: encouraging realistic thinking. Not toxic positivity — just gently challenging "my life is over" with "what's actually true right now?"</div>
+        </div>
+        <div class="tf-item" id="tfi3">
+          <div class="tf-stmt">Responding quickly is a key crisis intervention principle, because timing affects outcomes.</div>
+          <div class="tf-btns">
+            <button class="tf-btn true-btn" onclick="answerTF(3,'tf1',true,this)">✓ True</button>
+            <button class="tf-btn false-btn" onclick="answerTF(3,'tf1',false,this)">✗ False</button>
+          </div>
+          <div class="tf-explain" id="tfe3">✅ True. "Respond quickly" is one of the 6 common principles. Crisis is time-sensitive — early intervention changes trajectory.</div>
+        </div>
+      </div>
+      <div class="tf-score" id="tf1score"></div>
+    </div>
+
+    <div class="kp-grid">
+      <div class="kp"><span class="kp-icon">✂️</span><span class="kp-text">Keep it simple — brief, clear interventions</span></div>
+      <div class="kp"><span class="kp-icon">⚡</span><span class="kp-text">Respond quickly — time matters in crisis</span></div>
+      <div class="kp"><span class="kp-icon">👤</span><span class="kp-text">Address individual situations and needs</span></div>
+      <div class="kp"><span class="kp-icon">🔧</span><span class="kp-text">Be practical — focus on what's actionable now</span></div>
+      <div class="kp"><span class="kp-icon">🔗</span><span class="kp-text">Use easily accessible services and supports</span></div>
+      <div class="kp"><span class="kp-icon">🌟</span><span class="kp-text">Support hope for positive outcomes</span></div>
+    </div>
+  </div>
+
+  <!-- MORNING BREAK -->
+  <div class="break-card break-morning" id="break1">
+    <h3>☕ Morning Break</h3>
+    <p>10:30am – 10:45am · 15 minutes. Stretch, hydrate, reset. We'll pick up with Psychological First Aid when you're back.</p>
+  </div>
+
+  <!-- ============================================================
+       S4: PFA & ROBERTS MODEL
+       ============================================================ -->
+  <div class="sec" id="pfa">
+    <div class="sec-head">
+      <div class="sec-num n-teal">4</div>
+      <div class="sec-title-wrap"><h2>Psychological First Aid &amp; Roberts' Model</h2><p>10:45am – 12:00pm · Learner Guide pp.41–42</p></div>
+    </div>
+    <div class="si si-teal">
+      <div class="si-label" style="color:var(--teal-d)">📖 Section 3.1 continued · p.41</div>
+      <h2>Think of crisis intervention as "first aid for mental health"</h2>
+      <p>Practical, non-intrusive, focused on immediate safety and connection.</p>
+    </div>
+    <p class="prose">Psychological First Aid (PFA) provides psychological, social and practical support. Crucially, it doesn't pressure people to talk — it creates safety and connection.</p>
+    <div class="kp-grid">
+      <div class="kp"><span class="kp-icon">👂</span><span class="kp-text">Listen — but don't pressure people to talk</span></div>
+      <div class="kp"><span class="kp-icon">🕊️</span><span class="kp-text">Provide comfort — help people feel calm</span></div>
+      <div class="kp"><span class="kp-icon">🔗</span><span class="kp-text">Connect to information, services &amp; supports</span></div>
+      <div class="kp"><span class="kp-icon">🛡️</span><span class="kp-text">Protect people from further harm</span></div>
+    </div>
+
+    <!-- ACTIVITY 2: FILL IN THE BLANKS -->
+    <div class="act-wrap">
+      <div class="act-header">
+        <span class="act-type-badge">✏️ Activity 2 · Fill the Blanks</span>
+        <h3>Roberts' 7 stages — complete the sequence</h3>
+      </div>
+      <p class="act-instruction">Click a word from the bank, then click the blank where it belongs. Check your answers when done.</p>
+      <div class="word-bank" id="wbank2">
+        <span class="word-chip" onclick="selectChip(this,'wbank2')">lethality</span>
+        <span class="word-chip" onclick="selectChip(this,'wbank2')">rapport</span>
+        <span class="word-chip" onclick="selectChip(this,'wbank2')">feelings</span>
+        <span class="word-chip" onclick="selectChip(this,'wbank2')">action plan</span>
+        <span class="word-chip" onclick="selectChip(this,'wbank2')">follow-up</span>
+        <span class="word-chip" onclick="selectChip(this,'wbank2')">major problems</span>
+        <span class="word-chip" onclick="selectChip(this,'wbank2')">coping methods</span>
+      </div>
+      <div class="cloze-wrap" id="cloze2">
+        <p>Stage 1: Assess <span class="blank" data-answer="lethality" onclick="placeChip(this,'wbank2')">___</span> and mental health status.</p>
+        <p>Stage 2: Establish <span class="blank" data-answer="rapport" onclick="placeChip(this,'wbank2')">___</span> and engage the client.</p>
+        <p>Stage 3: Identify <span class="blank" data-answer="major problems" onclick="placeChip(this,'wbank2')">___</span>.</p>
+        <p>Stage 4: Deal with <span class="blank" data-answer="feelings" onclick="placeChip(this,'wbank2')">___</span>.</p>
+        <p>Stage 5: Explore alternative <span class="blank" data-answer="coping methods" onclick="placeChip(this,'wbank2')">___</span>.</p>
+        <p>Stage 6: Develop an <span class="blank" data-answer="action plan" onclick="placeChip(this,'wbank2')">___</span>.</p>
+        <p>Stage 7: Develop a termination and <span class="blank" data-answer="follow-up" onclick="placeChip(this,'wbank2')">___</span> protocol.</p>
+      </div>
+      <div class="cloze-btns">
+        <button class="btn-check" onclick="checkCloze('cloze2','cloze2result')">Check answers</button>
+        <button class="btn-reveal" onclick="revealCloze('cloze2','wbank2')">Reveal all</button>
+        <button class="btn-reset-cloze" onclick="resetCloze('cloze2','wbank2','cloze2result')">↩ Reset</button>
+      </div>
+      <div class="act-result" id="cloze2result"></div>
+    </div>
+
+    <p class="lbl mt">🎯 Aims of Crisis Intervention</p>
+    <div class="cc-grid">
+      <div class="cc" style="background:var(--teal-l);border-color:#b2e8e3;"><div class="cc-icon">🔍</div><h4>Recognise &amp; Identify</h4><p>Name the crisis situation — for yourself and with the person</p></div>
+      <div class="cc" style="background:var(--violet-l);border-color:#d4c3ff;"><div class="cc-icon">💬</div><h4>Assess &amp; Acknowledge</h4><p>Understand the impact on this person, in this moment</p></div>
+      <div class="cc" style="background:var(--amber-l);border-color:#f5dba0;"><div class="cc-icon">⚡</div><h4>Act Quickly</h4><p>Short-term, focused intervention — not long-term therapy</p></div>
+      <div class="cc" style="background:var(--peach-l);border-color:#fcd0b3;"><div class="cc-icon">⬇️</div><h4>Mitigate Impact</h4><p>Reduce distress so the person can begin to function again</p></div>
+      <div class="cc" style="background:var(--green-l);border-color:#a7e8be;"><div class="cc-icon">💪</div><h4>Restore Capacity</h4><p>Support the person to regain their ability to make decisions</p></div>
+      <div class="cc" style="background:var(--navy-l);border-color:#c5cef5;"><div class="cc-icon">🔗</div><h4>Refer</h4><p>Connect to other resources, services and supports as needed</p></div>
+    </div>
+
+    <!-- ACTIVITY 3: FLASHCARD SELF-QUIZ -->
+    <div class="act-wrap">
+      <div class="act-header">
+        <span class="act-type-badge">🃏 Activity 3 · Flashcards</span>
+        <h3>Key terms — test yourself</h3>
+      </div>
+      <p class="act-instruction">Tap each card to reveal the answer, then mark yourself honestly. Work through all 6.</p>
+      <div class="flash-wrap" id="flashwrap3">
+        <div class="flash-progress" id="fprog3">
+          <div class="flash-pip current" id="fpip3-0"></div>
+          <div class="flash-pip" id="fpip3-1"></div>
+          <div class="flash-pip" id="fpip3-2"></div>
+          <div class="flash-pip" id="fpip3-3"></div>
+          <div class="flash-pip" id="fpip3-4"></div>
+          <div class="flash-pip" id="fpip3-5"></div>
+        </div>
+        <div class="flash-nav">
+          <button class="flash-btn" onclick="flashNav(3,-1)">← Prev</button>
+          <span class="flash-counter" id="fcounter3">1 / 6</span>
+          <button class="flash-btn" onclick="flashNav(3,1)">Next →</button>
+        </div>
+        <div class="flash-card-outer" id="fcard3" onclick="flipFlashCard(3)">
+          <div class="flash-card-inner">
+            <div class="flash-card-front"><div class="flash-q" id="fq3"></div><div class="flash-hint">Tap to reveal</div></div>
+            <div class="flash-card-back"><div class="flash-a" id="fa3"></div></div>
+          </div>
+        </div>
+        <div class="flash-judge" id="fjudge3">
+          <p>How did you go?</p>
+          <div class="flash-judge-btns">
+            <button class="flash-know-btn" onclick="judgeFlash(3,true)">✓ Got it</button>
+            <button class="flash-dontknow-btn" onclick="judgeFlash(3,false)">✗ Not yet</button>
+          </div>
+        </div>
+        <div class="flash-summary" id="fsum3">
+          <div class="f-score" id="fsc3"></div>
+          <p id="fmsg3"></p>
+          <button class="flash-btn" style="margin-top:12px" onclick="resetFlash(3)">↩ Try again</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip tip-navy">
+      <h4>💬 As a practitioner</h4>
+      <p>The most effective crisis supporters aren't the ones with all the answers — they're the ones who can stay calm, stay present, and trust the process. Your role is to hold the space, not to fix the person.</p>
+    </div>
+  </div>
+
+  <!-- LUNCH BREAK -->
+  <div class="break-card break-lunch" id="break2">
+    <h3>🥪 Lunch Break</h3>
+    <p>12:00pm – 12:45pm · 45 minutes. Take a proper break — today's content is heavy. Food, fresh air, connection.</p>
+  </div>
+
+  <!-- ============================================================
+       S5: CRITICAL INCIDENTS, EMERGENCY, SIGNS, REFERRALS
+       ============================================================ -->
+  <div class="sec" id="critical">
+    <div class="sec-head">
+      <div class="sec-num n-peach">5</div>
+      <div class="sec-title-wrap"><h2>Critical Incidents, Emergency &amp; Safety</h2><p>12:45pm – 1:45pm · Learner Guide pp.43–51</p></div>
+    </div>
+    <div class="sens-note">⚠️ This section covers critical incidents including self-harm, violence and emergency responses. Take care of yourself as you engage.</div>
+    <div class="si si-peach">
+      <div class="si-label" style="color:var(--peach)">📖 Section 3.2 · pp.43–48</div>
+      <h2>What happens when crisis escalates into a genuine emergency?</h2>
+      <p>Critical incidents require a different level of response — clear procedures, organisational support, and debrief.</p>
+    </div>
+    <p class="prose">A <strong>critical incident</strong> is any sudden, unexpected event that overwhelms a person's coping and poses serious risk to life, health or safety. In community services, this is broader than most people expect.</p>
+
+    <!-- ACTIVITY 4: MATCH THE TERMS -->
+    <div class="act-wrap">
+      <div class="act-header">
+        <span class="act-type-badge">🔗 Activity 4 · Match the Terms</span>
+        <h3>Crisis intervention vocabulary</h3>
+      </div>
+      <p class="act-instruction">Click a term on the left, then click its matching definition on the right. Matched pairs turn teal. Score appears when all are matched.</p>
+      <div class="match-wrap" id="match4">
+        <div>
+          <div class="match-col-lbl">Terms</div>
+          <div class="match-terms" id="mt4">
+            <div class="match-term" data-id="a" onclick="selectTerm(this,'match4')">Critical incident</div>
+            <div class="match-term" data-id="b" onclick="selectTerm(this,'match4')">Debriefing</div>
+            <div class="match-term" data-id="c" onclick="selectTerm(this,'match4')">CATT</div>
+            <div class="match-term" data-id="d" onclick="selectTerm(this,'match4')">Defusing</div>
+            <div class="match-term" data-id="e" onclick="selectTerm(this,'match4')">Referral</div>
+          </div>
+        </div>
+        <div>
+          <div class="match-col-lbl">Definitions</div>
+          <div class="match-defs" id="md4">
+            <div class="match-def" data-id="c" onclick="selectDef(this,'match4')">Crisis Assessment &amp; Treatment Team — 24/7 mental health emergency response</div>
+            <div class="match-def" data-id="a" onclick="selectDef(this,'match4')">A sudden, unexpected event posing serious risk to life, health or safety</div>
+            <div class="match-def" data-id="e" onclick="selectDef(this,'match4')">Connecting a client to another service or resource for ongoing support</div>
+            <div class="match-def" data-id="b" onclick="selectDef(this,'match4')">A structured process (usually within a week) to process an incident and plan follow-up</div>
+            <div class="match-def" data-id="d" onclick="selectDef(this,'match4')">Immediate post-incident process to allow people to ventilate feelings</div>
+          </div>
+        </div>
+      </div>
+      <div class="match-score" id="match4score"></div>
+      <button class="btn-reset" onclick="resetMatch('match4')" style="margin-top:8px">↩ Reset</button>
+    </div>
+
+    <div class="acc-item open">
+      <div class="acc-head" onclick="toggleAcc(this)">🚨 What counts as a critical incident? <span class="arr">▾</span></div>
+      <div class="acc-body"><p>In general: assault, threats, severe injury, fire, death, bomb threat.</p><p>In community services: self-harm, violent behaviours, missing clients, physical &amp; sexual assaults, medication errors, suicide or attempted suicide — and more.</p></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-head" onclick="toggleAcc(this)">📋 Critical Incident Stress Management (7 steps) <span class="arr">▾</span></div>
+      <div class="acc-body">
+        <ol style="padding-left:18px;font-size:14.5px;line-height:2;">
+          <li><strong>Prepare</strong> — education and training before incidents occur</li>
+          <li><strong>Large-scale strategies</strong> — information, networking, community support</li>
+          <li><strong>Defusing</strong> — immediately after the incident</li>
+          <li><strong>Debriefing</strong> — usually within a week</li>
+          <li><strong>Crisis intervention counselling</strong> — individual face-to-face support</li>
+          <li><strong>Family intervention</strong> — if required</li>
+          <li><strong>Referral</strong> — to follow-up services as needed</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="cs">
+      <div class="cs-label">📖 Case Study · p.45</div>
+      <h3>Simon — Youth Worker Emergency Response</h3>
+      <p>Simon is running a recreation program when Alex arrives intoxicated and agitated — threatening other participants with a pool cue, then producing a knife. Simon evacuates all other clients, locks Alex inside, calls ambulance and police, provides first aid to an injured participant, and later follows up at hospital.</p>
+    </div>
+
+    <!-- ACTIVITY 5: SCENARIO-BASED MCQ -->
+    <div class="act-wrap">
+      <div class="act-header">
+        <span class="act-type-badge">🎯 Activity 5 · Scenario MCQ</span>
+        <h3>What would you do? Three situations, one right call each.</h3>
+      </div>
+      <p class="act-instruction">Read each scenario. Choose the best response. Instant feedback appears below.</p>
+      <div class="smcq-wrap">
+        <!-- MCQ 1 -->
+        <div class="smcq-item">
+          <div class="smcq-scenario"><strong>Situation 1</strong>You're a support worker. A client's ex-partner arrives at their home demanding to be let in, shouting threats. The client is inside and frightened.</div>
+          <div class="smcq-q">What is your FIRST priority?</div>
+          <div class="smcq-opts" id="smcq1">
+            <button class="smcq-btn" onclick="ansSmcq(this,'smcq1',false,'smcqfb1')">A) Try to negotiate and calm the ex-partner down yourself</button>
+            <button class="smcq-btn" onclick="ansSmcq(this,'smcq1',true,'smcqfb1')">B) Ensure the client is safe, remove them from immediate danger if possible, then call for help</button>
+            <button class="smcq-btn" onclick="ansSmcq(this,'smcq1',false,'smcqfb1')">C) Document what you're observing in case it's needed as evidence later</button>
+          </div>
+          <div class="smcq-fb" id="smcqfb1"></div>
+        </div>
+        <!-- MCQ 2 -->
+        <div class="smcq-item">
+          <div class="smcq-scenario"><strong>Situation 2</strong>After a difficult incident at your workplace involving a client in acute distress, your supervisor schedules a team debrief three days later.</div>
+          <div class="smcq-q">What is the purpose of this debriefing session?</div>
+          <div class="smcq-opts" id="smcq2">
+            <button class="smcq-btn" onclick="ansSmcq(this,'smcq2',false,'smcqfb2')">A) To identify who made errors and ensure accountability</button>
+            <button class="smcq-btn" onclick="ansSmcq(this,'smcq2',false,'smcqfb2')">B) To satisfy a mandatory reporting requirement</button>
+            <button class="smcq-btn" onclick="ansSmcq(this,'smcq2',true,'smcqfb2')">C) To process the incident, address acute impacts, and plan follow-up support</button>
+          </div>
+          <div class="smcq-fb" id="smcqfb2"></div>
+        </div>
+        <!-- MCQ 3 -->
+        <div class="smcq-item">
+          <div class="smcq-scenario"><strong>Situation 3</strong>During a home visit, a client seems unusually quiet and refuses to look at you. She says "everything's fine" — but her hands are shaking and she flinches when her partner walks past the room.</div>
+          <div class="smcq-q">These are best described as…</div>
+          <div class="smcq-opts" id="smcq3">
+            <button class="smcq-btn" onclick="ansSmcq(this,'smcq3',false,'smcqfb3')">A) Direct indicators of safety risk — you have enough evidence to act</button>
+            <button class="smcq-btn" onclick="ansSmcq(this,'smcq3',true,'smcqfb3')">B) Indirect indicators — red flags that warrant closer observation and careful questioning</button>
+            <button class="smcq-btn" onclick="ansSmcq(this,'smcq3',false,'smcqfb3')">C) Normal behaviour that shouldn't be read into</button>
+          </div>
+          <div class="smcq-fb" id="smcqfb3"></div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <p class="lbl">🔗 Referrals · p.50</p>
+    <p class="prose">Once immediate crisis is contained, you may need to refer your client to other services for follow-up. Referral is not just "sending someone somewhere" — it's a collaborative process that requires consent, information, and follow-through.</p>
+    <div class="kp-grid">
+      <div class="kp"><span class="kp-icon">🤝</span><span class="kp-text">Discuss options with the client — get their consent</span></div>
+      <div class="kp"><span class="kp-icon">ℹ️</span><span class="kp-text">Provide enough information for an informed choice</span></div>
+      <div class="kp"><span class="kp-icon">✅</span><span class="kp-text">Check eligibility criteria before referring</span></div>
+      <div class="kp"><span class="kp-icon">📋</span><span class="kp-text">Follow your organisation's referral procedure</span></div>
+      <div class="kp"><span class="kp-icon">📄</span><span class="kp-text">Collect and share relevant client information</span></div>
+      <div class="kp"><span class="kp-icon">🔄</span><span class="kp-text">Follow up — check how the referral is working</span></div>
+    </div>
+
+    <div class="cs">
+      <div class="cs-label">📖 Case Study · p.50</div>
+      <h3>Amanda &amp; Elena — Referral in Action</h3>
+      <p>Elena has post-natal depression and has refused counselling and support groups. Amanda listens carefully to Elena's fears (rooted in her grandmother's hospitalisation), asks what would make things different, presents a range of options, lets Elena choose, and offers to accompany her to the first appointment.</p>
+    </div>
+  </div>
+
+  <!-- AFTERNOON BREAK -->
+  <div class="break-card break-afternoon" id="break3">
+    <h3>🍫 Afternoon Break</h3>
+    <p>1:45pm – 2:00pm · 15 minutes. When you're back: Activity Block, then the branching scenario.</p>
+  </div>
+
+  <!-- ============================================================
+       DEDICATED ACTIVITY BLOCK
+       ============================================================ -->
+  <div class="sec" id="activities">
+    <div class="sec-head">
+      <div class="sec-num n-violet">6</div>
+      <div class="sec-title-wrap"><h2>🧩 Activity Block — Consolidation</h2><p>2:00pm – 2:30pm · Work through these independently at your own pace</p></div>
+    </div>
+    <div class="si si-violet">
+      <div class="si-label" style="color:var(--violet)">🎯 Independent Activities</div>
+      <h2>Time to lock it in.</h2>
+      <p>Two more activities to consolidate everything from today. Work at your own pace — no submission, just your own learning.</p>
+    </div>
+
+    <!-- ACTIVITY 6a: MIX & MATCH SORTING -->
+    <div class="act-wrap">
+      <div class="act-header">
+        <span class="act-type-badge">🗂️ Activity 6a · Mix &amp; Match Sort</span>
+        <h3>Sort each item into the right category</h3>
+      </div>
+      <p class="act-instruction">Tap an item to select it (it turns navy), then tap a category to place it there. Tap a placed item to move it back. Check when done.</p>
+      <div class="sort-wrap" id="sort6">
+        <p style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:8px;">Items to sort:</p>
+        <div class="sort-items" id="si6">
+          <div class="sort-chip" data-id="0" data-cat="pfa" onclick="selectSortChip(this,'sort6')">Listen but don't pressure</div>
+          <div class="sort-chip" data-id="1" data-cat="cism" onclick="selectSortChip(this,'sort6')">Debriefing within a week</div>
+          <div class="sort-chip" data-id="2" data-cat="pfa" onclick="selectSortChip(this,'sort6')">Protect from further harm</div>
+          <div class="sort-chip" data-id="3" data-cat="roberts" onclick="selectSortChip(this,'sort6')">Assess lethality first</div>
+          <div class="sort-chip" data-id="4" data-cat="cism" onclick="selectSortChip(this,'sort6')">Defusing immediately after</div>
+          <div class="sort-chip" data-id="5" data-cat="roberts" onclick="selectSortChip(this,'sort6')">Develop an action plan</div>
+          <div class="sort-chip" data-id="6" data-cat="pfa" onclick="selectSortChip(this,'sort6')">Connect to social supports</div>
+          <div class="sort-chip" data-id="7" data-cat="roberts" onclick="selectSortChip(this,'sort6')">Establish rapport</div>
+          <div class="sort-chip" data-id="8" data-cat="cism" onclick="selectSortChip(this,'sort6')">Education &amp; preparation</div>
+          <div class="sort-chip" data-id="9" data-cat="pfa" onclick="selectSortChip(this,'sort6')">Provide comfort and calm</div>
+        </div>
+        <div class="sort-categories" id="sc6">
+          <div class="sort-cat" data-cat="pfa" onclick="placeSortChip(this,'sort6')">
+            <div class="sort-cat-lbl" style="color:var(--teal-d)">🩹 Psychological First Aid</div>
+            <div class="sort-cat-items"></div>
+          </div>
+          <div class="sort-cat" data-cat="roberts" onclick="placeSortChip(this,'sort6')">
+            <div class="sort-cat-lbl" style="color:var(--rose)">📋 Roberts' 7 Stages</div>
+            <div class="sort-cat-items"></div>
+          </div>
+          <div class="sort-cat" data-cat="cism" onclick="placeSortChip(this,'sort6')">
+            <div class="sort-cat-lbl" style="color:var(--navy)">🚨 Critical Incident Stress Management</div>
+            <div class="sort-cat-items"></div>
+          </div>
+        </div>
+        <button class="sort-check-btn" onclick="checkSort('sort6','sort6result')">Check answers</button>
+        <button class="sort-reset-btn" onclick="resetSort('sort6','sort6result')">↩ Reset</button>
+        <div class="act-result" id="sort6result"></div>
+      </div>
+    </div>
+
+    <!-- ACTIVITY 6b: FILL IN THE BLANKS (REFERRAL PROCESS) -->
+    <div class="act-wrap" style="margin-top:22px;">
+      <div class="act-header">
+        <span class="act-type-badge">✏️ Activity 6b · Fill the Blanks</span>
+        <h3>The referral process — complete the sentences</h3>
+      </div>
+      <p class="act-instruction">Type directly into each blank, or use the word bank. Check your answers when done.</p>
+      <div class="word-bank" id="wbank6b">
+        <span class="word-chip" onclick="selectChip(this,'wbank6b')">consent</span>
+        <span class="word-chip" onclick="selectChip(this,'wbank6b')">eligibility</span>
+        <span class="word-chip" onclick="selectChip(this,'wbank6b')">follow up</span>
+        <span class="word-chip" onclick="selectChip(this,'wbank6b')">informed</span>
+        <span class="word-chip" onclick="selectChip(this,'wbank6b')">policies</span>
+      </div>
+      <div class="cloze-wrap" id="cloze6b">
+        <p>Before making a referral, you must obtain the client's <span class="blank" data-answer="consent" onclick="placeChip(this,'wbank6b')">___</span>.</p>
+        <p>Provide enough information so the client can make an <span class="blank" data-answer="informed" onclick="placeChip(this,'wbank6b')">___</span> choice about where they go.</p>
+        <p>Check the organisation's <span class="blank" data-answer="eligibility" onclick="placeChip(this,'wbank6b')">___</span> criteria before referring.</p>
+        <p>Follow your organisation's <span class="blank" data-answer="policies" onclick="placeChip(this,'wbank6b')">___</span> and procedures for making referrals.</p>
+        <p>After the referral, always <span class="blank" data-answer="follow up" onclick="placeChip(this,'wbank6b')">___</span> to check progress and outcomes.</p>
+      </div>
+      <div class="cloze-btns">
+        <button class="btn-check" onclick="checkCloze('cloze6b','cloze6bresult')">Check answers</button>
+        <button class="btn-reveal" onclick="revealCloze('cloze6b','wbank6b')">Reveal all</button>
+        <button class="btn-reset-cloze" onclick="resetCloze('cloze6b','wbank6b','cloze6bresult')">↩ Reset</button>
+      </div>
+      <div class="act-result" id="cloze6bresult"></div>
+    </div>
+
+    <div class="tip tip-amber">
+      <h4>🔗 Before the branching scenario</h4>
+      <p>If you worked through the activities, you've now touched every core concept from today — through multiple formats. The branching scenario coming up will test whether you can apply all of it in a live situation. Trust what you know.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       BRANCHING SCENARIO
+       ============================================================ -->
+  <div class="sec" id="scenario">
+    <div class="sec-head">
+      <div class="sec-num n-peach">7</div>
+      <div class="sec-title-wrap"><h2>Branching Scenario — Decision Time</h2><p>2:30pm – 3:00pm · 4 scenes, one right call each</p></div>
+    </div>
+    <div class="si si-peach">
+      <div class="si-label" style="color:var(--peach)">🎭 Interactive Scenario</div>
+      <h2>What would you do? Every choice has consequences.</h2>
+      <p>You must choose the correct response to progress to the next scene. Wrong or partial answers show a "try again" button.</p>
+    </div>
+    <div class="sens-note">⚠️ This scenario involves mental health crisis, self-harm indicators, and emergency response. Engage at a pace that's manageable for you.</div>
+    <div class="scenario-wrap">
+      <div class="scenario-badge">🆕 Introducing Leilani</div>
+      <!-- SCENE 1 -->
+      <div class="scene active" id="scene1">
+        <div class="scene-header"><div class="scene-num">Scene 1 of 4</div><h4>The home visit — something isn't right</h4></div>
+        <div class="scene-body">
+          <p>You're Leilani, a support worker at a community mental health service. You've arrived for a scheduled visit with Marcus, 34, who has been managing well for months. Today feels different — he's pacing, won't make eye contact, arms covered despite warm weather. He says "fine, you can go."</p>
+          <p><strong>What do you do?</strong></p>
+          <div class="scene-choices">
+            <button class="sc-btn" onclick="pick1(this,'ok')">A) Gently acknowledge what you observe: "Marcus, I'm noticing you seem really flat today. I'm not going anywhere — can we sit for a few minutes?"</button>
+            <button class="sc-btn" onclick="pick1(this,'no')">B) Respect his wish and leave — he said he's fine, and client autonomy matters.</button>
+            <button class="sc-btn" onclick="pick1(this,'part')">C) Call your supervisor from the doorstep before doing anything else.</button>
+          </div>
+          <div class="sc-out out-ok" id="s1ok">✅ <strong>Right call.</strong> You've spotted multiple indirect indicators — pacing, avoidance, covered arms, flat affect. Acknowledging what you observe without diagnosing is crisis-aware practice at its best. This is stage 1 (recognise) and stage 3 (release tension through presence).</div>
+          <div class="sc-out out-no" id="s1no">❌ <strong>Not yet.</strong> "Fine" in crisis often means the opposite. Marcus is showing multiple indirect indicators — and people in early crisis often push helpers away. Leaving without acknowledging what you've observed misses a critical safety signal.</div>
+          <div class="sc-out out-part" id="s1part">🟡 <strong>Close.</strong> Consulting your supervisor is right — but not before attempting to engage. Calling from the doorstep signals to Marcus that you're not really present. Stay, engage, then consult.</div>
+          <button class="sc-next" id="s1next" onclick="goScene(2)">Next scene →</button>
+          <button class="sc-retry" id="s1retry" onclick="resetS1()">↩ Try again</button>
+        </div>
+      </div>
+      <!-- SCENE 2 -->
+      <div class="scene" id="scene2">
+        <div class="scene-header"><div class="scene-num">Scene 2 of 4</div><h4>Marcus discloses — now what?</h4></div>
+        <div class="scene-body">
+          <p>Marcus pulls up his sleeves and shows you fresh cuts on his forearms. He says he's been cutting himself for a week when he feels overwhelmed. He looks ashamed and adds: "I'm not trying to kill myself — it's the only thing that makes the feelings stop."</p>
+          <p><strong>What do you do first?</strong></p>
+          <div class="scene-choices">
+            <button class="sc-btn" onclick="pickO(this,'ok','s2g','s2b','s2o')">A) Stay calm, maintain eye contact: "Thank you for trusting me with this. Can you tell me more about what's been feeling overwhelming?"</button>
+            <button class="sc-btn" onclick="pickO(this,'no','s2g','s2b','s2o')">B) Call an ambulance immediately — any self-harm triggers emergency services.</button>
+            <button class="sc-btn" onclick="pickO(this,'part','s2g','s2b','s2o')">C) Express concern but make clear this behaviour must stop — he needs to understand the danger.</button>
+          </div>
+          <div class="sc-out out-ok" id="s2o" style="display:none"></div>
+          <button class="sc-next" id="s2next" onclick="goScene(3)" style="display:none">Next scene →</button>
+          <button class="sc-retry" id="s2retry" onclick="resetSc('scene2',['s2o'])" style="display:none">↩ Try again</button>
+        </div>
+      </div>
+      <!-- SCENE 3 -->
+      <div class="scene" id="scene3">
+        <div class="scene-header"><div class="scene-num">Scene 3 of 4</div><h4>Assessing risk — asking the hard question</h4></div>
+        <div class="scene-body">
+          <p>You've listened to Marcus for 15 minutes. He's calmer but flat. You know self-harm and suicidal ideation can co-exist, even when the person distinguishes them. You need to ask directly. <strong>How?</strong></p>
+          <div class="scene-choices">
+            <button class="sc-btn" onclick="pickO(this,'no','s3g','s3b','s3o')">A) Don't ask directly — it might plant the idea or make things worse.</button>
+            <button class="sc-btn" onclick="pickO(this,'ok','s3g','s3b','s3o')">B) Ask clearly and calmly: "Marcus, sometimes when people hurt themselves like this, they're also having thoughts of suicide. Are you having thoughts of ending your life?"</button>
+            <button class="sc-btn" onclick="pickO(this,'part','s3g','s3b','s3o')">C) Ask vaguely: "You're not thinking of doing anything... serious... are you?"</button>
+          </div>
+          <div class="sc-out out-ok" id="s3o" style="display:none"></div>
+          <button class="sc-next" id="s3next" onclick="goScene(4)" style="display:none">Next scene →</button>
+          <button class="sc-retry" id="s3retry" onclick="resetSc('scene3',['s3o'])" style="display:none">↩ Try again</button>
+        </div>
+      </div>
+      <!-- SCENE 4 -->
+      <div class="scene" id="scene4">
+        <div class="scene-header"><div class="scene-num">Scene 4 of 4</div><h4>Planning next steps — collaboration in action</h4></div>
+        <div class="scene-body">
+          <p>Marcus says he is not suicidal. He's been isolated and overwhelmed since losing his job three weeks ago. He's scared of being hospitalised, so hasn't told his psychiatrist. You need to help him plan next steps. <strong>How do you approach this?</strong></p>
+          <div class="scene-choices">
+            <button class="sc-btn" onclick="pickO(this,'no','s4g','s4b','s4o')">A) Tell Marcus you'll arrange an urgent psychiatrist appointment today — this isn't optional given the seriousness.</button>
+            <button class="sc-btn" onclick="pickO(this,'part','s4g','s4b','s4o')">B) Agree to keep this between you for now — reporting might destroy his trust in support workers.</button>
+            <button class="sc-btn" onclick="pickO(this,'ok','s4g','s4b','s4o')">C) Work collaboratively: explore what he'd find helpful, be honest about your duty of care, and agree a plan together — including informing his psychiatrist in a way that feels manageable for him.</button>
+          </div>
+          <div class="sc-out out-ok" id="s4o" style="display:none"></div>
+          <button class="sc-next" id="s4next" onclick="completeScenario()" style="display:none">🎉 Complete scenario</button>
+          <button class="sc-retry" id="s4retry" onclick="resetSc('scene4',['s4o'])" style="display:none">↩ Try again</button>
+        </div>
+      </div>
+      <div class="sc-complete" id="sc-complete">
+        <div class="stamp">🏆</div>
+        <h4>Scenario complete — well done, Leilani.</h4>
+        <p>You stayed present, asked the hard questions directly, and worked collaboratively with Marcus while honouring your duty of care. That's crisis intervention done well.</p>
+      </div>
+    </div>
+    <div class="disc d-amber" style="margin-top:20px;">
+      <h4>💬 Class Debrief</h4>
+      <ul>
+        <li>Which scene was hardest to navigate — and why?</li>
+        <li>Why does research tell us that asking directly about suicide <em>reduces</em> risk?</li>
+        <li>When does collaboration end and directive practice begin?</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       REVIEW QUIZ
+       ============================================================ -->
+  <div class="sec" id="review">
+    <div class="sec-head">
+      <div class="sec-num n-sky">8</div>
+      <div class="sec-title-wrap"><h2>Review Quiz — Knowledge Check</h2><p>From 3:00pm · Ch.3 Review Questions, p.51</p></div>
+    </div>
+    <div class="si si-sky">
+      <div class="si-label" style="color:var(--sky)">📝 Knowledge Check · p.51</div>
+      <h2>How much landed today?</h2>
+      <p>Five questions drawn from the chapter review. These will appear in assessment — take your time.</p>
+    </div>
+    <div class="rq-q">
+      <p><span class="rq-badge">1</span>Which best describes a core principle of crisis intervention?</p>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansRQ(this,'rq1',false,'rfb1')">Focus on long-term therapeutic resolution of presenting issues</button>
+        <button class="opt-btn" onclick="ansRQ(this,'rq1',false,'rfb1')">Use only specialist clinical services</button>
+        <button class="opt-btn" onclick="ansRQ(this,'rq1',true,'rfb1')">Keep it simple, respond quickly, address individual situations and needs</button>
+        <button class="opt-btn" onclick="ansRQ(this,'rq1',false,'rfb1')">Remain directive throughout — the client cannot make decisions during crisis</button>
+      </div>
+      <div class="qfb" id="rfb1"></div>
+    </div>
+    <div class="rq-q">
+      <p><span class="rq-badge">2</span>Which definition of "critical incident" best matches the Learner Guide?</p>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansRQ(this,'rq2',false,'rfb2')">A planned situation involving managed risk</button>
+        <button class="opt-btn" onclick="ansRQ(this,'rq2',true,'rfb2')">A sudden, unexpected event that overwhelms coping and poses serious risk to life, health or safety</button>
+        <button class="opt-btn" onclick="ansRQ(this,'rq2',false,'rfb2')">Any incident resulting in physical injury</button>
+        <button class="opt-btn" onclick="ansRQ(this,'rq2',false,'rfb2')">A documented complaint made by a client</button>
+      </div>
+      <div class="qfb" id="rfb2"></div>
+    </div>
+    <div class="rq-q">
+      <p><span class="rq-badge">3</span>Which two skill areas are essential for identifying and assessing safety concerns?</p>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansRQ(this,'rq3',false,'rfb3')">Report writing and file management</button>
+        <button class="opt-btn" onclick="ansRQ(this,'rq3',true,'rfb3')">Observation, and effective questioning and listening</button>
+        <button class="opt-btn" onclick="ansRQ(this,'rq3',false,'rfb3')">Medical assessment and pharmacological knowledge</button>
+        <button class="opt-btn" onclick="ansRQ(this,'rq3',false,'rfb3')">Crisis theory knowledge and legal terminology</button>
+      </div>
+      <div class="qfb" id="rfb3"></div>
+    </div>
+    <div class="rq-q">
+      <p><span class="rq-badge">4</span>Which best describes the key aims of crisis intervention?</p>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansRQ(this,'rq4',false,'rfb4')">Diagnose the client's mental health condition and provide a treatment plan</button>
+        <button class="opt-btn" onclick="ansRQ(this,'rq4',false,'rfb4')">Remove the client from their environment and place them in a safe facility</button>
+        <button class="opt-btn" onclick="ansRQ(this,'rq4',true,'rfb4')">Recognise the crisis, mitigate its impact, restore the person's capacity to function, and refer as needed</button>
+        <button class="opt-btn" onclick="ansRQ(this,'rq4',false,'rfb4')">Provide ongoing support until underlying causes are resolved</button>
+      </div>
+      <div class="qfb" id="rfb4"></div>
+    </div>
+    <div class="rq-q">
+      <p><span class="rq-badge">5</span>What are "indirect indicators" of safety issues?</p>
+      <div class="opts">
+        <button class="opt-btn" onclick="ansRQ(this,'rq5',false,'rfb5')">Visible physical injuries such as bruises or wounds</button>
+        <button class="opt-btn" onclick="ansRQ(this,'rq5',false,'rfb5')">Official reports filed by other workers</button>
+        <button class="opt-btn" onclick="ansRQ(this,'rq5',true,'rfb5')">Verbal and non-verbal hints — body language, changed behaviour, contradictions — suggesting fear or risk</button>
+        <button class="opt-btn" onclick="ansRQ(this,'rq5',false,'rfb5')">Documented medical diagnoses from treating clinicians</button>
+      </div>
+      <div class="qfb" id="rfb5"></div>
+    </div>
+    <div class="rq-score" id="reviewScore">
+      <div class="snum" id="reviewScoreNum"></div>
+      <p id="reviewScoreMsg"></p>
+    </div>
+    <hr>
+    <p class="lbl">✍️ Session Reflection</p>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:6px;">Just for you — won't be submitted or seen by anyone.</p>
+    <textarea class="reflect-area" placeholder="What's the most important thing you're taking away from today? Is there a moment from the activities or scenario that's stuck with you? What do you still want to understand better?"></textarea>
+  </div>
+
+  <div class="tut-card" id="tutorial">
+    <h3>💬 1:1 Tutorial Time</h3>
+    <p>From 3:00pm onwards. Dally is available for individual conversations — assessment tasks, today's content, or anything else on your mind. No agenda except yours.</p>
+  </div>
+  <div class="coming-card" id="coming">
+    <h3>🔭 Coming Up — Session 4: Crisis Intervention Practices</h3>
+    <p>Next session we move into hands-on practice — addressing safety concerns in real time, asking directly about risk, balancing direction with collaboration, and confirming actions meet legal and ethical standards. Leilani's story continues.</p>
+    <div class="coming-tags">
+      <span class="ctag">📖 Ch.4 pp.52–57</span>
+      <span class="ctag">🎭 Scenario continues</span>
+      <span class="ctag">⚖️ Duty of care in action</span>
+      <span class="ctag">💬 Role play</span>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<script>
+// ===================== PROGRESS BAR =====================
+const emojis=['🌱','🌿','🌳','⭐','🌟','🏆'];
+function updateProg(){
+  const s=document.documentElement,b=document.getElementById('progBar'),e=document.getElementById('progEmoji');
+  const pct=Math.min(100,(s.scrollTop||document.body.scrollTop)/(s.scrollHeight-s.clientHeight)*100);
+  b.style.width=pct+'%';
+  e.textContent=emojis[Math.min(emojis.length-1,Math.floor(pct/17))];
+}
+document.addEventListener('scroll',updateProg,{passive:true});
+updateProg();
+
+// ===================== SMOOTH SCROLL =====================
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const el=document.querySelector(a.getAttribute('href'));
+    if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+// ===================== STAGE FLOW =====================
+function toggleS(item){
+  const was=item.classList.contains('sact');
+  document.querySelectorAll('.stage-item').forEach(i=>i.classList.remove('sact'));
+  if(!was)item.classList.add('sact');
+}
+
+// ===================== ACCORDION =====================
+function toggleAcc(h){h.closest('.acc-item').classList.toggle('open');}
+
+// ===================== ICEBREAKER QUIZ =====================
+let quizAnswered={};
+const qFB={
+  qq1:{ok:'✅ Correct! Crisis intervention is short-term and immediate — like first aid. Long-term therapeutic work is a separate role.',no:'❌ Crisis intervention is about immediate stabilisation, not resolving root causes. Think first aid, not therapy.'},
+  qq2:{ok:'✅ Exactly. PFA says listen but don\'t pressure. Creating safety — not urgency — is the core of PFA.',no:'❌ Pressuring people to talk too soon can worsen distress. Follow the person\'s pace.'},
+  qq3:{ok:'✅ Correct. Critical incidents in community services include self-harm, medication errors, missing clients, violence, and more.',no:'❌ Physical assault is one type — critical incidents cover a much broader range.'},
+  qq4:{ok:'✅ Right. Consent and client involvement are non-negotiable, even in crisis. The referral should feel like an empowering choice.',no:'❌ Even during crisis, client autonomy must be respected. The worker presents options and supports decision-making.'},
+  qq5:{ok:'✅ Correct. Indirect signs are often the earliest warning. Dismissing them is a significant professional error.',no:'❌ Indirect indicators are not less reliable — they\'re frequently the first and only warning available.'}
+};
+function ansQ(btn,qId,correct,fbId){
+  if(quizAnswered[qId])return;
+  quizAnswered[qId]=true;
+  btn.closest('.opts').querySelectorAll('.opt-btn').forEach(b=>{if(b!==btn)b.classList.add('disabled');});
+  btn.classList.add(correct?'correct':'wrong');
+  const fb=document.getElementById(fbId);
+  fb.textContent=correct?qFB[qId].ok:qFB[qId].no;
+  fb.className='qfb show '+(correct?'ok':'no');
+  if(Object.keys(quizAnswered).length===5){
+    document.getElementById('quizScoreNum').textContent=Object.keys(quizAnswered).length+'/5';
+    document.getElementById('quizScoreMsg').textContent='Every question maps to something explored in depth today. Discuss the ones that felt uncertain!';
+    document.getElementById('quizScore').classList.add('show');
+  }
+}
+
+// ===================== TRUE/FALSE =====================
+const tfState={};
+function answerTF(idx,groupId,answerIsTrue,btn){
+  const itemId='tfi'+idx;
+  if(document.getElementById(itemId).classList.contains('answered'))return;
+  document.getElementById(itemId).classList.add('answered');
+  const correct=answerIsTrue;// btn already has correct logic via onclick mapping
+  const allBtns=btn.closest('.tf-btns').querySelectorAll('.tf-btn');
+  allBtns.forEach(b=>b.style.pointerEvents='none');
+  btn.classList.add(correct?'correct':'wrong');
+  if(!correct){
+    // reveal which would have been correct
+    allBtns.forEach(b=>{if(b!==btn)b.classList.add('reveal-correct');});
+  }
+  document.getElementById('tfe'+idx).classList.add('show');
+  if(!tfState[groupId])tfState[groupId]=0;
+  tfState[groupId]++;
+  const total=document.getElementById(groupId).querySelectorAll('.tf-item').length;
+  if(tfState[groupId]===total){
+    const sc=document.getElementById(groupId+'score');
+    sc.textContent='All done! Check the explanations above — they\'ll come up again in assessment.';
+    sc.classList.add('show');
+  }
+}
+
+// ===================== MATCH THE TERMS =====================
+const matchState={};
+function selectTerm(el,groupId){
+  if(el.classList.contains('matched'))return;
+  if(!matchState[groupId])matchState[groupId]={selectedTerm:null,selectedDef:null,matched:0};
+  document.querySelectorAll(`#${groupId} .match-term`).forEach(t=>{if(!t.classList.contains('matched'))t.classList.remove('selected');});
+  el.classList.toggle('selected');
+  matchState[groupId].selectedTerm=el.classList.contains('selected')?el:null;
+  checkMatchPair(groupId);
+}
+function selectDef(el,groupId){
+  if(el.classList.contains('matched'))return;
+  if(!matchState[groupId])matchState[groupId]={selectedTerm:null,selectedDef:null,matched:0};
+  document.querySelectorAll(`#${groupId} .match-def`).forEach(d=>{if(!d.classList.contains('matched'))d.classList.remove('selected');});
+  el.style.borderColor='var(--teal)';el.style.background='var(--teal-l)';
+  matchState[groupId].selectedDef=el;
+  checkMatchPair(groupId);
+}
+function checkMatchPair(groupId){
+  const s=matchState[groupId];
+  if(!s||!s.selectedTerm||!s.selectedDef)return;
+  const term=s.selectedTerm,def=s.selectedDef;
+  if(term.dataset.id===def.dataset.id){
+    term.classList.add('matched');term.classList.remove('selected');
+    def.classList.add('matched');def.style.borderColor='';def.style.background='';
+    s.matched++;s.selectedTerm=null;s.selectedDef=null;
+    const total=document.querySelectorAll(`#${groupId} .match-term`).length;
+    const sc=document.getElementById(groupId+'score');
+    sc.textContent=`✅ ${s.matched} / ${total} matched`;
+    if(s.matched===total){sc.textContent='🎉 Perfect! All matched correctly.';launchConfetti();}
+  } else {
+    [term,def].forEach(el=>{
+      el.classList.add('wrong-flash');
+      setTimeout(()=>{el.classList.remove('wrong-flash');},600);
+    });
+    term.classList.remove('selected');
+    def.style.borderColor='';def.style.background='';
+    s.selectedTerm=null;s.selectedDef=null;
+  }
+}
+function resetMatch(groupId){
+  document.querySelectorAll(`#${groupId} .match-term, #${groupId} .match-def`).forEach(el=>{
+    el.classList.remove('matched','selected','wrong-flash');
+    el.style.borderColor='';el.style.background='';
+  });
+  matchState[groupId]={selectedTerm:null,selectedDef:null,matched:0};
+  document.getElementById(groupId+'score').textContent='';
+}
+
+// ===================== FILL IN THE BLANKS (CLOZE) =====================
+let selectedChip=null;
+function selectChip(el,bankId){
+  if(el.classList.contains('used'))return;
+  document.querySelectorAll(`#${bankId} .word-chip`).forEach(c=>c.style.background='');
+  if(selectedChip===el){selectedChip=null;el.style.background='';return;}
+  selectedChip=el;
+  el.style.background='var(--violet)';el.style.color='#fff';
+}
+function placeChip(blankEl,bankId){
+  if(!selectedChip){
+    // allow direct typing fallback — do nothing
+    return;
+  }
+  const word=selectedChip.textContent.trim();
+  // If blank already has a word, return it to bank
+  const prev=blankEl.dataset.current;
+  if(prev){
+    document.querySelectorAll(`#${bankId} .word-chip`).forEach(c=>{
+      if(c.textContent.trim()===prev)c.classList.remove('used');
+    });
+  }
+  blankEl.textContent=word;
+  blankEl.dataset.current=word;
+  blankEl.classList.remove('correct-ans','wrong-ans','revealed');
+  selectedChip.classList.add('used');
+  selectedChip.style.background='';selectedChip.style.color='';
+  selectedChip=null;
+}
+function checkCloze(clozeId,resultId){
+  const blanks=document.getElementById(clozeId).querySelectorAll('.blank');
+  let correct=0;
+  blanks.forEach(b=>{
+    const ans=(b.dataset.current||b.value||b.textContent||'').trim().toLowerCase();
+    const expected=b.dataset.answer.toLowerCase();
+    b.classList.remove('correct-ans','wrong-ans','revealed');
+    if(ans===expected){b.classList.add('correct-ans');correct++;}
+    else if(ans){b.classList.add('wrong-ans');}
+  });
+  const total=blanks.length,res=document.getElementById(resultId);
+  res.classList.add('show');
+  if(correct===total){res.textContent='🎉 Perfect — all blanks correct!';res.className='act-result show ok';launchConfetti();}
+  else if(correct>=total/2){res.textContent=`✅ ${correct}/${total} correct — nearly there! Check the highlighted ones.`;res.className='act-result show partial';}
+  else{res.textContent=`${correct}/${total} correct — try "Reveal all" to see the answers, then reset and try again.`;res.className='act-result show retry';}
+}
+function revealCloze(clozeId,bankId){
+  document.getElementById(clozeId).querySelectorAll('.blank').forEach(b=>{
+    b.textContent=b.dataset.answer;b.dataset.current=b.dataset.answer;
+    b.classList.add('revealed');b.classList.remove('correct-ans','wrong-ans');
+  });
+  if(bankId)document.querySelectorAll(`#${bankId} .word-chip`).forEach(c=>c.classList.add('used'));
+}
+function resetCloze(clozeId,bankId,resultId){
+  document.getElementById(clozeId).querySelectorAll('.blank').forEach(b=>{
+    b.textContent='___';b.dataset.current='';
+    b.classList.remove('correct-ans','wrong-ans','revealed');
+  });
+  if(bankId)document.querySelectorAll(`#${bankId} .word-chip`).forEach(c=>{
+    c.classList.remove('used');c.style.background='';c.style.color='';
+  });
+  selectedChip=null;
+  const res=document.getElementById(resultId);
+  if(res){res.className='act-result';res.textContent='';}
+}
+
+// ===================== SCENARIO MCQ =====================
+const smcqFB={
+  smcq1:{ok:'✅ Correct. Safety first — ensure the client is physically safe before anything else. Then call for help. Negotiating yourself in a DFV situation without backup is dangerous.',no:'❌ Your safety and your client\'s safety come before documentation or solo negotiation. Remove from danger, then call for help.'},
+  smcq2:{ok:'✅ Correct. Debriefing is about processing the incident, addressing its impact on staff, and planning follow-up — not finding fault.',no:'❌ Debriefing is not about accountability or compliance. It\'s about supporting people who\'ve been through something difficult.'},
+  smcq3:{ok:'✅ Correct. These are indirect indicators — verbal and non-verbal cues that something may be wrong. They\'re red flags, not evidence. You observe more carefully, ask carefully, and document.',no:'❌ These aren\'t direct evidence — they\'re indirect indicators. That means closer observation and careful questioning, not immediate action or dismissal.'}
+};
+function ansSmcq(btn,groupId,correct,fbId){
+  const group=document.getElementById(groupId);
+  if(group.dataset.answered)return;
+  group.dataset.answered='1';
+  group.querySelectorAll('.smcq-btn').forEach(b=>{
+    b.classList.add(b===btn?(correct?'sc-correct':'sc-wrong'):'sc-disabled');
+    if(!correct&&b!==btn&&b.getAttribute('onclick').includes('true'))b.classList.add('sc-reveal');
+  });
+  const fb=document.getElementById(fbId);
+  fb.textContent=correct?smcqFB[groupId].ok:smcqFB[groupId].no;
+  fb.className='smcq-fb show';
+}
+
+// ===================== SORTING =====================
+const sortState={};
+function selectSortChip(el,groupId){
+  if(el.classList.contains('placed'))return;
+  if(!sortState[groupId])sortState[groupId]={selected:null};
+  const prev=sortState[groupId].selected;
+  if(prev)prev.classList.remove('selected-chip');
+  if(prev===el){sortState[groupId].selected=null;return;}
+  el.classList.add('selected-chip');
+  sortState[groupId].selected=el;
+}
+function placeSortChip(catEl,groupId){
+  const s=sortState[groupId];
+  if(!s||!s.selected)return;
+  const chip=s.selected;
+  chip.classList.remove('selected-chip');chip.classList.add('placed');
+  // create a cat chip
+  const catChip=document.createElement('div');
+  catChip.className='sort-cat-chip';
+  catChip.textContent=chip.textContent;
+  catChip.dataset.id=chip.dataset.id;
+  catChip.style.background='var(--navy-l)';catChip.style.color='var(--navy)';catChip.style.border='1.5px solid #c5cef5';
+  catChip.onclick=()=>{
+    // remove from cat, put back in pool
+    catChip.remove();
+    chip.classList.remove('placed');
+    catEl.classList.remove('cat-correct','cat-wrong');
+    s.selected=null;
+  };
+  catEl.querySelector('.sort-cat-items').appendChild(catChip);
+  s.selected=null;
+}
+function checkSort(groupId,resultId){
+  const cats=document.querySelectorAll(`#${groupId} .sort-cat`);
+  let correct=0,total=0;
+  cats.forEach(cat=>{
+    const expectedCat=cat.dataset.cat;
+    const chips=cat.querySelectorAll('.sort-cat-chip');
+    let catCorrect=true;
+    chips.forEach(c=>{
+      const originalChip=document.querySelector(`#si${groupId.replace('sort','')} [data-id="${c.dataset.id}"]`);
+      const correctCat=originalChip?originalChip.dataset.cat:null;
+      if(correctCat===expectedCat){correct++;c.style.background='var(--teal-l)';c.style.color='var(--teal-d)';c.style.border='1.5px solid #b2e8e3';}
+      else{catCorrect=false;c.style.background='var(--peach-l)';c.style.color='#7a2e0e';c.style.border='1.5px solid #fcd0b3';}
+      total++;
+    });
+    if(chips.length>0)cat.classList.add(catCorrect?'cat-correct':'cat-wrong');
+  });
+  const res=document.getElementById(resultId);res.classList.add('show');
+  // count total items
+  const allItems=document.querySelectorAll(`#si${groupId.replace('sort','')} .sort-chip`).length;
+  if(correct===allItems&&total===allItems){res.textContent='🎉 Perfect sort — all items in the right category!';res.className='act-result show ok';launchConfetti();}
+  else if(correct>=Math.ceil(allItems/2)){res.textContent=`✅ ${correct}/${allItems} correct. Check the highlighted ones and try resetting.`;res.className='act-result show partial';}
+  else{res.textContent=`${correct}/${allItems} correct. Review the content and try again!`;res.className='act-result show retry';}
+}
+function resetSort(groupId,resultId){
+  // move all cat chips back to pool
+  document.querySelectorAll(`#${groupId} .sort-cat-items .sort-cat-chip`).forEach(c=>{
+    const id=c.dataset.id;
+    const orig=document.querySelector(`#si${groupId.replace('sort','')} [data-id="${id}"]`);
+    if(orig){orig.classList.remove('placed');orig.classList.remove('selected-chip');}
+    c.remove();
+  });
+  document.querySelectorAll(`#${groupId} .sort-cat`).forEach(c=>c.classList.remove('cat-correct','cat-wrong'));
+  if(sortState[groupId])sortState[groupId].selected=null;
+  const res=document.getElementById(resultId);
+  if(res){res.className='act-result';res.textContent='';}
+}
+
+// ===================== FLASHCARDS =====================
+const flashData3=[
+  {q:'What does "Psychological First Aid" stand for?',a:'PFA. It\'s an evidence-informed approach providing practical, social and psychological support after crisis — without pressuring people to talk.'},
+  {q:'Name the 4 principles of Psychological First Aid.',a:'1) Listen but don\'t pressure · 2) Provide comfort and calm · 3) Connect to information, services and social supports · 4) Protect from further harm.'},
+  {q:'What is stage 1 of Roberts\' Seven Stage Model?',a:'Assess lethality — evaluate risk of harm and current mental health status before anything else.'},
+  {q:'What does "cognitive restructuring" mean in a crisis context?',a:'Encouraging realistic thinking — gently helping someone move from catastrophic ("my life is over") to reality-based ("what\'s actually true right now?").'},
+  {q:'What is the purpose of "defusing" after a critical incident?',a:'To allow those immediately affected to ventilate and express feelings right after the incident — before formal debriefing occurs.'},
+  {q:'What is a CATT, and when is one called?',a:'Crisis Assessment and Treatment Team. Called for mental health emergencies — psychotic episodes, self-harm, suicidal ideation, or feeling out of control. Available 24/7.'}
+];
+const flashStates={};
+function initFlash(id,data){
+  flashStates[id]={idx:0,results:[],data,flipped:false};
+  renderFlash(id);
+}
+function renderFlash(id){
+  const s=flashStates[id];
+  document.getElementById('fq'+id).textContent=s.data[s.idx].q;
+  document.getElementById('fa'+id).textContent=s.data[s.idx].a;
+  document.getElementById('fcounter'+id).textContent=(s.idx+1)+' / '+s.data.length;
+  const card=document.getElementById('fcard'+id);
+  card.classList.remove('flipped');s.flipped=false;
+  document.getElementById('fjudge'+id).classList.remove('show');
+  // pips
+  s.data.forEach((_,i)=>{
+    const pip=document.getElementById('fpip'+id+'-'+i);
+    if(!pip)return;
+    pip.className='flash-pip'+(i===s.idx?' current':s.results[i]===true?' know':s.results[i]===false?' dontknow':'');
+  });
+  const sum=document.getElementById('fsum'+id);
+  if(sum)sum.classList.remove('show');
+}
+function flipFlashCard(id){
+  const s=flashStates[id];
+  const card=document.getElementById('fcard'+id);
+  s.flipped=!s.flipped;
+  card.classList.toggle('flipped');
+  if(s.flipped)document.getElementById('fjudge'+id).classList.add('show');
+  else document.getElementById('fjudge'+id).classList.remove('show');
+}
+function judgeFlash(id,knew){
+  const s=flashStates[id];
+  s.results[s.idx]=knew;
+  if(s.idx<s.data.length-1){s.idx++;renderFlash(id);}
+  else{showFlashSummary(id);}
+}
+function flashNav(id,dir){
+  const s=flashStates[id];
+  s.idx=Math.max(0,Math.min(s.data.length-1,s.idx+dir));
+  renderFlash(id);
+}
+function showFlashSummary(id){
+  const s=flashStates[id];
+  const knew=s.results.filter(r=>r===true).length;
+  const total=s.data.length;
+  document.getElementById('fcard'+id).style.display='none';
+  document.getElementById('fjudge'+id).classList.remove('show');
+  document.getElementById('fcounter'+id).textContent='Done!';
+  const sum=document.getElementById('fsum'+id);
+  document.getElementById('fsc'+id).textContent=knew+'/'+total;
+  document.getElementById('fmsg'+id).textContent=knew===total?'🏆 You knew them all — great work!':knew>=total/2?'Good progress — review the ones you marked "not yet" and try again.':'Keep at it — flashcards work best with repetition!';
+  sum.classList.add('show');
+  if(knew===total)launchConfetti();
+}
+function resetFlash(id){
+  document.getElementById('fcard'+id).style.display='';
+  initFlash(id,flashStates[id].data);
+}
+// Init
+initFlash(3,flashData3);
+
+// ===================== BRANCHING SCENARIO =====================
+const s2fb={
+  ok:'✅ <strong>Exactly right.</strong> You stayed calm, thanked Marcus for trusting you, and opened space for more. Active listening and validation — this is stage 3 (release tension). You haven\'t judged, panicked, or jumped to solutions.',
+  no:'❌ <strong>Hold on.</strong> Calling an ambulance immediately may not be appropriate — Marcus hasn\'t expressed suicidal ideation. An emergency response before assessing lethality could damage his trust and make future disclosure less likely. Assess first.',
+  part:'🟡 <strong>Close.</strong> Expressing concern is right — but "you must stop" is directive and potentially shaming. Self-harm is a coping mechanism. Telling someone to stop without first understanding what they\'re coping with rarely helps.'
+};
+const s3fb={
+  ok:'✅ <strong>Yes — ask directly.</strong> Research consistently shows that asking directly about suicide does not increase risk — it decreases it. It shows someone is willing to talk about it. Direct, calm, clear questioning is the professional standard.',
+  no:'❌ <strong>This is a widespread myth.</strong> Asking directly about suicide does NOT plant the idea. Avoiding the question leaves the person feeling unseen. Ask clearly, stay calm.',
+  part:'🟡 <strong>Vague questions get vague answers.</strong> "Anything serious" is not specific enough to assess real risk. Euphemisms also signal discomfort, which can make it harder for the person to be honest with you.'
+};
+const s4fb={
+  ok:'✅ <strong>This is collaborative, trauma-informed practice.</strong> You\'ve balanced duty of care with Marcus\'s autonomy — being honest about what you need to do, while working with him to find a path that feels manageable. He\'s more likely to engage with services if he feels respected.',
+  no:'❌ <strong>This removes Marcus\'s agency entirely.</strong> Even in serious situations, imposing a plan without consent is rarely effective and may damage the therapeutic relationship. Collaboration is not a luxury.',
+  part:'❌ <strong>This breaches your duty of care.</strong> Agreeing to keep self-harm confidential when there is a safety risk is not an option. You have legal obligations and organisational policies. This also puts you in a professionally vulnerable position.'
+};
+function pick1(btn,type){
+  btn.closest('.scene-choices').querySelectorAll('.sc-btn').forEach(b=>b.style.pointerEvents='none');
+  const msgs={
+    ok:'✅ <strong>Right call.</strong> You\'ve spotted multiple indirect indicators — pacing, avoidance, covered arms, flat affect. Acknowledging without diagnosing is crisis-aware practice. Stage 1 (recognise) and Stage 3 (release tension).',
+    no:'❌ <strong>Not yet.</strong> "Fine" in crisis often means the opposite. Marcus is showing indirect indicators — and people in early crisis often push helpers away. Leaving without acknowledging misses a critical safety signal.',
+    part:'🟡 <strong>Close.</strong> Consulting your supervisor is right — but not before attempting to engage. Calling from the doorstep signals you\'re not really present. Stay, engage, then consult.'
+  };
+  const out=document.getElementById('s1ok');
+  out.innerHTML=msgs[type];out.className='sc-out '+(type==='ok'?'out-ok':type==='no'?'out-no':'out-part');out.style.display='block';
+  if(type==='ok'){document.getElementById('s1next').style.display='inline-block';}
+  else{document.getElementById('s1retry').style.display='inline-block';}
+}
+function pickO(btn,type,gId,bId,oId){
+  const sceneEl=btn.closest('.scene');
+  sceneEl.querySelectorAll('.sc-btn').forEach(b=>b.style.pointerEvents='none');
+  const num=sceneEl.id.replace('scene','');
+  const fbMap=num==='2'?s2fb:num==='3'?s3fb:s4fb;
+  const out=document.getElementById(oId);
+  out.innerHTML=fbMap[type];out.className='sc-out '+(type==='ok'?'out-ok':type==='no'?'out-no':'out-part');out.style.display='block';
+  const nextId='s'+num+'next',retryId='s'+num+'retry';
+  if(type==='ok'){document.getElementById(nextId).style.display='inline-block';}
+  else{document.getElementById(retryId).style.display='inline-block';}
+}
+function goScene(n){
+  document.querySelectorAll('.scene').forEach(s=>s.classList.remove('active'));
+  const sc=document.getElementById('scene'+n);
+  sc.classList.add('active');sc.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function resetS1(){
+  const s=document.getElementById('scene1');
+  s.querySelectorAll('.sc-btn').forEach(b=>{b.style.pointerEvents='';});
+  document.getElementById('s1ok').style.display='none';
+  document.getElementById('s1next').style.display='none';
+  document.getElementById('s1retry').style.display='none';
+}
+function resetSc(sceneId,outIds){
+  const s=document.getElementById(sceneId);
+  s.querySelectorAll('.sc-btn').forEach(b=>{b.style.pointerEvents='';});
+  outIds.forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
+  const num=sceneId.replace('scene','');
+  const next=document.getElementById('s'+num+'next'),retry=document.getElementById('s'+num+'retry');
+  if(next)next.style.display='none';if(retry)retry.style.display='none';
+}
+function completeScenario(){
+  document.getElementById('sc-complete').style.display='block';
+  document.getElementById('s4next').style.display='none';
+  launchConfetti();
+  document.getElementById('sc-complete').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+// ===================== REVIEW QUIZ =====================
+let reviewAnswered={};
+const rqFB={
+  rq1:{ok:'✅ Correct. Crisis intervention is brief, practical, and responsive — keeping it simple and responding quickly are foundational.',no:'❌ Correct answer: Keep it simple, respond quickly, address individual situations and needs.'},
+  rq2:{ok:'✅ Exactly. Sudden, unexpected, threatening to overwhelm coping capacity.',no:'❌ Correct answer: A sudden, unexpected event that overwhelms coping and poses serious risk to life, health or safety.'},
+  rq3:{ok:'✅ Correct — observation and effective questioning/listening are the two core skill areas.',no:'❌ Correct answer: Observation, and effective questioning and listening.'},
+  rq4:{ok:'✅ That\'s the full picture — recognise, mitigate, restore, refer.',no:'❌ Correct answer: Recognise the crisis, mitigate its impact, restore the person\'s capacity to function, and refer as needed.'},
+  rq5:{ok:'✅ Correct. Indirect indicators are behavioural and non-verbal — often the earliest warning available.',no:'❌ Correct answer: Verbal and non-verbal hints — body language, changed behaviour, contradictions — suggesting fear or risk.'}
+};
+function ansRQ(btn,qId,correct,fbId){
+  if(reviewAnswered[qId])return;
+  reviewAnswered[qId]=true;
+  const allBtns=btn.closest('.opts').querySelectorAll('.opt-btn');
+  allBtns.forEach(b=>{
+    b.classList.add('disabled');
+    if(!correct&&b!==btn&&b.getAttribute('onclick').includes('true'))b.classList.add('reveal');
+  });
+  btn.classList.add(correct?'correct':'wrong');
+  const fb=document.getElementById(fbId);
+  fb.textContent=correct?rqFB[qId].ok:rqFB[qId].no;
+  fb.className='qfb show '+(correct?'ok':'no');
+  if(Object.keys(reviewAnswered).length===5){
+    let cnt=document.querySelectorAll('.opt-btn.correct').length;
+    document.getElementById('reviewScoreNum').textContent=cnt+'/5';
+    const msgs=['Keep revisiting today\'s content — it takes time.','Good effort — review the sections where you felt less sure.','Solid understanding forming — well done.','Really strong work today!','🏆 Perfect score — outstanding!'];
+    document.getElementById('reviewScoreMsg').textContent=msgs[Math.min(cnt,4)];
+    document.getElementById('reviewScore').classList.add('show');
+    if(cnt===5)launchConfetti();
+  }
+}
+
+// ===================== CONFETTI =====================
+function launchConfetti(){
+  const cols=['#0f9d8a','#f97316','#7c3aed','#f59e0b','#e84393','#16a34a','#0ea5e9'];
+  for(let i=0;i<60;i++){
+    const c=document.createElement('div');c.className='cp';
+    c.style.cssText=`left:${Math.random()*100}vw;top:-10px;background:${cols[Math.floor(Math.random()*cols.length)]};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;border-radius:${Math.random()>.5?'50%':'3px'};animation:confettiFall linear forwards;animation-delay:${Math.random()*1.2}s;animation-duration:${1.5+Math.random()}s`;
+    document.body.appendChild(c);setTimeout(()=>c.remove(),3200);
+  }
+}
+</script>
+</body>
+</html>
